@@ -1,0 +1,22 @@
+# Data — filings are large / redistribution-sensitive, not committed
+data/raw/*.pdf
+data/*.pdf
+*.faiss
+*.index
+index/*.npy
+index/*.pkl
+
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
