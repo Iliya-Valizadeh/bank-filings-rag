@@ -74,7 +74,8 @@ python -m eval.evaluate --pdf data/raw/rbc_2024.pdf
 - [x] Evaluation harness (hit@k, MRR, latency) + gold Q&A template
 - [x] Ingest RBC 2024 report (250 pages); gold Q&A filled with real figures + source pages
 - [x] Chunking comparison run (whole_page wins, hit@5 0.40 vs 0.10); see reports/chunking_comparison.md
-- [ ] Cost/latency table; short demo
+- [x] Cited generation via Gemini free tier (fail-closed, page citations) — see Example
+- [ ] Expand gold set to 20-30 Q&A; try hybrid (dense + BM25) retrieval
 
 ## Author
 Iliya Valizadeh — BSc Data Science, York University. GitHub: [Iliya-Valizadeh](https://github.com/Iliya-Valizadeh)
