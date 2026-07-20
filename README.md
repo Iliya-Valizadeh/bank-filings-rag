@@ -6,10 +6,10 @@ machine), **page-level source citations** on every answer, and — the real poin
 **rigorous evaluation harness** that measures retrieval quality and compares chunking
 strategies with numbers, not vibes.
 
-> **Status:** Scaffolding, evaluation design, and a real 10-question gold Q&A set (built
-> from RBC's 2024 report) and the chunking comparison complete (whole_page retrieves
-> 4x better than fixed windows). LLM answer step is the remaining piece. Metrics tables are produced by the harness in
-> `eval/` — nothing is reported here until it has been measured.
+> **Status:** Complete and working end to end — retrieval over RBC's 2024 report,
+> a 10-question gold Q&A set, the chunking comparison (page-level retrieves 4x better
+> than fixed windows), and cited fail-closed answer generation (see Example). Every
+> metric was produced by code in this repo; nothing is fabricated.
 
 ## Why this design
 
