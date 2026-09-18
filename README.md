@@ -1,15 +1,19 @@
 # Bank Filings Analyst — RAG over RBC's Annual Report
 
-A retrieval-augmented Q&A system over a bank's public annual report, built the way a bank
-AI team would actually ship it: **local embeddings** (no confidential document leaves the
-machine), **page-level source citations** on every answer, and — the real point — a
-**rigorous evaluation harness** that measures retrieval quality and compares chunking
-strategies with numbers, not vibes.
+Retrieval-augmented Q&A over RBC's 2024 annual report, 250 pages. Embeddings run locally,
+so the filing never leaves the machine. Every answer cites the page its evidence came
+from, and the generator is fail-closed: when the retrieved excerpts do not contain the
+answer, it says so instead of guessing.
 
-> **Status:** Complete and working end to end — retrieval over RBC's 2024 report,
-> a 10-question gold Q&A set, the chunking comparison (page-level retrieves 4x better
-> than fixed windows), and cited fail-closed answer generation (see Example). Every
-> metric was produced by code in this repo; nothing is fabricated.
+The part worth reading is the evaluation harness. A hand-labelled gold set scored on
+hit@k and MRR, run identically across three chunking strategies, so the choice between
+them rests on a measurement.
+
+> **Status:** Complete end to end. Ingest, chunking, local embeddings, FAISS retrieval
+> and cited generation all run. Measured result: whole-page chunking retrieves the
+> correct page four times as often as fixed 180-word windows (hit@5 0.40 vs 0.10), on a
+> 10-question gold set built by hand from the filing. Every figure in this repo is
+> produced by the harness in eval/ and written to reports/chunking_comparison.md.
 
 ## Why this design
 
