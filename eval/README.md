@@ -1,12 +1,17 @@
 # Evaluation methodology
 
-The point of this project is not a chatbot — it is measuring retrieval quality
-rigorously, the way a bank AI team would before trusting a RAG system.
+Measuring retrieval quality is the point of this project. Anyone can wire an LLM to a
+PDF; the question worth answering is how often the right evidence actually comes back.
 
 ## Gold Q&A set (`gold_qa.jsonl`)
-20–30 hand-written question/answer pairs about the filing. Each records the **source
+10 hand-written question/answer pairs about the filing. Each records the **source
 page(s)** where the answer actually appears. These pages are the ground truth for
-retrieval — filled in by reading the document, not generated.
+retrieval, filled in by reading the document rather than generated.
+
+Ten questions is a small set and the error bars on hit@k are correspondingly wide, so
+treat the numbers as directional. Expanding to 20-30 is the first item on the roadmap.
+The labels come from the filing itself rather than from the retriever's output, so no
+chunking strategy can be tuned to them.
 
 > Note: pages are 1-based **PDF page indices** (as produced by `ingest.py`), used
 > consistently for both the gold labels and retrieval — so the metric is internally exact.
