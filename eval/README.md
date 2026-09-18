@@ -1,34 +1,48 @@
-# Evaluation methodology
+# How the retrieval was evaluated
 
-Measuring retrieval quality is the point of this project. Anyone can wire an LLM to a
-PDF; the question worth answering is how often the right evidence actually comes back.
+A system like this can look fine in a demo and still fetch the wrong page most of the
+time. The only way to tell which one is happening is to write down the right answers
+first and then check against them.
 
-## Gold Q&A set (`gold_qa.jsonl`)
-10 hand-written question/answer pairs about the filing. Each records the **source
-page(s)** where the answer actually appears. These pages are the ground truth for
-retrieval, filled in by reading the document rather than generated.
+## The answer key (gold_qa.jsonl)
 
-Ten questions is a small set and the error bars on hit@k are correspondingly wide, so
-treat the numbers as directional. Expanding to 20-30 is the first item on the roadmap.
-The labels come from the filing itself rather than from the retriever's output, so no
-chunking strategy can be tuned to them.
+10 questions about RBC's 2024 Annual Report, written by hand. Each one records the page
+where the answer actually appears, found by reading the report rather than by asking the
+system and believing it. This is what is usually called a gold set.
 
-> Note: pages are 1-based **PDF page indices** (as produced by `ingest.py`), used
-> consistently for both the gold labels and retrieval — so the metric is internally exact.
+Ten questions is a small set and a single question moves the score by 0.1, so the results
+point in a direction rather than settling the matter. Expanding to 20 or 30 is the first
+item on the roadmap.
 
-## Metrics
-- **hit@k** — fraction of questions for which the top-k retrieved chunks include a chunk
-  from a gold source page. The headline retrieval-quality number.
-- **MRR** — mean reciprocal rank of the first correct-page chunk; rewards ranking the
-  right evidence higher, not just including it.
-- **Median latency** — per-query retrieval time.
+Because the pages came from the report itself and not from the system's output, no
+chunking strategy could be tuned to match them.
 
-## Chunking comparison (the experiment)
-We run the identical eval across several chunking strategies (`src/chunking.py`:
-fixed-word windows, paragraph packing, whole-page) and report hit@k / MRR **before vs
-after**. The deliverable is the table in `reports/chunking_comparison.md` plus a short
-written interpretation of *why* the winning strategy wins.
+> Pages are 1-based PDF page numbers, the same ones ingest.py produces, used for both the
+> answer key and the retrieval, so the two always refer to the same page.
 
-## Answer quality (secondary)
-Generation is graded lightly: does the answer cite the correct page(s) and avoid claims
-not supported by the retrieved excerpts (the prompt is fail-closed on missing evidence).
+## What gets measured
+
+**hit@k** is how often the right page turns up in the top k results. At k=5: out of the
+10 questions, how many times was the correct page among the 5 pieces of text the system
+fetched. This is the headline number.
+
+**MRR**, mean reciprocal rank, also cares about position. If the right page comes back
+first it scores 1, second 0.5, third about 0.33, and not at all scores 0. Averaged across
+the questions, it rewards putting the right page near the top instead of merely somewhere
+in the list.
+
+**Median latency** is how long one search takes.
+
+## The comparison
+
+Each way of splitting the report in src/chunking.py (fixed-word windows, paragraph
+packing, whole pages) gets its own index, and the same questions run against all of them
+under the same scoring. The table lands in reports/chunking_comparison.md with a short
+note on why the winner won. The harness writes that file itself, so the numbers in the
+report cannot drift away from the code that produced them.
+
+## Answer quality
+
+Checked by hand, and lightly: does the answer cite the right page, and does it stay
+inside what the retrieved pages actually say. The prompt tells the model to say it does
+not know when those pages do not cover the question.
