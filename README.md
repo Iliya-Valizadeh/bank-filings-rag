@@ -4,6 +4,11 @@ Ask a question about RBC's 2024 Annual Report and get an answer back with the pa
 it came from. The report runs to 250 pages, so finding a single figure by hand means
 knowing where to look before you start.
 
+One caveat up front, because it matters more than the feature list: the embedding step
+runs locally, but the answer-generation step calls a hosted model, so the retrieved pages
+do leave the machine at that point. See "Why the embeddings run locally" below for what
+that would mean in a real deployment.
+
 Two things mattered to me more than the chatbot part.
 
 **Every answer has to be checkable.** The system gives the page each claim came from, so
@@ -27,10 +32,16 @@ The text is turned into vectors on my own machine with sentence-transformers ins
 being sent to a hosted API.
 
 RBC's annual report is public, so nothing here needed protecting. I built it this way
-because a bank running the same thing over its own internal documents could not send
-them to an outside service, and I wanted a design that already held up under that
-constraint rather than one that would have to be rebuilt to meet it. Running the model
-locally also costs nothing.
+because a bank running the same thing over its own internal documents could not send them
+to an outside service, and I wanted the retrieval half to already hold up under that
+constraint. Running the model locally also costs nothing.
+
+**Where that argument stops.** Generation calls Gemini's API, so the five retrieved pages
+are sent to a third party on every question. The privacy property therefore covers
+indexing and retrieval, not the whole pipeline. To close it you would swap the generator
+for a self-hosted or in-house approved model, which changes one file (`src/generate.py`)
+and none of the retrieval work. I would rather state that plainly than let the local
+embeddings imply more than they deliver.
 
 ## Why the answers cite pages
 
