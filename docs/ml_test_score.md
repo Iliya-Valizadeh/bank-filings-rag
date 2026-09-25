@@ -60,8 +60,8 @@ nothing.
 
 | # | Test | Score | Evidence or gap |
 |---|---|---|---|
-| 1 | Feature expectations are captured in a schema | none | No schema lists the fields of a page or of the answer key. The paragraph splitter stops if a page has no layout blocks, but that is one check, not a schema |
-| 2 | All features are beneficial | half | `make eval` runs dense search, keyword search and the hybrid of the two, so each signal is scored alone and together. It is run by hand, since it needs the PDF, and the results are committed in `reports/` |
+| 1 | Feature expectations are captured in a schema | none | No schema lists the fields of a page or of the [answer key](glossary.md#answer-key). The paragraph splitter stops if a page has no layout blocks, but that is one check, not a schema |
+| 2 | All features are beneficial | half | `make eval` runs [dense search](glossary.md#dense-search), keyword search and the hybrid of the two, so each signal is scored alone and together. It is run by hand, since it needs the PDF, and the results are committed in `reports/` |
 | 3 | No feature's cost is too much | half | `make eval` records the median search time for each setup in `reports/chunking_comparison.md`. Run by hand, on one machine |
 | 4 | Features adhere to meta-level requirements | none | The rule that indexing and search run locally ([ADR 0002](decisions/0002-local-embeddings.md)) is not checked by any test |
 | 5 | The data pipeline has appropriate privacy controls | none | The report is public, so no control was needed here. Answer writing sends the top pages to Gemini. A test checks that no call is made without a key or with nothing retrieved, but that is not a privacy control |
@@ -84,10 +84,10 @@ nothing.
 
 | # | Test | Score | Evidence or gap |
 |---|---|---|---|
-| 1 | Training is reproducible | half | Nothing is trained, and building the index has no random step. During the retrofit a rerun of `make eval` matched the earlier results exactly, apart from timings (commit `f0f065e`). That was done by hand. No CI job reruns it, since it needs the PDF, and the embedding model's revision is not pinned |
-| 2 | Model specs are unit tested | one point | CI runs tests on all three kinds of search with a fake encoder (k results, pages kept, an exact-term question finds its page) and on the scoring code with toy data (hit@k, MRR, lenient hit, bootstrap) |
-| 3 | The ML pipeline is integration tested | half | A CI test runs the demo end to end on a small made-up PDF: read, split into pages, keyword search, then hit@k and MRR. It does not cover dense or hybrid search, and no test runs `eval/evaluate.py` |
-| 4 | Model quality is validated before serving | none | There is no serving step. Nothing blocks a change that lowers hit@5 |
+| 1 | Training is reproducible | half | Nothing is trained, and building the index has no random step. During the retrofit a rerun of `make eval` matched the earlier results exactly, apart from timings (commit `f0f065e`). That was done by hand. No CI job reruns it, since it needs the PDF, and the [embedding](glossary.md#embedding) model's revision is not pinned |
+| 2 | Model specs are unit tested | one point | CI runs tests on all three kinds of search with a fake encoder (k results, pages kept, an exact-term question finds its page) and on the scoring code with toy data (hit@k, [MRR](glossary.md#mrr), [lenient hit](glossary.md#lenient-hit), bootstrap) |
+| 3 | The ML pipeline is integration tested | half | A CI test runs the demo end to end on a small made-up PDF: read, split into pages, keyword search, then hit@k and MRR. It does not cover dense or [hybrid search](glossary.md#hybrid-search), and no test runs `eval/evaluate.py` |
+| 4 | Model quality is validated before serving | none | There is no serving step. Nothing blocks a change that lowers [hit@5](glossary.md#hit5) |
 | 5 | The model is debuggable | half | `reports/eval_results.json` keeps, for every question, the pages retrieved and the top text. [reports/error_analysis.md](../reports/error_analysis.md) follows each miss of the best setup by hand |
 | 6 | Models are canaried before serving | none | There is no serving step |
 | 7 | Serving models can be rolled back | none | There is no serving step |

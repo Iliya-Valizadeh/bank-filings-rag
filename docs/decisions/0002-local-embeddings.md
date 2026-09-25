@@ -12,7 +12,7 @@ stands for its meaning). A model does this. It can run on my own machine, or the
 can be sent to a hosted service that returns the vectors.
 
 The first commit, `5ec3c84`, made the choice and wrote down the reason in
-`embed_index.py`: "a bank cannot ship confidential filings to a third-party embedding
+`embed_index.py`: "a bank cannot ship confidential filings to a third-party [embedding](../glossary.md#embedding)
 API, so this mirrors a realistic in-house setup". It uses the small
 `sentence-transformers/all-MiniLM-L6-v2` model and a FAISS index that compares the
 question with every vector.
@@ -43,7 +43,7 @@ apply to internal documents.
   new revision, the dense and hybrid numbers could change without any change here.
   [whats_weak.md](../whats_weak.md) lists this.
 - The model reads only the top of a long page. This hurts whole pages with dense
-  search, and it is a large part of why keyword and hybrid search help. The README
+  search, and it is a large part of why keyword and [hybrid search](../glossary.md#hybrid-search) help. The README
   and `notebooks/01_explore.ipynb` give the numbers.
 - The privacy rule covers indexing and search only. Answer writing still sends the
   top pages to Gemini, a hosted model. Commit `e555419` added that to the README.
