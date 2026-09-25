@@ -15,22 +15,23 @@ More on this below.
 
 ## Results
 
-### The 10 questions I checked by hand
+### The 12 questions I checked by hand
 
 "hit@5" is the share of questions where the right page is in the top 5 results.
 
 | Split the report into | Search | hit@5 | 95% interval |
 |---|---|---|---|
-| Fixed 180-word chunks | meaning only (dense) | 0.10 | 0.00 to 0.30 |
-| Whole pages | meaning only (dense) | 0.40 | 0.10 to 0.70 |
-| Whole pages | hybrid (dense + keyword) | 0.50 | 0.20 to 0.80 |
+| Fixed 180-word chunks | meaning only (dense) | 0.25 | 0.00 to 0.50 |
+| Whole pages | meaning only (dense) | 0.50 | 0.25 to 0.75 |
+| Whole pages | hybrid (dense + keyword) | 0.58 | 0.33 to 0.83 |
 
-With 10 questions, one question moves hit@5 by 0.10, and every interval above overlaps
-with the others. On these 10 alone I can't claim any configuration beats another.
+With 12 questions, one question moves hit@5 by about 0.08, and every interval above
+overlaps with the others. On these 12 alone I can't claim any configuration beats
+another.
 
 ### All 30 questions
 
-This includes 20 questions whose pages a script has checked but I haven't yet read
+This includes 18 questions whose pages a script has checked but I haven't yet read
 (see "The answer key" below).
 
 | Split the report into | Dense | Keyword (BM25) | Hybrid |
@@ -64,9 +65,9 @@ The first version split text on blank
 lines. pypdf, the PDF reader, puts no blank lines in this report (0 of 250 pages). So the
 "paragraph" strategy returned one piece per page, 249 pieces for 250 pages, and my
 original results table compared whole pages with themselves. It now splits on the layout
-blocks PyMuPDF detects, which gives 1,146 pieces. Real paragraphs score lower than the
-fake ones did (0.20 vs 0.40 on the 10 hand-checked questions, dense search), which fits
-the next finding.
+blocks PyMuPDF detects, which gives 1,146 pieces. Real paragraphs score lower than whole
+pages (0.33 against 0.50 on the 12 hand-checked questions, dense search), which fits the
+next finding.
 
 ### The embedding model reads only the top of a page
 
@@ -102,19 +103,20 @@ one-line cause. In short:
 ## The answer key
 
 [eval/gold_qa.jsonl](eval/gold_qa.jsonl) has 30 questions. The first 10 I wrote and
-checked by reading the report. They are marked `"verified": true`. I drafted the other
-20 to cover exact terms (PCL, NIM, LCR, NSFR, RWA), segment tables, plain facts, and three
-questions whose answer spans two pages. Each has a proposed page, marked
-`"verified": false`.
+checked by reading the report. I drafted the other 20 to cover exact terms (PCL, NIM,
+LCR, NSFR, RWA), segment tables, plain facts, and three questions whose answer spans two
+pages, each with a proposed page. Of those 20, I have read Q28 and Q29 so far. The 12
+questions I've read are marked `"verified": true` and the other 18 `"verified": false`.
 
 [eval/check_gold.py](eval/check_gold.py) runs two checks on the proposed pages. The
 first looks for the answer text on the page, and all 30 questions pass. The second is
 stricter: for questions 11 to 30 it looks for the label and the figure (say "Total PCL"
 and "3,232") in the same passage of the PDF, no more than 200 characters apart. 18 of 20
 pass. For Q28 (a list of nine banks) and Q29 (one long sentence) the label and figure are
-in the same passage but further apart than that, so those two need a read. Results are
-in [eval/gold_check.md](eval/gold_check.md). A script can catch a wrong page number, but
-it can't tell whether a question is well posed, so all 20 stay unverified until I read
+in the same passage but further apart than that, so I read both pages. The pages were
+right, and I corrected Q29's answer text to match p. 113 and its footnote. Results are in
+[eval/gold_check.md](eval/gold_check.md). A script can catch a wrong page number, but it
+can't tell whether a question is well posed, so the other 18 stay unverified until I read
 them.
 
 ## How it works
@@ -181,7 +183,7 @@ answer written by the model, copy `.env.example` to `.env` and add a Gemini key.
 
 ## What I know is weak
 
-- Only 10 questions are checked by hand. The 30-question numbers include 20 that a
+- Only 12 questions are checked by hand. The 30-question numbers include 18 that a
   script checked but I haven't read yet. Until I do, treat that table as provisional.
 - Even the best configuration misses 9 of 30. The largest single cause is the 256-word-piece
   window. Splitting long pages for the vectors while still citing whole pages is the

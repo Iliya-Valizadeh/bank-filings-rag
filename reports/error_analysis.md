@@ -5,8 +5,8 @@ fusion). This is the best row in `reports/chunking_comparison.md` on all 30 ques
 21 of 30 hits in the top 5, so 9 misses.
 
 The retrieved pages come from `reports/eval_results.json`. Word-piece positions come from
-`notebooks/01_explore.ipynb`. The causes are my reading of those pages. Questions 11 to
-30 are not yet checked by hand (see `eval/gold_check.md`).
+`notebooks/01_explore.ipynb`. The causes are my reading of those pages. Of questions 11
+to 30, only Q28 and Q29 are checked by hand so far (see `eval/gold_check.md`).
 
 Background that explains most of this: the embedding model reads only the first 256 word
 pieces of any text. A median page here is 981 word pieces, and 96% of pages are longer
