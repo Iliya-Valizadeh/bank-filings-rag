@@ -1,9 +1,10 @@
 # Datasheet: bank-filings-rag answer key
 
 Short form of the datasheet from Gebru et al., "Datasheets for Datasets"
-(https://arxiv.org/abs/1803.09010). It describes the answer key,
-[eval/gold_qa.jsonl](eval/gold_qa.jsonl). The report it points into, RBC's 2024 Annual
-Report, is not part of this repo (see [data/README.md](data/README.md)).
+(https://arxiv.org/abs/1803.09010). It describes the
+[answer key](docs/glossary.md#answer-key), [eval/gold_qa.jsonl](eval/gold_qa.jsonl).
+The report it points into, RBC's 2024 Annual Report, is not part of this repo (see
+[data/README.md](data/README.md)).
 
 ## In plain words
 
@@ -69,7 +70,8 @@ fit other reports, other banks or other years.
 
 ## Known limits
 
-- It is small. With 12 hand-checked questions, one question moves hit@5 by about 0.08.
+- It is small. With 12 hand-checked questions, one question moves
+  [hit@5](docs/glossary.md#hit5) by about 0.08 (1 divided by 12). <!-- not-a-claim -->
 - 18 questions are checked by script only. A script can catch a wrong page, but not a
   badly worded question or a wrong answer.
 - The key lists one or two pages per question. The same figure often appears on other pages too, so

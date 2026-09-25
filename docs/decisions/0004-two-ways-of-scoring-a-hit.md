@@ -7,7 +7,7 @@ commit `5ec3c84` (2026-07-17). The lenient score dates from `d78553a` (2026-09-2
 
 ## Context
 
-The answer key lists the page or pages where each answer appears. A search result is a
+The [answer key](../glossary.md#answer-key) lists the page or pages where each answer appears. A search result is a
 "hit" if one of its top 5 pages is right. The question is what "right" means.
 
 The first commit, `5ec3c84`, had one rule: a hit only when a retrieved page is one the

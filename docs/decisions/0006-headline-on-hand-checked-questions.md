@@ -31,13 +31,13 @@ read both pages, and commit `e1f89c9` marked them as checked by hand. That made 
 
 The headline uses only the hand-checked questions. A second table covers all 30 and
 says how many are unread. The best setup is still picked on all 30, ties broken by
-MRR, because the hand-checked set is too small to separate the setups. The code says
+[MRR](../glossary.md#mrr), because the hand-checked set is too small to separate the setups. The code says
 so in `best_config` in `eval/evaluate.py`.
 
 ## Consequences
 
-- The headline intervals are wide. With 12 questions, one question moves hit@5 by
-  about 0.08.
+- The headline intervals are wide. With 12 questions, one question moves [hit@5](../glossary.md#hit5) by
+  about 0.08 (1 divided by 12). <!-- not-a-claim -->
 - The best setup is chosen with the help of 18 unread questions and then scored on the
   12 read ones. Both sets were known when the choice was made.
 - The headline set grows only when a page is read by hand, and each addition can move

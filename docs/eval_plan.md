@@ -16,7 +16,7 @@ results, and which way of splitting the report and which kind of search does bes
 
 ## Data and split
 
-The data is one PDF, RBC's 2024 Annual Report, and a hand-built answer key,
+The data is one PDF, RBC's 2024 Annual Report, and a hand-built [answer key](glossary.md#answer-key),
 [eval/gold_qa.jsonl](../eval/gold_qa.jsonl). The [datasheet](../DATASHEET.md) describes
 the key.
 
@@ -27,7 +27,7 @@ real weakness, listed in [whats_weak.md](whats_weak.md).
 ## Main metric
 
 The share of questions where a page from the answer key is in the top 5 results
-(hit@5). A hit counts only when the retrieved page is one the key lists. This is the
+([hit@5](glossary.md#hit5)). A hit counts only when the retrieved page is one the key lists. This is the
 strict score. The headline uses only the questions I checked by reading the report.
 
 Each score gets a 95% [confidence interval](glossary.md#confidence-interval) from a
@@ -38,7 +38,7 @@ percentile [bootstrap](glossary.md#bootstrap): resample the questions with repla
 
 The [baseline](glossary.md#baseline) is the first version of the system: fixed
 180-word chunks with meaning-based (dense) search. The headline compares it with whole
-pages and hybrid search, on the same questions.
+pages and [hybrid search](glossary.md#hybrid-search), on the same questions.
 
 ## What counts as success
 
@@ -51,13 +51,13 @@ view, would not mean anything.
 |---|---|---|---|
 | Pages are 1-based PDF page numbers, used for both the key and the search | `5ec3c84` | 2026-07-17 | same commit |
 | Top 5 results (k = 5) | `5ec3c84` | 2026-07-17 | same commit |
-| Strict hit@k: a hit only on a page the key lists | `5ec3c84` | 2026-07-17 | same commit |
-| MRR (mean reciprocal rank) and median search time | `5ec3c84` | 2026-07-17 | same commit |
+| [Strict hit](glossary.md#strict-hit)@k: a hit only on a page the key lists | `5ec3c84` | 2026-07-17 | same commit |
+| [MRR](glossary.md#mrr) (mean reciprocal rank) and median search time | `5ec3c84` | 2026-07-17 | same commit |
 | Three ways to split the report: fixed 180-word windows with 40 words of overlap, paragraphs, whole pages | `5ec3c84` | 2026-07-17 | same commit |
 | The first 10 questions | `5ec3c84` | 2026-07-17 | same commit |
 | Paragraphs split on PyMuPDF layout blocks, not blank lines | `5160c6e` | 2026-09-24 | after |
-| Keyword search (BM25) and hybrid search (reciprocal rank fusion) | `1f4db7f` | 2026-09-24 | after |
-| Lenient hit: a hit also when a retrieved chunk contains an answer string | `d78553a` | 2026-09-24 | after |
+| Keyword search ([BM25](glossary.md#bm25)) and hybrid search ([reciprocal rank fusion](glossary.md#reciprocal-rank-fusion)) | `1f4db7f` | 2026-09-24 | after |
+| [Lenient hit](glossary.md#lenient-hit): a hit also when a retrieved [chunk](glossary.md#chunk) contains an answer string | `d78553a` | 2026-09-24 | after |
 | Bootstrap intervals: 1,000 resamples of the questions, seed 0 | `d78553a` | 2026-09-24 | after |
 | 20 more questions (30 in all), with a `verified` flag on each | `8b69b7b` | 2026-09-24 | after the first results; same minute as the first 30-question results |
 | Headline on hand-checked questions only; a second table for all 30 | `8e12f28` | 2026-09-24 | after |
@@ -97,11 +97,10 @@ and the best setup was picked on the same questions it is scored on.
 
 - Reading the 18 questions still checked only by script. A wrong page there moves the
   30-question table.
-- More hand-checked questions. With 12, one question moves hit@5 by about 0.08, and
-  the intervals of the top setups overlap.
+- More hand-checked questions. With 12, one question moves hit@5 by about 0.08 (1 divided by 12), and the intervals of the top setups overlap. <!-- not-a-claim -->
 - A held-out set of new questions, written after the best setup was fixed.
-- An embedding model with a longer input window. The current one reads only the top of
-  each page, which hurts whole-page dense search the most.
+- An [embedding](glossary.md#embedding) model with a longer input window. The current one reads only the top of
+  each page, which hurts whole-page [dense search](glossary.md#dense-search) the most.
 - A second report, from RBC or another bank.
 
 ## The claim that the strict score came first
