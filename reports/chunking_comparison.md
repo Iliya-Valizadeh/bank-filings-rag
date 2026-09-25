@@ -5,35 +5,35 @@ Discussion lives in the README and in reports/error_analysis.md.
 
 RBC 2024 Annual Report, 250 pages. k = 5. Embeddings: `sentence-transformers/all-MiniLM-L6-v2`. Intervals: 95% bootstrap over questions, 1000 resamples. Latency includes encoding the question.
 
-## Headline: the 10 questions I checked by hand
+## Headline: the 12 questions I checked by hand
 
 | Chunking | Pieces | Retriever | hit@5 | 95% CI | MRR | 95% CI | lenient hit@5 | median ms |
 |---|---|---|---|---|---|---|---|---|
-| fixed_words | 1355 | dense | 0.10 | 0.00 to 0.30 | 0.10 | 0.00 to 0.30 | 0.40 | 24.4 |
-| fixed_words | 1355 | bm25 | 0.30 | 0.00 to 0.60 | 0.22 | 0.00 to 0.50 | 0.60 | 8.3 |
-| fixed_words | 1355 | hybrid | 0.40 | 0.10 to 0.70 | 0.25 | 0.05 to 0.50 | 0.50 | 36.1 |
-| paragraph | 1146 | dense | 0.20 | 0.00 to 0.50 | 0.15 | 0.00 to 0.40 | 0.20 | 22.0 |
-| paragraph | 1146 | bm25 | 0.20 | 0.00 to 0.50 | 0.20 | 0.00 to 0.50 | 0.60 | 6.3 |
-| paragraph | 1146 | hybrid | 0.40 | 0.10 to 0.70 | 0.19 | 0.03 to 0.40 | 0.50 | 29.1 |
-| whole_page | 250 | dense | 0.40 | 0.10 to 0.70 | 0.27 | 0.05 to 0.52 | 0.60 | 23.7 |
-| whole_page | 250 | bm25 | 0.30 | 0.10 to 0.60 | 0.22 | 0.02 to 0.50 | 0.70 | 1.3 |
-| whole_page | 250 | hybrid | 0.50 | 0.20 to 0.80 | 0.27 | 0.06 to 0.53 | 0.80 | 23.7 |
+| fixed_words | 1355 | dense | 0.25 | 0.00 to 0.50 | 0.18 | 0.00 to 0.43 | 0.50 | 17.7 |
+| fixed_words | 1355 | bm25 | 0.42 | 0.17 to 0.67 | 0.25 | 0.06 to 0.46 | 0.67 | 5.3 |
+| fixed_words | 1355 | hybrid | 0.50 | 0.25 to 0.75 | 0.33 | 0.10 to 0.58 | 0.58 | 23.2 |
+| paragraph | 1146 | dense | 0.33 | 0.08 to 0.58 | 0.19 | 0.04 to 0.38 | 0.33 | 16.0 |
+| paragraph | 1146 | bm25 | 0.33 | 0.08 to 0.58 | 0.25 | 0.04 to 0.46 | 0.67 | 4.2 |
+| paragraph | 1146 | hybrid | 0.50 | 0.25 to 0.75 | 0.27 | 0.09 to 0.49 | 0.58 | 21.3 |
+| whole_page | 250 | dense | 0.50 | 0.25 to 0.75 | 0.29 | 0.11 to 0.52 | 0.67 | 16.1 |
+| whole_page | 250 | bm25 | 0.42 | 0.17 to 0.67 | 0.31 | 0.08 to 0.56 | 0.75 | 1.1 |
+| whole_page | 250 | hybrid | 0.58 | 0.33 to 0.83 | 0.35 | 0.14 to 0.60 | 0.83 | 18.0 |
 
 ## All 30 questions (includes questions not yet checked by hand)
 
-20 of these questions have pages proposed by me and checked only by script (`python -m eval.check_gold`), not yet read by hand.
+18 of these questions have pages proposed by me and checked only by script (`python -m eval.check_gold`), not yet read by hand.
 
 | Chunking | Pieces | Retriever | hit@5 | 95% CI | MRR | 95% CI | lenient hit@5 | median ms |
 |---|---|---|---|---|---|---|---|---|
-| fixed_words | 1355 | dense | 0.50 | 0.33 to 0.70 | 0.34 | 0.20 to 0.50 | 0.63 | 24.4 |
-| fixed_words | 1355 | bm25 | 0.53 | 0.37 to 0.70 | 0.34 | 0.20 to 0.49 | 0.63 | 8.6 |
-| fixed_words | 1355 | hybrid | 0.67 | 0.50 to 0.83 | 0.45 | 0.29 to 0.59 | 0.70 | 33.6 |
-| paragraph | 1146 | dense | 0.50 | 0.33 to 0.70 | 0.28 | 0.16 to 0.42 | 0.50 | 22.4 |
-| paragraph | 1146 | bm25 | 0.43 | 0.27 to 0.60 | 0.29 | 0.16 to 0.44 | 0.57 | 6.7 |
-| paragraph | 1146 | hybrid | 0.63 | 0.47 to 0.80 | 0.41 | 0.26 to 0.56 | 0.67 | 29.2 |
-| whole_page | 250 | dense | 0.57 | 0.40 to 0.73 | 0.38 | 0.24 to 0.53 | 0.67 | 23.2 |
-| whole_page | 250 | bm25 | 0.60 | 0.43 to 0.77 | 0.43 | 0.29 to 0.61 | 0.77 | 1.7 |
-| whole_page | 250 | hybrid | 0.70 | 0.53 to 0.87 | 0.52 | 0.37 to 0.68 | 0.83 | 23.8 |
+| fixed_words | 1355 | dense | 0.50 | 0.33 to 0.70 | 0.34 | 0.20 to 0.50 | 0.63 | 18.1 |
+| fixed_words | 1355 | bm25 | 0.53 | 0.37 to 0.70 | 0.34 | 0.20 to 0.49 | 0.63 | 5.5 |
+| fixed_words | 1355 | hybrid | 0.67 | 0.50 to 0.83 | 0.45 | 0.29 to 0.59 | 0.70 | 23.1 |
+| paragraph | 1146 | dense | 0.50 | 0.33 to 0.70 | 0.28 | 0.16 to 0.42 | 0.50 | 16.5 |
+| paragraph | 1146 | bm25 | 0.43 | 0.27 to 0.60 | 0.29 | 0.16 to 0.44 | 0.57 | 4.2 |
+| paragraph | 1146 | hybrid | 0.63 | 0.47 to 0.80 | 0.41 | 0.26 to 0.56 | 0.67 | 22.2 |
+| whole_page | 250 | dense | 0.57 | 0.40 to 0.73 | 0.38 | 0.24 to 0.53 | 0.67 | 16.0 |
+| whole_page | 250 | bm25 | 0.60 | 0.43 to 0.77 | 0.43 | 0.29 to 0.61 | 0.77 | 1.1 |
+| whole_page | 250 | hybrid | 0.70 | 0.53 to 0.87 | 0.52 | 0.37 to 0.68 | 0.83 | 18.4 |
 
 Best configuration on all 30 questions (by hit@5, then MRR): **whole_page + hybrid**.
 
