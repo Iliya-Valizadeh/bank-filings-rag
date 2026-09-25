@@ -57,6 +57,11 @@ extend-exclude = ["tools"]
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP"]
 
+[tool.ruff.lint.per-file-ignores]
+# The notebook is not re-run this phase (docs/decisions/0001, section 2), so its cell
+# source stays as originally written rather than being reformatted to match new rules.
+"notebooks/01_explore.ipynb" = ["E401", "E402", "E741", "I001"]
+
 [tool.mypy]
 python_version = "3.11"
 check_untyped_defs = true
