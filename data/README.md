@@ -2,7 +2,7 @@
 
 The filing PDF is **not** committed (size + redistribution). Download it locally.
 
-## Get the RBC 2024 Annual Report
+## Getting the report
 1. Download the **2024 Annual Report** PDF from RBC:
    https://www.rbc.com/investor-relations/_assets-custom/pdf/ar_2024_e.pdf
    (listed on https://www.rbc.com/investor-relations/financial-information.html).
