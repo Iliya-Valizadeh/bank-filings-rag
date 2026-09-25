@@ -1,141 +1,201 @@
 # Bank Filings Analyst: question answering over RBC's annual report
 
-Ask a question about RBC's 2024 Annual Report and get an answer back with the page number
-it came from. The report runs to 250 pages, so finding a single figure by hand means
-knowing where to look before you start.
+Ask a question about RBC's 2024 Annual Report (250 pages) and get an answer back with the
+page it came from.
 
-One caveat up front, because it matters more than the feature list: the embedding step
-runs locally, but the answer-generation step calls a hosted model, so the retrieved pages
-do leave the machine at that point. See "Why the embeddings run locally" below for what
-that would mean in a real deployment.
+I built the first version in a weekend. It answered questions and cited pages, and it
+looked like it worked. Then I realised I had no way to know how often it pulled the
+right page. So the measurement became the project. I wrote an answer key, compared
+several ways of splitting and searching the report, and wrote down every question it
+still gets wrong and why.
 
-Two things mattered to me more than the chatbot part.
+One caveat up front: the embedding and search steps run locally, but the answer-writing
+step calls Google's Gemini API, so the retrieved pages leave the machine at that point.
+More on this below.
 
-**Every answer has to be checkable.** The system gives the page each claim came from, so
-you can open the report and see for yourself. If the pages it pulled do not actually
-contain the answer, it says so instead of writing something that sounds right.
+## Results
 
-**Retrieval has to be measured.** Asking a model a question is the easy half. The hard
-half is getting the right page in front of it to begin with, and you cannot tell how
-often that works without checking. So I wrote an answer key by hand and used it to
-compare three ways of splitting the report.
+### The 10 questions I checked by hand
 
-> **Status:** Working end to end. Splitting the report one page at a time finds the
-> correct page in the top 5 results 4 times out of 10. Cutting it into fixed 180-word
-> chunks finds it 1 time out of 10. That is measured on a 10-question answer key, which
-> is small, so the result points in a direction rather than settling anything. Full table
-> in reports/chunking_comparison.md.
+"hit@5" is the share of questions where the right page is in the top 5 results.
 
-## Why the embeddings run locally
+| Split the report into | Search | hit@5 | 95% interval |
+|---|---|---|---|
+| Fixed 180-word chunks | meaning only (dense) | 0.10 | 0.00 to 0.30 |
+| Whole pages | meaning only (dense) | 0.40 | 0.10 to 0.70 |
+| Whole pages | hybrid (dense + keyword) | 0.50 | 0.20 to 0.80 |
 
-The text is turned into vectors on my own machine with sentence-transformers instead of
-being sent to a hosted API.
+With 10 questions, one question moves hit@5 by 0.10, and every interval above overlaps
+with the others. On these 10 alone I can't claim any configuration beats another.
 
-RBC's annual report is public, so nothing here needed protecting. I built it this way
-because a bank running the same thing over its own internal documents could not send them
-to an outside service, and I wanted the retrieval half to already hold up under that
-constraint. Running the model locally also costs nothing.
+### All 30 questions
 
-**Where that argument stops.** Generation calls Gemini's API, so the five retrieved pages
-are sent to a third party on every question. The privacy property therefore covers
-indexing and retrieval, not the whole pipeline. To close it you would swap the generator
-for a self-hosted or in-house approved model, which changes one file (`src/generate.py`)
-and none of the retrieval work. I would rather state that plainly than let the local
-embeddings imply more than they deliver.
+This includes 20 questions whose pages a script has checked but I haven't yet read
+(see "The answer key" below).
 
-## Why the answers cite pages
+| Split the report into | Dense | Keyword (BM25) | Hybrid |
+|---|---|---|---|
+| Fixed 180-word chunks (1,355 pieces) | 0.50 | 0.53 | 0.67 |
+| Paragraphs (1,146 pieces) | 0.50 | 0.43 | 0.63 |
+| Whole pages (250 pieces) | 0.57 | 0.60 | 0.70 (0.53 to 0.87) |
 
-The page number is attached to the text at the first step, when the PDF is read, and
-carried through every stage after it. That is the only reason a citation is available at
-the end. It also means the model is told to answer from the supplied pages and to admit
-when they do not cover the question, which is the behaviour a bank would need before
-trusting anything like this over its own filings.
+Hybrid search came out on top for every way of splitting the report. Its intervals still
+overlap with dense, so I checked question by question. Over whole pages, hybrid found 5
+questions that dense missed, and dense found 1 that hybrid missed. The full tables, with
+MRR and intervals for every row, are in
+[reports/chunking_comparison.md](reports/chunking_comparison.md).
+
+![hit@5 by chunking and retriever](reports/figures/hit_at_5.png)
+
+### Two ways of scoring a hit
+
+The strict score counts a hit only when a retrieved page is
+one I wrote down in the answer key. But the same figure often appears on several pages:
+net income of 16,240 is on 13 of them. So I also report a lenient score, where a hit is
+any retrieved chunk that contains the answer text. For the best configuration it's 0.83
+against a strict 0.70. The strict score is the headline because I defined it before I
+saw any results. The lenient one shows how much the strict score understates retrieval.
+
+## What I found out along the way
+
+### The paragraph splitter never split anything
+
+The first version split text on blank
+lines. pypdf, the PDF reader, puts no blank lines in this report (0 of 250 pages). So the
+"paragraph" strategy returned one piece per page, 249 pieces for 250 pages, and my
+original results table compared whole pages with themselves. It now splits on the layout
+blocks PyMuPDF detects, which gives 1,146 pieces. Real paragraphs score lower than the
+fake ones did (0.20 vs 0.40 on the 10 hand-checked questions, dense search), which fits
+the next finding.
+
+### The embedding model reads only the top of a page
+
+all-MiniLM-L6-v2 reads at most 256
+word pieces and ignores the rest. A median page here is 981 word pieces, and 96% of pages
+are longer than 256. So a whole-page vector mostly describes the page's first quarter.
+Five of the nine questions the best configuration misses have their answer past that
+point. Keyword search reads the whole page, which is a large part of why hybrid helps.
+The numbers are in [notebooks/01_explore.ipynb](notebooks/01_explore.ipynb).
+
+### Why whole pages still win
+
+A number in a financial report only means something next
+to its label. Fixed 180-word windows often separate a figure from the row or heading that
+names it. A page keeps them together, and the page is also the unit being cited.
+
+## The errors
+
+Every question the best configuration gets wrong is in
+[reports/error_analysis.md](reports/error_analysis.md), with the pages it retrieved and a
+one-line cause. In short:
+
+- 5 of 9: the answer is past the 256-word-piece window on its page
+- 4 of 9: a retrieved page does contain the answer, just not the page in the key
+- 2 of 9: it retrieved the page next to the right one, in the same section
+- 2 of 9: a word in the question means something else elsewhere ("NIM" appears in every
+  segment table, and "Insurance" in the insurance accounting notes)
+- 1 of 9: the answer key is too narrow. It retrieved two pages that do list the business
+  segments, but the key names only a third.
+
+(A question can have more than one cause.)
+
+## The answer key
+
+[eval/gold_qa.jsonl](eval/gold_qa.jsonl) has 30 questions. The first 10 I wrote and
+checked by reading the report. They are marked `"verified": true`. I drafted the other
+20 to cover exact terms (PCL, NIM, LCR, NSFR, RWA), segment tables, plain facts, and three
+questions whose answer spans two pages. Each has a proposed page, marked
+`"verified": false`.
+
+[eval/check_gold.py](eval/check_gold.py) runs two checks on the proposed pages. The
+first looks for the answer text on the page, and all 30 questions pass. The second is
+stricter: for questions 11 to 30 it looks for the label and the figure (say "Total PCL"
+and "3,232") in the same passage of the PDF, no more than 200 characters apart. 18 of 20
+pass. For Q28 (a list of nine banks) and Q29 (one long sentence) the label and figure are
+in the same passage but further apart than that, so those two need a read. Results are
+in [eval/gold_check.md](eval/gold_check.md). A script can catch a wrong page number, but
+it can't tell whether a question is well posed, so all 20 stay unverified until I read
+them.
 
 ## How it works
 
 ```
 RBC 2024 Annual Report (PDF)
-  ingest.py        read the text out page by page, keep the page number
-  chunking.py      split it three different ways so they can be compared
-  embed_index.py   turn each piece into a vector, store them in FAISS
-  retrieve.py      for a question, fetch the 5 closest pieces
-  generate.py      hand those to Gemini, with instructions to cite pages and not guess
-  eval/            score the retrieval against the hand-written answer key
+  ingest.py        page text (pypdf) and layout blocks (PyMuPDF), page number kept
+  chunking.py      fixed windows, paragraphs from layout blocks, or whole pages
+  embed_index.py   local sentence-transformers vectors in a FAISS index
+  retrieve.py      dense, BM25 keyword, or hybrid (reciprocal rank fusion)
+  generate.py      hand the top 5 to Gemini, told to cite pages and not guess
+  eval/            answer key, page check, scoring, bootstrap intervals
 ```
 
-## The experiment
+Hybrid search runs both searches and merges the two ranked lists with reciprocal rank
+fusion: each chunk scores 1/(60 + rank) for every list it appears in. It uses only the
+ranks, so the two very different score scales never need to be matched up.
 
-Three ways of cutting up the report, the same 10 questions, the same scoring.
+Every answer cites pages because the page number is attached to the text when the PDF is
+read and carried through every step. If nothing is retrieved, the system refuses without
+calling the model at all.
 
-| How the report was split | Pieces | Right page in top 5 | MRR | Median time |
-|---|---|---|---|---|
-| Fixed 180-word chunks, 40-word overlap | 1355 | 0.10 | 0.10 | 15.5 ms |
-| Paragraphs | 249 | 0.40 | 0.27 | 14.6 ms |
-| One whole page at a time | 250 | 0.40 | 0.27 | 17.6 ms |
+## Why the embeddings run locally, and where that stops
 
-MRR is mean reciprocal rank. If the right page comes back first it scores 1, second 0.5,
-third 0.33, and so on. It rewards putting the right page near the top rather than just
-somewhere in the list.
+The text is turned into vectors on my own machine instead of being sent to a hosted API.
+RBC's report is public, so nothing here needed protecting. I built it this way because a
+bank running the same thing over internal documents couldn't send them to an outside
+service, and I wanted the search half to already work under that rule.
 
-**Why whole pages win.** A number in a financial report only means something next to its
-label. The figure 16,240 is unfindable on its own; it is findable when Net income sits in
-the same piece of text. Cutting the report into 180-word windows separates figures from
-the headings that name them and often slices a table down the middle. Keeping a page
-whole keeps the number with its label, and the citation comes free, because the page is
-already the thing being retrieved.
-
-**Something I did not expect.** The paragraph strategy produced 249 pieces for 250 pages,
-which means it was doing the same job as whole-page splitting. pypdf does not put blank
-lines between paragraphs on this PDF, so there was nothing for it to split on. How well
-the chunking worked turned out to depend on how cleanly the text came out of the PDF in
-the first place. I would not have found that if I had picked one strategy instead of
-comparing three.
+Generation calls Gemini, so the five retrieved pages are sent to a third party on every
+question. The privacy property covers indexing and search, not the whole pipeline.
+Closing the gap means swapping the generator for a self-hosted or bank-approved model,
+which changes one file (`src/generate.py`) and none of the search code.
 
 ## Example
 
 ```
 $ python -m src.ask --pdf data/raw/rbc_2024.pdf "What was RBC's net income in fiscal 2024?"
-
-In fiscal 2024, RBC generated record earnings of $16.2 billion (p. 7).
-Pro forma with the HSBC Canada acquisition, estimated net income would have been
-$16.6 billion (p. 195); HSBC contributed $453 million since its March 28, 2024
-acquisition date (p. 7, 195).
-
-Cited pages: [7, 49, 59, 87, 195] | LLM used: True
+...
+Cited pages: [7, 9, 12, 49, 55] | LLM used: False
 ```
 
-## Quickstart
+This is the run without an API key, which shows the retrieved pages only. p. 7 has the
+answer ("record earnings of $16.2 billion"). p. 23, which has the summary table, isn't in
+the top 5. That's the same kind of miss as Q1 in the error analysis.
+
+## Reproduce
 
 ```bash
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
-cp .env.example .env          # add a free Gemini API key (optional; runs without it)
-# download the filing -> data/raw/rbc_2024.pdf  (see data/README.md)
-python -m eval.evaluate --pdf data/raw/rbc_2024.pdf
+# download the filing to data/raw/rbc_2024.pdf (see data/README.md)
+make eval      # or: python -m eval.check_gold --pdf data/raw/rbc_2024.pdf
+               #     python -m eval.evaluate  --pdf data/raw/rbc_2024.pdf
 ```
+
+`make eval` regenerates every number in this README. Hit rates and MRR come out identical
+on every run. Latency varies from run to run by a few milliseconds.
+
+Tests (`pytest`) and linting (`ruff`) run in GitHub Actions on every push. They use a
+fake encoder, so they need neither the PDF, the model download nor an API key. For an
+answer written by the model, copy `.env.example` to `.env` and add a Gemini key.
 
 ## What I know is weak
 
-- The answer key is 10 questions. That is too few to draw a firm conclusion from, and
-  expanding it to 20 or 30 is the first thing on the list.
-- Getting the right page 4 times out of 10 is not good enough to rely on. The questions
-  are short and specific and the report is dense, but that is an explanation, not an
-  excuse.
-- Searching on meaning alone misses questions built around exact terms like CET1 or ROE.
-  Adding keyword search alongside it is the change I would make first.
-- The embedding model is a small one. A larger one would likely move the numbers.
-- Tables lose their headers when the text is extracted, which is a known weak spot for
-  filings specifically.
-- The search index checks every vector one by one. That is exact and fine at 250 to 1,355
-  pieces, and it would need replacing well before this reached a serious document set.
-
-## Roadmap
-
-- [x] Ingest, three chunking strategies, embedding and index, retrieval, cited generation
-- [x] Evaluation harness (hit@k, MRR, latency) and the hand-written answer key
-- [x] Chunking comparison run over RBC's 2024 report; see reports/chunking_comparison.md
-- [ ] Expand the answer key to 20-30 questions
-- [ ] Add keyword search alongside the meaning-based search and re-run the comparison
+- Only 10 questions are checked by hand. The 30-question numbers include 20 that a
+  script checked but I haven't read yet. Until I do, treat that table as provisional.
+- Even the best configuration misses 9 of 30. The largest single cause is the 256-word-piece
+  window. Splitting long pages for the vectors while still citing whole pages is the
+  first fix I'd try.
+- Fusion can lose a correct keyword hit (Q10 in the error analysis). The fusion weights
+  aren't tuned.
+- The embedding model is a small one. A larger one with a longer window would likely
+  change the numbers.
+- Tables lose their column headers when the text is extracted, which hurts on a filing.
+- The answer quality from Gemini isn't scored. I only measure whether the right page is
+  retrieved.
+- It's one document. Nothing here shows how it would do on another bank's report.
+- The search index compares against every vector. That's exact and fine at 1,355 pieces,
+  but it would need replacing on a large document set.
 
 ## Author
 

@@ -1,0 +1,11 @@
+# What the tests need. No torch or sentence-transformers: the tests use a fake encoder,
+# so CI runs without the PDF, the embedding model or an API key.
+faiss-cpu==1.15.1
+rank-bm25==0.2.2
+pypdf==6.19.0
+pymupdf==1.28.2
+numpy==2.4.6
+google-genai==2.25.0
+python-dotenv==1.2.3
+pytest==9.1.1
+ruff==0.16.9

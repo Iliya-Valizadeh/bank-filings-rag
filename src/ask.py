@@ -1,6 +1,7 @@
 """Demo CLI: ask a question over the filing, get a page-cited answer.
 
-Uses the winning chunking strategy (whole_page). Fail-closed: without a GEMINI_API_KEY
+Uses the best configuration from the evaluation: whole-page chunks with hybrid
+(dense + BM25) retrieval. Fail-closed: without a GEMINI_API_KEY
 it prints the retrieved evidence + pages instead of an LLM answer.
 
 Run:
@@ -10,7 +11,7 @@ from __future__ import annotations
 import argparse
 from .config import EMBED_MODEL, TOP_K
 from . import ingest, chunking
-from .embed_index import VectorIndex
+from .retrieve import build_index
 from .pipeline import ask as ask_pipeline
 
 
@@ -21,9 +22,9 @@ def main():
     ap.add_argument("-k", type=int, default=TOP_K)
     a = ap.parse_args()
 
-    pages = ingest.load_pages(a.pdf)
-    chunks = chunking.whole_page(pages)          # winning strategy from the eval
-    index = VectorIndex(EMBED_MODEL).build(chunks)
+    pages = ingest.load_pages(a.pdf, with_blocks=False)
+    chunks = chunking.whole_page(pages)          # best configuration in the eval
+    index = build_index("hybrid", chunks, EMBED_MODEL)
     res = ask_pipeline(index, a.question, k=a.k)
 
     print("\nQUESTION:", a.question)
