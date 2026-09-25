@@ -32,3 +32,15 @@ def test_bootstrap_ci_brackets_the_mean_and_is_degenerate_when_constant():
     lo, hi = bootstrap_ci([0, 1] * 10)
     assert lo < 0.5 < hi
     assert bootstrap_ci([1] * 10) == (1.0, 1.0)
+
+
+def test_label_and_figure_check_needs_them_in_the_same_block():
+    from eval.check_gold import label_figure_gap
+    blocks = ["Net income $ 729 $ 549", "Total revenue 1,729"]
+    assert label_figure_gap(blocks, ["Net income"], ["729"]) == 13
+    assert label_figure_gap(["Net income $ 5", "Revenue 729"], ["Net income"], ["729"]) is None
+    assert label_figure_gap(["Total revenue 1,729"], ["Total revenue"], ["729"]) is None
+    assert label_figure_gap(["CET1 ratio was 13.2%, down"], ["CET1 ratio"], ["13.2%"]) == 15
+    # A footnote marker after a year must not hide a phrase figure.
+    assert label_figure_gap(["NZBA ... net-zero emissions by 20503."], ["NZBA"],
+                            ["net-zero emissions by 2050"]) is not None
