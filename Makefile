@@ -24,6 +24,7 @@ eval:
 		exit 1; \
 	}
 	$(RUN) --extra embed python -m eval.evaluate --pdf data/raw/rbc_2024.pdf
+	$(RUN) python -m eval.summarize
 
 demo:
 	$(RUN) python -m $(PKG).demo
