@@ -82,7 +82,12 @@ def check(pdf_path) -> list[dict]:
                     for p in r["source_pages"]}
             rec["strict"] = gaps
             ok = any(g is not None and g <= MAX_GAP for g in gaps.values())
-            rec["strict_status"] = "ok" if ok else "CHECK BY HAND"
+            if ok:
+                rec["strict_status"] = "ok"
+            elif r.get("verified_by") == "hand":
+                rec["strict_status"] = "far apart, read by hand"
+            else:
+                rec["strict_status"] = "CHECK BY HAND"
             rec["label"] = r["check_label"][0]
             rec["figure"] = r["check_figure"][0]
         out.append(rec)
