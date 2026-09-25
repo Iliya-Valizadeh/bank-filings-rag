@@ -10,6 +10,12 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    # No key and no model download: the `embed` extra (torch, sentence-transformers)
+    # is never installed here. HF_HUB_OFFLINE=1 makes an accidental attempt to reach
+    # the Hugging Face Hub fail loudly instead of silently downloading anything.
+    # docs/decisions/0001-adopting-the-house-standard.md, section 4.
+    env:
+      HF_HUB_OFFLINE: "1"
     steps:
       - uses: actions/checkout@v4
 

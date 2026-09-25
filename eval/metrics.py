@@ -1,5 +1,7 @@
 """Scoring functions for retrieval, kept separate so they can be tested on toy examples."""
+
 from __future__ import annotations
+
 import numpy as np
 
 
