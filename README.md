@@ -1,203 +1,213 @@
 # Bank Filings Analyst: question answering over RBC's annual report
 
-Ask a question about RBC's 2024 Annual Report (250 pages) and get an answer back with the
-page it came from.
+Ask a question about RBC's 2024 Annual Report and get an answer back with the page
+it came from.
 
-I built the first version in a weekend. It answered questions and cited pages, and it
-looked like it worked. Then I realised I had no way to know how often it pulled the
-right page. So the measurement became the project. I wrote an answer key, compared
-several ways of splitting and searching the report, and wrote down every question it
-still gets wrong and why.
+## In plain words
 
-One caveat up front: the embedding and search steps run locally, but the answer-writing
-step calls Google's Gemini API, so the retrieved pages leave the machine at that point.
-More on this below.
+I built the first version of this in a weekend. It answered questions and named a
+page for each one, and it looked like it worked. Then I realized I had no way to know
+how often it named the right page. So measuring that became the project. I wrote an
+[answer key](docs/glossary.md#answer-key) by hand, tried several ways of splitting and
+searching the report, and wrote down every question the best setup still gets wrong,
+and why.
 
-## Results
+One thing up front: the search runs on my own machine, but writing the final answer
+calls Google's Gemini API, so the pages it finds leave the machine at that point.
+More on this in [How it works](#how-it-works).
 
-### The 12 questions I checked by hand
+## Try it
 
-"hit@5" is the share of questions where the right page is in the top 5 results.
+```bash
+git clone https://github.com/Iliya-Valizadeh/bank-filings-rag.git
+cd bank-filings-rag
+make setup
+make demo
+```
+
+`make demo` needs no download and no API key. It runs the real search code on a
+short, made-up PDF (not RBC's report) and prints which made-up page it found for a
+few made-up questions. It shows that the code runs. It is not a result: see
+[What's weak](#whats-weak).
+
+To run the real evaluation, you also need RBC's report (see
+[data/README.md](data/README.md)) and, for an answer written by a model rather than
+just the retrieved pages, a Gemini API key in `.env`:
+
+```bash
+make eval   # regenerates every number in this README
+```
+
+## Result
+
+On the 12 questions I checked myself by reading the report, splitting the report into
+whole pages and searching with [hybrid search](docs/glossary.md#hybrid-search) puts
+the right page in the top 5 results ([hit@5](docs/glossary.md#hit5)) for 0.58 of them,
+against a 95% [confidence interval](docs/glossary.md#confidence-interval) of 0.33 to
+0.83. The first version of this project, fixed 180-word
+[chunks](docs/glossary.md#chunk) with [dense search](docs/glossary.md#dense-search)
+alone, is the [baseline](docs/glossary.md#baseline): it scores 0.25 (0.00 to 0.50).
 
 | Split the report into | Search | hit@5 | 95% interval |
 |---|---|---|---|
-| Fixed 180-word chunks | meaning only (dense) | 0.25 | 0.00 to 0.50 |
-| Whole pages | meaning only (dense) | 0.50 | 0.25 to 0.75 |
-| Whole pages | hybrid (dense + keyword) | 0.58 | 0.33 to 0.83 |
+| Fixed 180-word chunks (baseline) | dense | 0.25 | 0.00 to 0.50 |
+| Whole pages | dense | 0.50 | 0.25 to 0.75 |
+| Whole pages | hybrid | 0.58 | 0.33 to 0.83 |
 
-With 12 questions, one question moves hit@5 by about 0.08, and every interval above
-overlaps with the others. On these 12 alone I can't claim any configuration beats
-another.
-
-### All 30 questions
-
-This includes 18 questions whose pages a script has checked but I haven't yet read
-(see "The answer key" below).
-
-| Split the report into | Dense | Keyword (BM25) | Hybrid |
-|---|---|---|---|
-| Fixed 180-word chunks (1,355 pieces) | 0.50 | 0.53 | 0.67 |
-| Paragraphs (1,146 pieces) | 0.50 | 0.43 | 0.63 |
-| Whole pages (250 pieces) | 0.57 | 0.60 | 0.70 (0.53 to 0.87) |
-
-Hybrid search came out on top for every way of splitting the report. Its intervals still
-overlap with dense, so I checked question by question. Over whole pages, hybrid found 5
-questions that dense missed, and dense found 1 that hybrid missed. The full tables, with
-MRR and intervals for every row, are in
-[reports/chunking_comparison.md](reports/chunking_comparison.md).
+With only 12 questions, one more right or wrong answer moves hit@5 by about one in
+twelve <!-- not-a-claim -->, and every interval above overlaps the others. I can't
+claim any one setup beats another on these 12 alone.
 
 ![hit@5 by chunking and retriever](reports/figures/hit_at_5.png)
 
+The chart shows hit@5 for every combination of chunking and search on all 30
+questions (12 hand-checked, 18 checked by a script only). Whole pages with hybrid
+search comes out on top in every case, but its interval overlaps with plain dense
+search over whole pages.
+
+## How I worked
+
+I wrote the [evaluation plan](docs/eval_plan.md) after the results existed, not
+before. That page says so in its own title, and it is honest about what that costs:
+git shows that the scoring rule and the first results appeared in the same commit,
+`5ec3c84`, so nothing here proves the rule was fixed before I saw a number. What the
+history does show is that the strict score (a hit only on a page the answer key
+lists) was the only score when the first results came out, and it gives the lower,
+more careful number of the two scores this project reports. That is why it stays the
+headline: not because it came first, but because a later, friendlier score never
+replaced it.
+
+The decisions behind the main choices are in [docs/decisions/](docs/decisions/):
+local [embeddings](docs/glossary.md#embedding) ([ADR 0002](docs/decisions/0002-local-embeddings.md)),
+whole pages as the unit ([ADR 0003](docs/decisions/0003-whole-pages-as-the-unit.md)),
+the strict and lenient scores ([ADR 0004](docs/decisions/0004-two-ways-of-scoring-a-hit.md)),
+hybrid search ([ADR 0005](docs/decisions/0005-hybrid-search-with-rank-fusion.md)), and
+the 12-question headline ([ADR 0006](docs/decisions/0006-headline-on-hand-checked-questions.md)).
+Every miss of the best setup is explained by hand in
+[reports/error_analysis.md](reports/error_analysis.md).
+
 ### Two ways of scoring a hit
 
-The strict score counts a hit only when a retrieved page is
-one I wrote down in the answer key. But the same figure often appears on several pages:
-net income of 16,240 is on 13 of them. So I also report a lenient score, where a hit is
-any retrieved chunk that contains the answer text. For the best configuration it's 0.83
-against a strict 0.70. The strict score is the headline because I defined it before I
-saw any results. The lenient one shows how much the strict score understates retrieval.
+The strict score, above, counts a hit only when a retrieved page is one the answer
+key lists. But a figure in a financial report often sits on more than one page, so I
+also report a [lenient hit](docs/glossary.md#lenient-hit): a hit is any retrieved
+[chunk](docs/glossary.md#chunk) that contains the answer's text. For the best setup, lenient hit@5 is 0.83
+against a strict 0.58 on the 12 hand-checked questions. The gap shows how much the
+strict score understates retrieval, but the lenient score is never the headline,
+because it can also count a page that answers a different question by coincidence.
 
-## What I found out along the way
+### The answer key
 
-### The paragraph splitter never split anything
+[eval/gold_qa.jsonl](eval/gold_qa.jsonl) has 30 questions. I wrote and read the first
+10 myself. I drafted 20 more to cover exact terms (PCL, NIM, LCR, NSFR, RWA), segment
+tables, plain facts, and questions whose answer spans two pages. Of those 20, I have
+since read Q28 and Q29 myself, for 12 hand-checked questions in total.
 
-The first version split text on blank
-lines. pypdf, the PDF reader, puts no blank lines in this report (0 of 250 pages). So the
-"paragraph" strategy returned one piece per page, 249 pieces for 250 pages, and my
-original results table compared whole pages with themselves. It now splits on the layout
-blocks PyMuPDF detects, which gives 1,146 pieces. Real paragraphs score lower than whole
-pages (0.33 against 0.50 on the 12 hand-checked questions, dense search), which fits the
-next finding.
-
-### The embedding model reads only the top of a page
-
-all-MiniLM-L6-v2 reads at most 256
-word pieces and ignores the rest. A median page here is 981 word pieces, and 96% of pages
-are longer than 256. So a whole-page vector mostly describes the page's first quarter.
-Five of the nine questions the best configuration misses have their answer past that
-point. Keyword search reads the whole page, which is a large part of why hybrid helps.
-The numbers are in [notebooks/01_explore.ipynb](notebooks/01_explore.ipynb).
-
-### Why whole pages still win
-
-A number in a financial report only means something next
-to its label. Fixed 180-word windows often separate a figure from the row or heading that
-names it. A page keeps them together, and the page is also the unit being cited.
-
-## The errors
-
-Every question the best configuration gets wrong is in
-[reports/error_analysis.md](reports/error_analysis.md), with the pages it retrieved and a
-one-line cause. In short:
-
-- 5 of 9: the answer is past the 256-word-piece window on its page
-- 4 of 9: a retrieved page does contain the answer, just not the page in the key
-- 2 of 9: it retrieved the page next to the right one, in the same section
-- 2 of 9: a word in the question means something else elsewhere ("NIM" appears in every
-  segment table, and "Insurance" in the insurance accounting notes)
-- 1 of 9: the answer key is too narrow. It retrieved two pages that do list the business
-  segments, but the key names only a third.
-
-(A question can have more than one cause.)
-
-## The answer key
-
-[eval/gold_qa.jsonl](eval/gold_qa.jsonl) has 30 questions. The first 10 I wrote and
-checked by reading the report. I drafted the other 20 to cover exact terms (PCL, NIM,
-LCR, NSFR, RWA), segment tables, plain facts, and three questions whose answer spans two
-pages, each with a proposed page. Of those 20, I have read Q28 and Q29 so far. The 12
-questions I've read are marked `"verified": true` and the other 18 `"verified": false`.
-
-[eval/check_gold.py](eval/check_gold.py) runs two checks on the proposed pages. The
-first looks for the answer text on the page, and all 30 questions pass. The second is
-stricter: for questions 11 to 30 it looks for the label and the figure (say "Total PCL"
-and "3,232") in the same passage of the PDF, no more than 200 characters apart. 18 of 20
-pass. For Q28 (a list of nine banks) and Q29 (one long sentence) the label and figure are
-in the same passage but further apart than that, so I read both pages. The pages were
-right, and I corrected Q29's answer text to match p. 113 and its footnote. Results are in
-[eval/gold_check.md](eval/gold_check.md). A script can catch a wrong page number, but it
-can't tell whether a question is well posed, so the other 18 stay unverified until I read
-them.
+[eval/check_gold.py](eval/check_gold.py) runs two script checks on the other 18
+proposed pages. The first looks for the answer text anywhere on the page. 28 of the
+30 questions pass this check; Q8 and Q10 have no short answer string to search for,
+so the script cannot check them at all. The second check is stricter: for questions
+11 to 30, it looks for the label and the figure (say "Net interest margin" and
+"1.54%") close together, in the same passage of the PDF. 18 of those 20 pass. Q28 and Q29 did not, so
+I read both by hand: the pages were right, and I fixed Q29's answer text to match the
+page. Full results are in [eval/gold_check.md](eval/gold_check.md). A script can catch
+a wrong page number, but not a badly worded question, so the other 18 questions stay
+"checked by script only" until I read them myself.
 
 ## How it works
 
+```mermaid
+flowchart LR
+    A[RBC's PDF] --> B[ingest: read pages + layout]
+    B --> C[chunk: whole pages]
+    C --> D[index: dense + BM25]
+    D --> E[retrieve: hybrid, rank fusion]
+    E --> F[generate: cite pages, refuse if empty]
 ```
-RBC 2024 Annual Report (PDF)
-  ingest.py        page text (pypdf) and layout blocks (PyMuPDF), page number kept
-  chunking.py      fixed windows, paragraphs from layout blocks, or whole pages
-  embed_index.py   local sentence-transformers vectors in a FAISS index
-  retrieve.py      dense, BM25 keyword, or hybrid (reciprocal rank fusion)
-  generate.py      hand the top 5 to Gemini, told to cite pages and not guess
-  eval/            answer key, page check, scoring, bootstrap intervals
-```
 
-Hybrid search runs both searches and merges the two ranked lists with reciprocal rank
-fusion: each chunk scores 1/(60 + rank) for every list it appears in. It uses only the
-ranks, so the two very different score scales never need to be matched up.
+`ingest.py` reads the text of every page and the layout blocks PyMuPDF finds on it,
+and keeps the page number attached to both. `chunking.py` turns pages into whole-page
+chunks (or, for comparison, fixed windows or paragraphs).
+`embed_index.py` turns each chunk into a local [embedding](docs/glossary.md#embedding)
+and builds a FAISS index; no text leaves the machine at this step. `retrieve.py` runs
+dense search, [BM25](docs/glossary.md#bm25) keyword search, or both merged by
+[reciprocal rank fusion](docs/glossary.md#reciprocal-rank-fusion): each chunk scores
+1 / (60 + rank) for every list it appears in, so the two very different score scales
+never need to be matched up. `generate.py` hands the top 5 pages to Gemini, told to
+cite pages and never guess; if nothing was retrieved, it refuses without calling the
+model.
 
-Every answer cites pages because the page number is attached to the text when the PDF is
-read and carried through every step. If nothing is retrieved, the system refuses without
-calling the model at all.
+### Where the local part stops
 
-## Why the embeddings run locally, and where that stops
+Turning the report into vectors and searching it both run on my own machine, not a
+hosted API. RBC's report is public, so nothing here needed protecting, but I built it
+this way because a bank running the same pipeline over its own confidential filings
+could not send them to an outside service, and I wanted the search half to already
+work under that rule. Writing the final answer calls Gemini, so the five retrieved
+pages are sent to a third party on every question that uses it. Closing that gap
+means swapping the generator for a self-hosted or bank-approved model, which changes
+one file (`src/bank_filings_rag/generate.py`) and none of the search code.
 
-The text is turned into vectors on my own machine instead of being sent to a hosted API.
-RBC's report is public, so nothing here needed protecting. I built it this way because a
-bank running the same thing over internal documents couldn't send them to an outside
-service, and I wanted the search half to already work under that rule.
-
-Generation calls Gemini, so the five retrieved pages are sent to a third party on every
-question. The privacy property covers indexing and search, not the whole pipeline.
-Closing the gap means swapping the generator for a self-hosted or bank-approved model,
-which changes one file (`src/generate.py`) and none of the search code.
-
-## Example
+### Example
 
 ```
-$ python -m src.ask --pdf data/raw/rbc_2024.pdf "What was RBC's net income in fiscal 2024?"
+$ python -m bank_filings_rag.ask --pdf data/raw/rbc_2024.pdf "What was RBC's net income in fiscal 2024?"
 ...
 Cited pages: [7, 9, 12, 49, 55] | LLM used: False
 ```
 
-This is the run without an API key, which shows the retrieved pages only. p. 7 has the
-answer ("record earnings of $16.2 billion"). p. 23, which has the summary table, isn't in
-the top 5. That's the same kind of miss as Q1 in the error analysis.
+This is a run with no Gemini key, so it prints the retrieved pages only. Page 7 does
+have the answer ("record earnings of $16.2 billion"), but page 23, which has the
+summary table the answer key names, is not in the top 5. That is the same kind of
+miss as Q1 in [reports/error_analysis.md](reports/error_analysis.md).
 
-## Reproduce
+## What's weak
 
-```bash
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
-pip install -r requirements.txt
-# download the filing to data/raw/rbc_2024.pdf (see data/README.md)
-make eval      # or: python -m eval.check_gold --pdf data/raw/rbc_2024.pdf
-               #     python -m eval.evaluate  --pdf data/raw/rbc_2024.pdf
-```
+The biggest limit is size: only 12 questions are checked by hand, and the 30-question
+table includes 18 that are checked by script only. One question moves hit@5 by about
+one in twelve, and the top setups' intervals overlap, so a few more questions could
+change which setup looks best.
 
-`make eval` regenerates every number in this README. Hit rates and MRR come out identical
-on every run. Latency varies from run to run by a few milliseconds.
+The next biggest is the [embedding](docs/glossary.md#embedding) model itself:
+`all-MiniLM-L6-v2` reads at most 256
+[word pieces](docs/glossary.md#word-piece) and ignores the rest of a page. A page here
+has a median of 981 word pieces, and 96% of pages are longer than 256. Five of the
+nine questions the best setup misses have their answer past that point, which is the
+largest single cause of the misses I found in
+[reports/error_analysis.md](reports/error_analysis.md).
 
-Tests (`pytest`) and linting (`ruff`) run in GitHub Actions on every push. They use a
-fake encoder, so they need neither the PDF, the model download nor an API key. For an
-answer written by the model, copy `.env.example` to `.env` and add a Gemini key.
+The full, ranked list, with what I have and have not done about each one, is in
+[docs/whats_weak.md](docs/whats_weak.md). It also covers: no held-out questions, the
+strict score's undercount, the unpinned model revision, un-tuned fusion settings, lost
+table headers, and a test coverage floor of 47% on the code that turns search results
+into these numbers (see [docs/ml_test_score.md](docs/ml_test_score.md) for the full
+self-assessment).
 
-## What I know is weak
+## Docs
 
-- Only 12 questions are checked by hand. The 30-question numbers include 18 that a
-  script checked but I haven't read yet. Until I do, treat that table as provisional.
-- Even the best configuration misses 9 of 30. The largest single cause is the 256-word-piece
-  window. Splitting long pages for the vectors while still citing whole pages is the
-  first fix I'd try.
-- Fusion can lose a correct keyword hit (Q10 in the error analysis). The fusion weights
-  aren't tuned.
-- The embedding model is a small one. A larger one with a longer window would likely
-  change the numbers.
-- Tables lose their column headers when the text is extracted, which hurts on a filing.
-- The answer quality from Gemini isn't scored. I only measure whether the right page is
-  retrieved.
-- It's one document. Nothing here shows how it would do on another bank's report.
-- The search index compares against every vector. That's exact and fine at 1,355 pieces,
-  but it would need replacing on a large document set.
+- Tutorial: [docs/tutorial.md](docs/tutorial.md)
+- How-to guides: [docs/how-to/](docs/how-to/)
+- Reference: [docs/reference.md](docs/reference.md)
+- Explanation: [docs/explanation.md](docs/explanation.md)
+
+## Repo map
+
+<!-- repo-map:start -->
+| Path | What it holds |
+|---|---|
+| `.github/` | CI workflows and GitHub settings |
+| `CLAIMS.md` | Every number in the docs, with its source file and command |
+| `data/` | Small data files, or scripts that download the data |
+| `docs/` | Evaluation plan, decisions, glossary and the four kinds of docs |
+| `eval/` | The answer key, the scripts that score it, and the scoring code |
+| `Makefile` | One command for each step: setup, lint, test, eval, demo |
+| `notebooks/` | Exploration notebooks (not used to make the reported numbers) |
+| `reports/` | Generated results, including `metrics.json` and the error analysis |
+| `scripts/` | One-off scripts, such as building the demo PDF |
+| `src/` | The package code |
+| `tests/` | Unit and data tests |
+| `tools/` | Checks for claims, readability, AI-writing signs and links |
+<!-- repo-map:end -->
 
 ## Author
 
