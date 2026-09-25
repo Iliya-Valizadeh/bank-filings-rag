@@ -1,4 +1,4 @@
-from src import generate
+from bank_filings_rag import generate
 
 
 def test_empty_context_refuses_without_calling_the_model(monkeypatch):
