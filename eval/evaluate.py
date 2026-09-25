@@ -1,72 +1,164 @@
-"""Evaluation harness — the differentiator of this project.
+"""Evaluation harness: every chunking strategy against every retriever, on the answer key.
 
-Measures, for each chunking strategy:
-  - Retrieval hit@k : does the retrieved top-k include a chunk from a gold source page?
-  - MRR             : mean reciprocal rank of the first correct-page chunk
-  - median latency  : per-query retrieval time
+For each (chunking strategy, retriever) pair it measures, over the questions:
+  - hit@k          does the top k include a chunk from a page in the answer key?
+  - MRR            mean reciprocal rank of the first chunk from an answer-key page
+  - lenient hit@k  does the top k include a chunk that contains the answer string?
+                   (see eval/metrics.py for why this second measure exists)
+  - median latency time for one search, including encoding the question
+with 95% bootstrap intervals from resampling the questions 1,000 times.
+
+Headline numbers use only the questions I checked by hand ("verified": true). A second
+table uses all 30 and is labelled as including questions not yet checked by hand.
 
 Run:  python -m eval.evaluate --pdf data/raw/rbc_2024.pdf
-Produces reports/chunking_comparison.md.
+Writes reports/chunking_comparison.md, reports/eval_results.json and
+reports/figures/hit_at_5.png. Everything in those files comes from this script.
 """
 from __future__ import annotations
-import argparse, json, time, statistics
+import argparse
+import json
+import statistics
+import time
 from pathlib import Path
 
 from src.config import EMBED_MODEL, TOP_K, REPORTS
 from src import ingest, chunking
 from src.embed_index import VectorIndex
+from src.retrieve import BM25Index, HybridIndex, RETRIEVERS
+from eval.metrics import hit_and_rank, lenient_hit, bootstrap_ci
+
+GOLD = Path(__file__).parent / "gold_qa.jsonl"
+N_BOOT = 1000
 
 
-def load_gold(path):
-    rows = [json.loads(l) for l in Path(path).read_text().splitlines() if l.strip()]
-    return [r for r in rows if r.get("source_pages")]  # only graded once pages filled
+def load_gold(path=GOLD):
+    rows = [json.loads(line) for line in Path(path).read_text(encoding="utf-8").splitlines()
+            if line.strip()]
+    return [r for r in rows if r.get("source_pages")]
 
 
-def hit_and_rank(hits, gold_pages):
-    gold = set(gold_pages)
-    for rank, h in enumerate(hits, start=1):
-        if h["page"] in gold:
-            return 1, 1.0 / rank
-    return 0, 0.0
+def run_questions(index, gold, k):
+    per_q = []
+    for q in gold:
+        t0 = time.perf_counter()
+        hits = index.search(q["question"], k=k)
+        ms = (time.perf_counter() - t0) * 1000
+        h, rr = hit_and_rank(hits, q["source_pages"])
+        per_q.append({
+            "id": q["id"], "hit": h, "rr": rr,
+            "lenient": lenient_hit(hits, q["source_pages"], q.get("answer_any")),
+            "pages": [x["page"] for x in hits], "ms": ms,
+            "top_text": hits[0]["text"][:300] if hits else "",
+        })
+    return per_q
+
+
+def summarise(per_q, ids):
+    rows = [r for r in per_q if r["id"] in ids]
+    hits, rrs, len_ = [r["hit"] for r in rows], [r["rr"] for r in rows], [r["lenient"] for r in rows]
+    return {
+        "n": len(rows),
+        "hit": statistics.mean(hits), "hit_ci": bootstrap_ci(hits, N_BOOT),
+        "mrr": statistics.mean(rrs), "mrr_ci": bootstrap_ci(rrs, N_BOOT),
+        "lenient": statistics.mean(len_), "lenient_ci": bootstrap_ci(len_, N_BOOT),
+        "median_ms": statistics.median(r["ms"] for r in rows),
+    }
 
 
 def evaluate(pdf_path, k=TOP_K):
     pages = ingest.load_pages(pdf_path)
-    gold = load_gold(Path(__file__).parent / "gold_qa.jsonl")
-    if not gold:
-        raise SystemExit("No graded gold questions yet — fill source_pages in gold_qa.jsonl.")
-
-    rows = []
-    for name, fn in chunking.STRATEGIES.items():
+    gold = load_gold()
+    verified = {q["id"] for q in gold if q.get("verified")}
+    everyone = {q["id"] for q in gold}
+    results = []
+    for strategy, fn in chunking.STRATEGIES.items():
         chunks = fn(pages)
-        index = VectorIndex(EMBED_MODEL).build(chunks)
-        hits_at_k, rr, lat = [], [], []
-        for q in gold:
-            t0 = time.perf_counter()
-            res = index.search(q["question"], k=k)
-            lat.append(time.perf_counter() - t0)
-            h, r = hit_and_rank(res, q["source_pages"])
-            hits_at_k.append(h); rr.append(r)
-        rows.append({
-            "strategy": name, "n_chunks": len(chunks),
-            f"hit@{k}": sum(hits_at_k) / len(gold),
-            "mrr": statistics.mean(rr),
-            "median_latency_ms": round(statistics.median(lat) * 1000, 1),
-        })
-    return rows
+        dense = VectorIndex(EMBED_MODEL).build(chunks)
+        bm25 = BM25Index().build(chunks)
+        indexes = {"dense": dense, "bm25": bm25, "hybrid": HybridIndex.from_built(dense, bm25)}
+        for retriever in RETRIEVERS:
+            per_q = run_questions(indexes[retriever], gold, k)
+            results.append({
+                "strategy": strategy, "retriever": retriever, "n_chunks": len(chunks),
+                "verified": summarise(per_q, verified), "all": summarise(per_q, everyone),
+                "per_question": per_q,
+            })
+            print(f"[{strategy:11s} {retriever:6s}] hit@{k} verified "
+                  f"{results[-1]['verified']['hit']:.2f}, all {results[-1]['all']['hit']:.2f}")
+    return {"k": k, "n_verified": len(verified), "n_all": len(everyone), "results": results}
 
 
-def write_report(rows, k):
+def _table(res, key, k):
+    lines = [f"| Chunking | Pieces | Retriever | hit@{k} | 95% CI | MRR | 95% CI | "
+             f"lenient hit@{k} | median ms |",
+             "|---|---|---|---|---|---|---|---|---|"]
+    for r in res["results"]:
+        s = r[key]
+        lines.append(
+            f"| {r['strategy']} | {r['n_chunks']} | {r['retriever']} | {s['hit']:.2f} | "
+            f"{s['hit_ci'][0]:.2f} to {s['hit_ci'][1]:.2f} | {s['mrr']:.2f} | "
+            f"{s['mrr_ci'][0]:.2f} to {s['mrr_ci'][1]:.2f} | {s['lenient']:.2f} | "
+            f"{s['median_ms']:.1f} |")
+    return lines
+
+
+def best_config(res, key="all"):
+    """Highest hit@k, then MRR. Chosen on all 30 questions, since 10 cannot separate them."""
+    return max(res["results"], key=lambda r: (r[key]["hit"], r[key]["mrr"]))
+
+
+def write_report(res):
+    k = res["k"]
     REPORTS.mkdir(exist_ok=True)
-    lines = ["# Chunking comparison\n",
-             f"Retrieval quality by chunking strategy (k={k}), on the gold Q&A set.\n",
-             f"| Strategy | #chunks | hit@{k} | MRR | median latency (ms) |",
-             "|----------|---------|--------|-----|---------------------|"]
-    for r in rows:
-        lines.append(f"| {r['strategy']} | {r['n_chunks']} | {r[f'hit@{k}']:.2f} | "
-                     f"{r['mrr']:.2f} | {r['median_latency_ms']} |")
-    (REPORTS / "chunking_comparison.md").write_text("\n".join(lines) + "\n")
+    best = best_config(res)
+    lines = [
+        "# Chunking and retrieval comparison", "",
+        "Generated by `python -m eval.evaluate`. Do not edit by hand: the next run overwrites it.",
+        "Discussion lives in the README and in reports/error_analysis.md.", "",
+        f"RBC 2024 Annual Report, 250 pages. k = {k}. Embeddings: `{EMBED_MODEL}`. "
+        f"Intervals: 95% bootstrap over questions, {N_BOOT} resamples. Latency includes "
+        "encoding the question.", "",
+        f"## Headline: the {res['n_verified']} questions I checked by hand", "",
+        *_table(res, "verified", k), "",
+        f"## All {res['n_all']} questions (includes questions not yet checked by hand)", "",
+        f"{res['n_all'] - res['n_verified']} of these questions have pages proposed by me and "
+        "checked only by script (`python -m eval.check_gold`), not yet read by hand.", "",
+        *_table(res, "all", k), "",
+        f"Best configuration on all {res['n_all']} questions (by hit@{k}, then MRR): "
+        f"**{best['strategy']} + {best['retriever']}**.", "",
+    ]
+    (REPORTS / "chunking_comparison.md").write_text("\n".join(lines), encoding="utf-8")
+    (REPORTS / "eval_results.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
+    plot(res, REPORTS / "figures" / "hit_at_5.png")
     print("\n".join(lines))
+
+
+def plot(res, path):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+    strategies = list(dict.fromkeys(r["strategy"] for r in res["results"]))
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), sharey=True)
+    for ax, key, title in [(axes[0], "verified", f"{res['n_verified']} hand-checked questions"),
+                           (axes[1], "all", f"All {res['n_all']} questions (20 checked by script only)")]:
+        x = np.arange(len(strategies))
+        for j, retriever in enumerate(RETRIEVERS):
+            vals, lo, hi = [], [], []
+            for s in strategies:
+                r = next(r for r in res["results"] if r["strategy"] == s and r["retriever"] == retriever)
+                v = r[key]["hit"]; vals.append(v)
+                lo.append(v - r[key]["hit_ci"][0]); hi.append(r[key]["hit_ci"][1] - v)
+            ax.bar(x + (j - 1) * 0.27, vals, 0.27, yerr=[lo, hi], capsize=3, label=retriever)
+        ax.set_xticks(x, strategies); ax.set_title(title, fontsize=10)
+        ax.set_ylim(0, 1); ax.grid(axis="y", alpha=0.3)
+    axes[0].set_ylabel(f"hit@{res['k']} (95% bootstrap CI)")
+    axes[1].legend(title="retriever", loc="upper right")
+    fig.suptitle("Right page in the top 5, by chunking strategy and retriever")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(path, bbox_inches="tight", dpi=130)
+    plt.close(fig)
 
 
 if __name__ == "__main__":
@@ -74,4 +166,4 @@ if __name__ == "__main__":
     ap.add_argument("--pdf", required=True)
     ap.add_argument("-k", type=int, default=TOP_K)
     a = ap.parse_args()
-    write_report(evaluate(a.pdf, a.k), a.k)
+    write_report(evaluate(a.pdf, a.k))
