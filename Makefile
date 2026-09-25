@@ -1,13 +1,39 @@
-# Reproduces every number in the README. Needs data/raw/rbc_2024.pdf (see data/README.md).
-# Without make (e.g. on Windows), run the two python commands directly.
-PDF ?= data/raw/rbc_2024.pdf
+# One command for each step. CI runs the same targets.
+# Every target runs inside the uv environment, so no global installs are needed.
 
-eval:
-	python -m eval.check_gold --pdf $(PDF)
-	python -m eval.evaluate --pdf $(PDF)
+PKG := bank_filings_rag
+RUN := uv run
+DOCS := README.md CLAIMS.md CHANGELOG.md AI_USAGE.md $(wildcard MODEL_CARD.md DATASHEET.md) docs
+
+.PHONY: setup lint test eval demo check-docs all
+
+setup:
+	uv sync
+
+lint:
+	$(RUN) ruff check .
+	$(RUN) ruff format --check .
+	$(RUN) mypy
 
 test:
-	ruff check .
-	pytest -q
+	$(RUN) pytest
 
-.PHONY: eval test
+eval:
+	@test -f data/raw/rbc_2024.pdf || { \
+		echo "Missing data/raw/rbc_2024.pdf. See data/README.md for how to get it."; \
+		exit 1; \
+	}
+	$(RUN) --extra embed python -m eval.evaluate --pdf data/raw/rbc_2024.pdf
+
+demo:
+	$(RUN) python -m $(PKG).demo
+
+check-docs:
+	$(RUN) python tools/ai_signs_check.py $(DOCS)
+	$(RUN) python tools/claims_check.py $(DOCS)
+	$(RUN) python tools/readability_check.py --glossary docs/glossary.md $(DOCS)
+	$(RUN) python tools/links_check.py $(DOCS)
+	$(RUN) python tools/readme_sections.py check README.md
+	$(RUN) python tools/readme_sections.py repo-map README.md --check
+
+all: setup lint test eval demo check-docs
