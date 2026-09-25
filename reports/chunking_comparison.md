@@ -9,15 +9,15 @@ RBC 2024 Annual Report, 250 pages. k = 5. Embeddings: `sentence-transformers/all
 
 | Chunking | Pieces | Retriever | hit@5 | 95% CI | MRR | 95% CI | lenient hit@5 | median ms |
 |---|---|---|---|---|---|---|---|---|
-| fixed_words | 1355 | dense | 0.10 | 0.00 to 0.30 | 0.10 | 0.00 to 0.30 | 0.40 | 21.1 |
-| fixed_words | 1355 | bm25 | 0.30 | 0.00 to 0.60 | 0.22 | 0.00 to 0.50 | 0.60 | 7.1 |
-| fixed_words | 1355 | hybrid | 0.40 | 0.10 to 0.70 | 0.25 | 0.05 to 0.50 | 0.50 | 29.5 |
-| paragraph | 1146 | dense | 0.20 | 0.00 to 0.50 | 0.15 | 0.00 to 0.40 | 0.20 | 20.5 |
-| paragraph | 1146 | bm25 | 0.20 | 0.00 to 0.50 | 0.20 | 0.00 to 0.50 | 0.60 | 5.5 |
-| paragraph | 1146 | hybrid | 0.40 | 0.10 to 0.70 | 0.19 | 0.03 to 0.40 | 0.50 | 25.1 |
-| whole_page | 250 | dense | 0.40 | 0.10 to 0.70 | 0.27 | 0.05 to 0.52 | 0.60 | 20.5 |
-| whole_page | 250 | bm25 | 0.30 | 0.10 to 0.60 | 0.22 | 0.02 to 0.50 | 0.70 | 2.0 |
-| whole_page | 250 | hybrid | 0.50 | 0.20 to 0.80 | 0.27 | 0.06 to 0.53 | 0.80 | 22.0 |
+| fixed_words | 1355 | dense | 0.10 | 0.00 to 0.30 | 0.10 | 0.00 to 0.30 | 0.40 | 18.1 |
+| fixed_words | 1355 | bm25 | 0.30 | 0.00 to 0.60 | 0.22 | 0.00 to 0.50 | 0.60 | 5.8 |
+| fixed_words | 1355 | hybrid | 0.40 | 0.10 to 0.70 | 0.25 | 0.05 to 0.50 | 0.50 | 24.3 |
+| paragraph | 1146 | dense | 0.20 | 0.00 to 0.50 | 0.15 | 0.00 to 0.40 | 0.20 | 17.0 |
+| paragraph | 1146 | bm25 | 0.20 | 0.00 to 0.50 | 0.20 | 0.00 to 0.50 | 0.60 | 6.4 |
+| paragraph | 1146 | hybrid | 0.40 | 0.10 to 0.70 | 0.19 | 0.03 to 0.40 | 0.50 | 23.2 |
+| whole_page | 250 | dense | 0.40 | 0.10 to 0.70 | 0.27 | 0.05 to 0.52 | 0.60 | 16.9 |
+| whole_page | 250 | bm25 | 0.30 | 0.10 to 0.60 | 0.22 | 0.02 to 0.50 | 0.70 | 1.3 |
+| whole_page | 250 | hybrid | 0.50 | 0.20 to 0.80 | 0.27 | 0.06 to 0.53 | 0.80 | 18.4 |
 
 ## All 30 questions (includes questions not yet checked by hand)
 
@@ -25,14 +25,24 @@ RBC 2024 Annual Report, 250 pages. k = 5. Embeddings: `sentence-transformers/all
 
 | Chunking | Pieces | Retriever | hit@5 | 95% CI | MRR | 95% CI | lenient hit@5 | median ms |
 |---|---|---|---|---|---|---|---|---|
-| fixed_words | 1355 | dense | 0.50 | 0.33 to 0.70 | 0.34 | 0.20 to 0.50 | 0.63 | 20.9 |
-| fixed_words | 1355 | bm25 | 0.53 | 0.37 to 0.70 | 0.34 | 0.20 to 0.49 | 0.63 | 7.2 |
-| fixed_words | 1355 | hybrid | 0.67 | 0.50 to 0.83 | 0.45 | 0.29 to 0.59 | 0.70 | 29.2 |
-| paragraph | 1146 | dense | 0.50 | 0.33 to 0.70 | 0.28 | 0.16 to 0.42 | 0.50 | 20.9 |
-| paragraph | 1146 | bm25 | 0.43 | 0.27 to 0.60 | 0.29 | 0.16 to 0.44 | 0.57 | 5.5 |
-| paragraph | 1146 | hybrid | 0.63 | 0.47 to 0.80 | 0.41 | 0.26 to 0.56 | 0.67 | 25.9 |
-| whole_page | 250 | dense | 0.57 | 0.40 to 0.73 | 0.38 | 0.24 to 0.53 | 0.67 | 20.4 |
-| whole_page | 250 | bm25 | 0.60 | 0.43 to 0.77 | 0.43 | 0.29 to 0.61 | 0.77 | 1.5 |
-| whole_page | 250 | hybrid | 0.70 | 0.53 to 0.87 | 0.52 | 0.37 to 0.68 | 0.83 | 22.0 |
+| fixed_words | 1355 | dense | 0.50 | 0.33 to 0.70 | 0.34 | 0.20 to 0.50 | 0.63 | 17.8 |
+| fixed_words | 1355 | bm25 | 0.53 | 0.37 to 0.70 | 0.34 | 0.20 to 0.49 | 0.63 | 6.0 |
+| fixed_words | 1355 | hybrid | 0.67 | 0.50 to 0.83 | 0.45 | 0.29 to 0.59 | 0.70 | 24.3 |
+| paragraph | 1146 | dense | 0.50 | 0.33 to 0.70 | 0.28 | 0.16 to 0.42 | 0.50 | 17.1 |
+| paragraph | 1146 | bm25 | 0.43 | 0.27 to 0.60 | 0.29 | 0.16 to 0.44 | 0.57 | 5.7 |
+| paragraph | 1146 | hybrid | 0.63 | 0.47 to 0.80 | 0.41 | 0.26 to 0.56 | 0.67 | 23.7 |
+| whole_page | 250 | dense | 0.57 | 0.40 to 0.73 | 0.38 | 0.24 to 0.53 | 0.67 | 17.2 |
+| whole_page | 250 | bm25 | 0.60 | 0.43 to 0.77 | 0.43 | 0.29 to 0.61 | 0.77 | 1.3 |
+| whole_page | 250 | hybrid | 0.70 | 0.53 to 0.87 | 0.52 | 0.37 to 0.68 | 0.83 | 19.4 |
 
 Best configuration on all 30 questions (by hit@5, then MRR): **whole_page + hybrid**.
+
+## Hybrid vs dense, question by question (all 30)
+
+Both retrievers answer the same questions, so the fairest comparison counts the questions where they disagree.
+
+| Chunking | Only hybrid found | Only dense found | Both found |
+|---|---|---|---|
+| fixed_words | 7 | 2 | 13 |
+| paragraph | 5 | 1 | 14 |
+| whole_page | 5 | 1 | 16 |
