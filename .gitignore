@@ -6,17 +6,18 @@ data/*.pdf
 index/*.npy
 index/*.pkl
 
-# Secrets
-.env
-
-# Python
 __pycache__/
 *.py[cod]
 .venv/
-venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.lycheecache
+dist/
+build/
+*.egg-info/
 .ipynb_checkpoints/
-
-# OS / editor
-.DS_Store
-.idea/
-.vscode/
+.env
