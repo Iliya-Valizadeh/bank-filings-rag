@@ -22,10 +22,10 @@ import statistics
 import time
 from pathlib import Path
 
-from src.config import EMBED_MODEL, TOP_K, REPORTS
-from src import ingest, chunking
-from src.embed_index import VectorIndex
-from src.retrieve import BM25Index, HybridIndex, RETRIEVERS
+from bank_filings_rag.config import EMBED_MODEL, TOP_K, REPORTS
+from bank_filings_rag import ingest, chunking
+from bank_filings_rag.embed_index import VectorIndex
+from bank_filings_rag.retrieve import BM25Index, HybridIndex, RETRIEVERS
 from eval.metrics import hit_and_rank, lenient_hit, bootstrap_ci
 
 GOLD = Path(__file__).parent / "gold_qa.jsonl"
