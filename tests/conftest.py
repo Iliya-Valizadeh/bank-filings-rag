@@ -1,4 +1,5 @@
 """Fixtures that need neither the PDF nor the embedding model, so the tests run in CI."""
+
 import zlib
 
 import numpy as np
@@ -33,9 +34,16 @@ def pages():
     """Three toy pages, with layout blocks as ingest.load_pages returns them."""
     blocks = {
         4: ["Royal Bank of Canada", "98,000+ employees in 29 countries", "Our purpose"],
-        21: ["Capital strength", "CET1 ratio of 13.2%", "Return on equity 14.4%",
-             ("A long paragraph " + "about capital management " * 30).strip()],
-        23: ["Selected financial highlights", "Net income $ 16,240 $ 14,612",
-             "Total assets $ 2,171,582"],
+        21: [
+            "Capital strength",
+            "CET1 ratio of 13.2%",
+            "Return on equity 14.4%",
+            ("A long paragraph " + "about capital management " * 30).strip(),
+        ],
+        23: [
+            "Selected financial highlights",
+            "Net income $ 16,240 $ 14,612",
+            "Total assets $ 2,171,582",
+        ],
     }
     return [{"page": p, "text": "\n".join(b), "blocks": b} for p, b in blocks.items()]

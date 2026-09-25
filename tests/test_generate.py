@@ -9,6 +9,7 @@ def test_empty_context_refuses_without_calling_the_model(monkeypatch):
         raise AssertionError("the model must not be called with no context")
 
     import google.genai
+
     monkeypatch.setattr(google.genai, "Client", fail)
     for chunks in ([], [{"page": 3, "text": "   "}]):
         res = generate.answer("What was net income?", chunks)
