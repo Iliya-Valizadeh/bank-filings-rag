@@ -1,6 +1,6 @@
 {
  "k": 5,
- "n_verified": 10,
+ "n_verified": 12,
  "n_all": 30,
  "results": [
   {
@@ -8,23 +8,23 @@
    "retriever": "dense",
    "n_chunks": 1355,
    "verified": {
-    "n": 10,
-    "hit": 0.1,
+    "n": 12,
+    "hit": 0.25,
     "hit_ci": [
      0.0,
-     0.3
+     0.5
     ],
-    "mrr": 0.1,
+    "mrr": 0.18333333333333335,
     "mrr_ci": [
      0.0,
-     0.3
+     0.43333333333333335
     ],
-    "lenient": 0.4,
+    "lenient": 0.5,
     "lenient_ci": [
-     0.1,
-     0.7
+     0.25,
+     0.7520833333333314
     ],
-    "median_ms": 24.395150001510046
+    "median_ms": 17.681199999060482
    },
    "all": {
     "n": 30,
@@ -43,7 +43,7 @@
      0.4666666666666667,
      0.8
     ],
-    "median_ms": 24.371749997953884
+    "median_ms": 18.097350002790336
    },
    "per_question": [
     {
@@ -58,7 +58,7 @@
       20,
       47
      ],
-     "ms": 47.320600002422,
+     "ms": 25.506999998469837,
      "top_text": "income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal year ended O"
     },
     {
@@ -73,7 +73,7 @@
       47,
       20
      ],
-     "ms": 24.640800002089236,
+     "ms": 16.408399998908862,
      "top_text": "Financial performance 2024 vs. 2023 Net income increased $729 million or 27% from last year, primarily due to higher fee-based client assets reflecting market appreciation and net sales, which also drove higher variable compensation. Higher transactional revenue and lower PCL also contributed to the"
     },
     {
@@ -88,7 +88,7 @@
       23,
       118
      ],
-     "ms": 22.49860000301851,
+     "ms": 16.263199999229982,
      "top_text": "and letters of credit. Common Equity Tier 1 (CET1) capital A regulatory Basel III capital measure comprised mainly of common shareholders\u2019 equity less regulatory deductions and adjustments for goodwill and intangibles, defined benefit pension fund assets, shortfall in allowances and other specified "
     },
     {
@@ -103,7 +103,7 @@
       34,
       20
      ],
-     "ms": 21.985100000165403,
+     "ms": 17.763399999239482,
      "top_text": "and acceptances. RBC Homeline Plan products This is comprised of residential mortgages and secured personal loans whereby the borrower pledges real estate as collateral. Reinsurance contracts held Contracts under which we transfer significant insurance risk to a reinsurer that compensates us for cla"
     },
     {
@@ -118,7 +118,7 @@
       195,
       233
      ],
-     "ms": 24.843600003805477,
+     "ms": 18.29609999549575,
      "top_text": "the impact from the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Ann ual Consolidated Financial Statements. AUA by geographic mix and asset class Table 25 (Millions of Canadian dollars) 2024 2023 (1) Canada (2), (3) Money market $ 28,400 $ 32,300 Fixed i"
     },
     {
@@ -133,7 +133,7 @@
       27,
       227
      ],
-     "ms": 23.014799997326918,
+     "ms": 18.784799991408363,
      "top_text": "to the Capital management section. A copy of our notice of intention to file a NCIB may be obtained, without charge, by contacting our Corporate Secretary at our Toronto mailing address. 2025 Quarterly earnings release dates First quarter February 27 Second quarter May 29 Third quarter August 27 Fou"
     },
     {
@@ -148,7 +148,7 @@
       6,
       6
      ],
-     "ms": 21.980099998472724,
+     "ms": 16.37680000567343,
      "top_text": "Launched a new digital wellness platform, enabling RBC employees to track and earn rewards for participating in wellness challenges, activities and education Approximately $21 billion in competitive compensation and benefits 2024 highlights across our balanced scorecard 2024 Employee Engagement Surv"
     },
     {
@@ -163,7 +163,7 @@
       24,
       107
      ],
-     "ms": 25.655000004917383,
+     "ms": 19.83000000473112,
      "top_text": "Other transactions, arrangements or agreements involving joint ventures and associates As at or for the year ended (Millions of Canadian dollars) October 31 2024 October 31 2023 Commitments and other contingencies $ 1,226 $ 1,089 Other fees received for services rendered 73 55 Other fees paid for se"
     },
     {
@@ -178,7 +178,7 @@
       47,
       6
      ],
-     "ms": 31.298099995183293,
+     "ms": 20.97739999589976,
      "top_text": "value proposition and earn the trust of those we serve. Not only was RBC ranked the most valuable brand in Canada in 2024, but it\u2019s also considered one of the most valuable brands in the world.(1) This recognition reflects our employees, who go above-and-beyond to support our clients and communities"
     },
     {
@@ -193,7 +193,7 @@
       107,
       74
      ],
-     "ms": 24.149500000930857,
+     "ms": 17.59899999888148,
      "top_text": "could potentially harm clients, employees or the integrity of the markets, such outcomes may not always be prevented or detected. Additionally, RBC continues to focus efforts on enhancing and fostering a strong risk culture. A strong risk culture reinforces risk-aware mindsets, competencies and beha"
     },
     {
@@ -208,7 +208,7 @@
       138,
       62
      ],
-     "ms": 30.801599998085294,
+     "ms": 19.915700002457015,
      "top_text": "and Personal Banking, partially offset by lower provisions in Wealth Management and Capital Markets. The PCL on loans ratio increased 6 bps. PCL on performing loans decreased $33 million or 5%, largely due to favourable changes to our macroeconomic forecast and scenario weights, partially offset by "
     },
     {
@@ -223,7 +223,7 @@
       62,
       48
      ],
-     "ms": 26.150100005907007,
+     "ms": 19.642999992356636,
      "top_text": "RBC Homeline Plan product divided by the value of the related residential property. Master netting agreement An agreement between us and a counterparty designed to reduce the credit risk of multiple derivative transactions through the creation of a legal right of offset of exposure in the event of a"
     },
     {
@@ -238,7 +238,7 @@
       99,
       98
      ],
-     "ms": 29.594599996926263,
+     "ms": 17.742700001690537,
      "top_text": "Liquidity Coverage Ratio (LCR) The LCR is a Basel III metric that measures the sufficiency of high-quality liquid assets (HQLA) available to meet liquidity needs over a 30-day period in an acute stress scenario. The BCBS and OSFI regulatory minimum coverage level for LCR is 100%. OSFI requires Canad"
     },
     {
@@ -253,7 +253,7 @@
       100,
       100
      ],
-     "ms": 28.7192000032519,
+     "ms": 19.374099996639416,
      "top_text": "RBC Homeline Plan product divided by the value of the related residential property. Master netting agreement An agreement between us and a counterparty designed to reduce the credit risk of multiple derivative transactions through the creation of a legal right of offset of exposure in the event of a"
     },
     {
@@ -268,7 +268,7 @@
       20,
       7
      ],
-     "ms": 25.08730000408832,
+     "ms": 17.022500003804453,
      "top_text": "Key corporate events section. (2) Effective the fourth quarter of 2024, RBC Direct Investing moved from the previous Personal & Commercial Banking segment to the Wealth Management segment. Comparative amounts have been revised from those previously presented to conform to our new basis of segment pr"
     },
     {
@@ -283,7 +283,7 @@
       120,
       12
      ],
-     "ms": 26.56389999901876,
+     "ms": 21.606499998597428,
      "top_text": "the impact from the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Ann ual Consolidated Financial Statements. AUA by geographic mix and asset class Table 25 (Millions of Canadian dollars) 2024 2023 (1) Canada (2), (3) Money market $ 28,400 $ 32,300 Fixed i"
     },
     {
@@ -298,7 +298,7 @@
       20,
       30
      ],
-     "ms": 22.07559999806108,
+     "ms": 19.14550000219606,
      "top_text": "the impact from the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Ann ual Consolidated Financial Statements. AUA by geographic mix and asset class Table 25 (Millions of Canadian dollars) 2024 2023 (1) Canada (2), (3) Money market $ 28,400 $ 32,300 Fixed i"
     },
     {
@@ -313,7 +313,7 @@
       62,
       47
      ],
-     "ms": 26.11639999668114,
+     "ms": 18.055599997751415,
      "top_text": "income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal year ended O"
     },
     {
@@ -328,7 +328,7 @@
       47,
       62
      ],
-     "ms": 21.571299999777693,
+     "ms": 18.32499999727588,
      "top_text": "Since the acquisition date, the HSBC Canada transaction contributed revenue of $1,716 million and net income of $453 million to RBC\u2019s consolidated results. The net income of $453 million includes initial PCL on purchased performing financial assets of $200 million ($145 million after-tax). Assuming "
     },
     {
@@ -343,7 +343,7 @@
       62,
       41
      ],
-     "ms": 21.87180000328226,
+     "ms": 17.550499993376434,
      "top_text": "and comprehensive digital solutions supported by experienced advisors. For mid-market businesses, we provide customized banking advice through our network of relationship managers, and product and industry specialists. For large commercial and corporate clients, we offer tailored service and solutio"
     },
     {
@@ -358,7 +358,7 @@
       62,
       239
      ],
-     "ms": 24.210499999753665,
+     "ms": 18.139100007829256,
      "top_text": "units Personal Banking \u2013 Canada (2) 11.7% 3.0% 11.7% 3.0% Caribbean Banking 13.7 3.5 12.9 3.5 Commercial Banking (2) 11.7 3.0 11.7 3.0 Canadian Wealth Management 12.5 3.0 12.5 3.0 Global Asset Management 12.4 3.0 12.5 3.0 U.S. Wealth Management (including City National) 12.6 3.0 12.5 3.0 Internation"
     },
     {
@@ -373,7 +373,7 @@
       217,
       216
      ],
-     "ms": 24.127999997290317,
+     "ms": 18.71920000121463,
      "top_text": "For further details on our general economic review and outlook, refer to the Economic, market and regulatory review and outlook section. Insurance Table 32 (Millions of Canadian dollars, except percentage amounts and as otherwise noted) 2024 2023 (1), (2) Non-interest income Insurance service result"
     },
     {
@@ -388,7 +388,7 @@
       29,
       61
      ],
-     "ms": 20.49990000523394,
+     "ms": 17.82170000660699,
      "top_text": "Global Markets Global Markets comprises our sales and trading businesses including fixed income, foreign exchange, commodities and equities, as well as our repo and secured financing products. As mentioned above, effective the third quarter of 2024, we moved the majority of our debt origination busi"
     },
     {
@@ -403,7 +403,7 @@
       24,
       239
      ],
-     "ms": 21.488799997314345,
+     "ms": 17.228299999260344,
      "top_text": "Insurance RBC Insurance\u00ae provides insurance advice and protection to approximately 4.9 million clients. We provide tailored, client-led advice and solutions, harnessing the power of technology and data and leveraging the strength and scale of the RBC enterprise as our competitive advantage. $1.2 bil"
     },
     {
@@ -418,7 +418,7 @@
       237,
       196
      ],
-     "ms": 24.06909999990603,
+     "ms": 19.280199994682334,
      "top_text": "$1,143 million of Deposits representing the subordinated and senior tranches held by third parties (October 31, 2023 \u2013 $1,706 million) were recorded on our Consolidated Balance Sheets. RBC managed investment funds We are sponsors and investment managers of mutual and pooled funds, which give us the "
     },
     {
@@ -433,7 +433,7 @@
       10,
       10
      ],
-     "ms": 24.532999996154103,
+     "ms": 15.250500000547618,
      "top_text": "In Dave, RBC benefits from a highly experienced CEO, who consistently finds ways to enhance the bank\u2019s value proposition and deliver outstanding performance. His efforts in 2024 strengthened RBC\u2019s leadership position in Canada and secured its ranking as one of the largest global financial institutio"
     },
     {
@@ -448,7 +448,7 @@
       47,
       6
      ],
-     "ms": 23.184500001661945,
+     "ms": 18.376799998804927,
      "top_text": "to the Capital management section. A copy of our notice of intention to file a NCIB may be obtained, without charge, by contacting our Corporate Secretary at our Toronto mailing address. 2025 Quarterly earnings release dates First quarter February 27 Second quarter May 29 Third quarter August 27 Fou"
     },
     {
@@ -463,7 +463,7 @@
       112,
       27
      ],
-     "ms": 26.34810000017751,
+     "ms": 16.064099996583536,
      "top_text": "49% 48% Total shareholder return(2) Medium-Term Objectives(1) 3-Year 5-Year RBC 14% 14% Global peer average 11% 12% Earnings net income (C$ billion) Annualized Dividend Increase of: 7% Five year(4) 7% Ten year(4) $14.6 2023 2024 $16.2 Revenue by segment(3) (C$ billion) Shareholders RBC is driven by "
     },
     {
@@ -478,7 +478,7 @@
       113,
       19
      ],
-     "ms": 23.544600000604987,
+     "ms": 15.449099999386817,
      "top_text": "Framework and commitments We are a participant or signatory to various industry principles and initiatives that are designed to help mitigate E&S risk within our business activities or advance responsible business practices, including but not limited to the following: \u0081 RBC is a member of the Net-Ze"
     },
     {
@@ -493,7 +493,7 @@
       203,
       239
      ],
-     "ms": 28.434200001356658,
+     "ms": 16.560599993681535,
      "top_text": "the standardized approach and the capital surcharg e for movements between the trading book and banking book. n.a. not applicable 2024 vs. 2023 Total RWA was up $76 billion from last year, driven by the $44 billion impact of the HSBC Canada transaction, which was primarily reflected in credit and op"
     }
    ]
@@ -503,23 +503,23 @@
    "retriever": "bm25",
    "n_chunks": 1355,
    "verified": {
-    "n": 10,
-    "hit": 0.3,
+    "n": 12,
+    "hit": 0.4166666666666667,
     "hit_ci": [
-     0.0,
-     0.6
+     0.16666666666666666,
+     0.6666666666666666
     ],
-    "mrr": 0.22,
+    "mrr": 0.25277777777777777,
     "mrr_ci": [
-     0.0,
-     0.5
+     0.061111111111111116,
+     0.4611111111111111
     ],
-    "lenient": 0.6,
+    "lenient": 0.6666666666666666,
     "lenient_ci": [
-     0.3,
-     0.9
+     0.4166666666666667,
+     0.9166666666666666
     ],
-    "median_ms": 8.300699999381322
+    "median_ms": 5.275199997413438
    },
    "all": {
     "n": 30,
@@ -538,7 +538,7 @@
      0.4666666666666667,
      0.8
     ],
-    "median_ms": 8.623350000561913
+    "median_ms": 5.547849999857135
    },
    "per_question": [
     {
@@ -553,7 +553,7 @@
       87,
       233
      ],
-     "ms": 6.34899999568006,
+     "ms": 4.841500005568378,
      "top_text": "Due to the nature of activities and consolidation adjustments reported in this segment, we believe that a comparative period analysis is not relevant. Total revenue and Income taxes (recoveries) in Corporate Support include the deduction of the teb adjustment related to gross-up of income from the U"
     },
     {
@@ -568,7 +568,7 @@
       10,
       83
      ],
-     "ms": 8.672399999340996,
+     "ms": 4.269900004146621,
      "top_text": "period October 31, 2021 to October 31, 2024 and October 31, 2019 to October 31, 2024. Common share and dividend information Table 5 For the year ended October 31 2024 2023 2022 2021 2020 Common share price (RY on TSX) \u2013 close, end of period $ 168.39 $ 110.76 $ 126.05 $ 128.82 $ 93.16 Dividends paid "
     },
     {
@@ -583,7 +583,7 @@
       116,
       23
      ],
-     "ms": 9.735599996929523,
+     "ms": 6.029700001818128,
      "top_text": "and letters of credit. Common Equity Tier 1 (CET1) capital A regulatory Basel III capital measure comprised mainly of common shareholders\u2019 equity less regulatory deductions and adjustments for goodwill and intangibles, defined benefit pension fund assets, shortfall in allowances and other specified "
     },
     {
@@ -598,7 +598,7 @@
       109,
       34
      ],
-     "ms": 9.407300000020768,
+     "ms": 6.718000004184432,
      "top_text": "Return on common equity We use ROE, at both the consolidated and business segment levels, as a measure of return on total capital invested in our business. Management views the business segment ROE measure as a useful measure for supporting investment and resource allocation decisions because it adj"
     },
     {
@@ -613,7 +613,7 @@
       115,
       34
      ],
-     "ms": 11.312099995848257,
+     "ms": 6.100799990235828,
      "top_text": "future cash flows for changes in the cost of capital to reflect what a market participant would require for accepting such contract obligations. Key assumptions involve the weighted average cost of capital, required capital targets and underlying insurance assumptions from a market participant\u2019s per"
     },
     {
@@ -628,7 +628,7 @@
       225,
       21
      ],
-     "ms": 7.928999999421649,
+     "ms": 6.005100003676489,
      "top_text": "(NYSE) Preferred shares BD, BF, BH, BI and BO are listed on the TSX. Valuation day price For Canadian income tax purposes, Royal Bank of Canada\u2019s common stock was quoted at $29.52 per share on the Valuation Day (December 22, 1971). This is equivalent to $7.38 per share after adjusting for the two-fo"
     },
     {
@@ -643,7 +643,7 @@
       14,
       7
      ],
-     "ms": 5.9852999984286726,
+     "ms": 3.107500000623986,
      "top_text": "Table of contents CEO Letter 6 Chair Letter 10 2024 Highlights 12 Management\u2019s Discussion 22 and Analysis Enhanced Disclosure Task 140 Force Recommendations Index Reports and Consolidated 141 Financial Statements Ten-Year Statistical Review 248 Shareholder Information 249 For more information on how"
     },
     {
@@ -658,7 +658,7 @@
       240,
       8
      ],
-     "ms": 5.983600000035949,
+     "ms": 3.633800006355159,
      "top_text": "that want to make an impact every day for our clients and communities. Thank you In 2024, Team RBC showed the world what it\u2019s truly capable of doing. We successfully closed our largest acquisition to-date, extending our differentiated solutions and services, and are continuing our journey to build t"
     },
     {
@@ -673,7 +673,7 @@
       129,
       200
      ],
-     "ms": 11.075000002165325,
+     "ms": 8.242700001574121,
      "top_text": "value proposition and earn the trust of those we serve. Not only was RBC ranked the most valuable brand in Canada in 2024, but it\u2019s also considered one of the most valuable brands in the world.(1) This recognition reflects our employees, who go above-and-beyond to support our clients and communities"
     },
     {
@@ -688,7 +688,7 @@
       108,
       68
      ],
-     "ms": 7.6182000047992915,
+     "ms": 3.819000005023554,
      "top_text": "execution of ongoing risk oversight responsibilities. Top and emerging risks are discussed by senior management and the Board on a regular basis. We have developed supplementary internal guidance to support enterprise-wide identification and assessment of all material risks, including those that are"
     },
     {
@@ -703,7 +703,7 @@
       10,
       9
      ],
-     "ms": 10.45719999819994,
+     "ms": 4.910500007099472,
      "top_text": "Canada (OSFI) The primary regulator of federally chartered financial institutions and federally administered pension plans in Canada. OSFI\u2019s mission is to safeguard policyholders, depositors and pension plan members from undue loss. Operating leverage The difference between our revenue growth rate a"
     },
     {
@@ -718,7 +718,7 @@
       9,
       62
      ],
-     "ms": 8.384699998714495,
+     "ms": 4.68340000952594,
      "top_text": "RBC Homeline Plan product divided by the value of the related residential property. Master netting agreement An agreement between us and a counterparty designed to reduce the credit risk of multiple derivative transactions through the creation of a legal right of offset of exposure in the event of a"
     },
     {
@@ -733,7 +733,7 @@
       138,
       23
      ],
-     "ms": 13.529399999242742,
+     "ms": 7.176800005254336,
      "top_text": "Liquidity Coverage Ratio (LCR) The LCR is a Basel III metric that measures the sufficiency of high-quality liquid assets (HQLA) available to meet liquidity needs over a 30-day period in an acute stress scenario. The BCBS and OSFI regulatory minimum coverage level for LCR is 100%. OSFI requires Canad"
     },
     {
@@ -748,7 +748,7 @@
       100,
       99
      ],
-     "ms": 13.709599996218458,
+     "ms": 6.595299986656755,
      "top_text": "RBC Homeline Plan product divided by the value of the related residential property. Master netting agreement An agreement between us and a counterparty designed to reduce the credit risk of multiple derivative transactions through the creation of a legal right of offset of exposure in the event of a"
     },
     {
@@ -763,7 +763,7 @@
       119,
       242
      ],
-     "ms": 9.646499995142221,
+     "ms": 7.212299999082461,
      "top_text": "performance and non-GAAP measures section. 2024 vs. 2023 Non-interest expense increased $3,437 million or 11% from last year, of which $721 million reflects the inclusion of HSBC Canada non-interest expense. The remaining increase of $2,716 million or 9% was primarily due to higher variable compensa"
     },
     {
@@ -778,7 +778,7 @@
       115,
       164
      ],
-     "ms": 11.837600002763793,
+     "ms": 6.099599995650351,
      "top_text": "Note 28 Capital management (continued) Regulatory capital ratios are calculated by dividing CET1, Tier 1, Total capital and TLAC available by risk-weighted assets. The leverage ratio is calculated by dividing Tier 1 capital by an exposure measure. The exposure measure consists of total assets (exclu"
     },
     {
@@ -793,7 +793,7 @@
       30,
       35
      ],
-     "ms": 6.947699999727774,
+     "ms": 3.766199995880015,
      "top_text": "performance and non-GAAP measures section. 2024 vs. 2023 Non-interest expense increased $3,437 million or 11% from last year, of which $721 million reflects the inclusion of HSBC Canada non-interest expense. The remaining increase of $2,716 million or 9% was primarily due to higher variable compensa"
     },
     {
@@ -808,7 +808,7 @@
       109,
       233
      ],
-     "ms": 8.129000001645181,
+     "ms": 5.5675000039627776,
      "top_text": "have not been recognized in the parent bank is $30 billion as at October 31, 2024 (October 31, 2023 \u2013 $22 billion). Pillar Two legislation The Budget Implementation Act, 2024, No. 1 (the BIA), introduced as Bill C-69 and tabled by the Government of Canada, received Royal Assent and was enacted on Ju"
     },
     {
@@ -823,7 +823,7 @@
       9,
       32
      ],
-     "ms": 8.57430000178283,
+     "ms": 4.802800001925789,
      "top_text": "Court of Appeal for rehearing. The retrial before the Court of Appeal commenced on September 18, 2023 and on March 5, 2024, the Court of Appeal rendered a judgment of conviction (the Conviction) against RBC Bahamas and the other parties. RBC Bahamas was ordered by the Court of Appeal to pay a fine o"
     },
     {
@@ -838,7 +838,7 @@
       28,
       138
      ],
-     "ms": 7.943499993416481,
+     "ms": 5.350799998268485,
      "top_text": "Note 11 Goodwill and other intangible assets (continued) Effective the fourth quarter of 2024, the Personal & Commercial Banking segment became two standalone business segments: Personal Banking and Commercial Banking. As a result, the previous Canadian Banking CGU became two CGUs: Personal Banking "
     },
     {
@@ -853,7 +853,7 @@
       23,
       61
      ],
-     "ms": 8.230100000218954,
+     "ms": 5.382899995311163,
      "top_text": "235,500 213,300 AUM (6) 6,400 5,900 Number of employees (FTE) (7) 38,642 37,017 Credit information PCL on impaired loans as a % of average net loans and acceptances 0.28% 0.21% Other selected information \u2013 Personal Banking \u2013 Canada Net income $ 5,550 $ 5,074 NIM 2.35% 2.22% Efficiency ratio 41.6% 42"
     },
     {
@@ -868,7 +868,7 @@
       32,
       47
      ],
-     "ms": 8.42220000049565,
+     "ms": 5.939599999692291,
      "top_text": "and business banking product categories. Much of our success comes down to the meaningful value we create. This includes helping consumers save on their groceries and everyday purchases through partnerships with popular household brands and through the Avion Rewards loyalty program, enabling Canadia"
     },
     {
@@ -883,7 +883,7 @@
       9,
       61
      ],
-     "ms": 8.97160000022268,
+     "ms": 4.914199991617352,
      "top_text": "and business banking product categories. Much of our success comes down to the meaningful value we create. This includes helping consumers save on their groceries and everyday purchases through partnerships with popular household brands and through the Avion Rewards loyalty program, enabling Canadia"
     },
     {
@@ -898,7 +898,7 @@
       9,
       52
      ],
-     "ms": 4.536799999186769,
+     "ms": 5.558799995924346,
      "top_text": "advisors and private banks, and directly to individual clients. We also provide investment solutions directly to institutional clients, including pension plans, insurance companies, corporations, endowments and foundations. We are the largest retail fund company in Canada measured by AUM, as well as"
     },
     {
@@ -913,7 +913,7 @@
       7,
       14
      ],
-     "ms": 9.083700002520345,
+     "ms": 6.934200006071478,
      "top_text": "(1) MediaCorp Canada Inc. (2) Great Place to Work Institute (3) LinkedIn (4) DisabilityIN (5) Employee Engagement Survey conducted between April 24 to May 8, 2024; Participation rate was 75% (6) Learning hours encompass the cumulative time devoted to various learning initiatives during fiscal 2024, "
     },
     {
@@ -928,7 +928,7 @@
       238,
       10
      ],
-     "ms": 8.173700000043027,
+     "ms": 4.83439999516122,
      "top_text": "talent provides a strong foundation for the Board to focus on executive development and cultivating the next generation of leaders. Changes to RBC\u2019s Group Executive in 2024 exemplify this focus. The moves have aligned leadership and their teams with the bank\u2019s growth priorities, while broadening the"
     },
     {
@@ -943,7 +943,7 @@
       249,
       3
      ],
-     "ms": 7.484900001145434,
+     "ms": 6.68500000028871,
      "top_text": "to the Capital management section. A copy of our notice of intention to file a NCIB may be obtained, without charge, by contacting our Corporate Secretary at our Toronto mailing address. 2025 Quarterly earnings release dates First quarter February 27 Second quarter May 29 Third quarter August 27 Fou"
     },
     {
@@ -958,7 +958,7 @@
       20,
       26
      ],
-     "ms": 11.08310000563506,
+     "ms": 5.536900003789924,
      "top_text": "conversion takes place. We also offer unit awards for certain key employees within Capital Markets. The bonus is invested as RBC share units and a specified percentage vests on a specified number of anniversary dates each year. Each vested amount is paid in cash and is based on the original number o"
     },
     {
@@ -973,7 +973,7 @@
       18,
       19
      ],
-     "ms": 9.459499997319654,
+     "ms": 5.0134999910369515,
      "top_text": "RBC announced plans to accelerate the retrofit of the Canadian branch network where we are responsible for HVAC by investing $35 million over 3 years (2025-2027) in the first phase through the installation of energy efficient, low-carbon heating and cooling systems such as heat pumps, which will rep"
     },
     {
@@ -988,7 +988,7 @@
       47,
       26
      ],
-     "ms": 11.439900001278147,
+     "ms": 8.777400013059378,
      "top_text": "loans and acceptances 0.23% 0.30% Estimated impact of U.S. dollar, British pound and Euro translation on key income statement items (Millions of Canadian dollars, except percentage amounts) 2024 vs. 2023 Increase (decrease): Total revenue $ 155 PCL 6 Non-interest expense 85 Net income 58 Percentage "
     }
    ]
@@ -998,23 +998,23 @@
    "retriever": "hybrid",
    "n_chunks": 1355,
    "verified": {
-    "n": 10,
-    "hit": 0.4,
+    "n": 12,
+    "hit": 0.5,
     "hit_ci": [
-     0.1,
-     0.7
+     0.25,
+     0.75
     ],
-    "mrr": 0.25,
+    "mrr": 0.3333333333333333,
     "mrr_ci": [
-     0.05,
-     0.5
+     0.10416666666666667,
+     0.5833333333333334
     ],
-    "lenient": 0.5,
+    "lenient": 0.5833333333333334,
     "lenient_ci": [
-     0.2,
-     0.8
+     0.3333333333333333,
+     0.8333333333333334
     ],
-    "median_ms": 36.111800000071526
+    "median_ms": 23.210350002045743
    },
    "all": {
     "n": 30,
@@ -1033,7 +1033,7 @@
      0.5333333333333333,
      0.8666666666666667
     ],
-    "median_ms": 33.57714999947348
+    "median_ms": 23.07910000672564
    },
    "per_question": [
     {
@@ -1048,7 +1048,7 @@
       195,
       138
      ],
-     "ms": 36.80239999812329,
+     "ms": 23.341499996604398,
      "top_text": "income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal year ended O"
     },
     {
@@ -1063,7 +1063,7 @@
       233,
       138
      ],
-     "ms": 36.71089999988908,
+     "ms": 21.904799999902025,
      "top_text": "Key corporate events section. (2) Effective the fourth quarter of 2024, RBC Direct Investing moved from the previous Personal & Commercial Banking segment to the Wealth Management segment. Comparative amounts have been revised from those previously presented to conform to our new basis of segment pr"
     },
     {
@@ -1078,7 +1078,7 @@
       21,
       139
      ],
-     "ms": 37.61259999737376,
+     "ms": 24.743899994064122,
      "top_text": "and letters of credit. Common Equity Tier 1 (CET1) capital A regulatory Basel III capital measure comprised mainly of common shareholders\u2019 equity less regulatory deductions and adjustments for goodwill and intangibles, defined benefit pension fund assets, shortfall in allowances and other specified "
     },
     {
@@ -1093,7 +1093,7 @@
       7,
       83
      ],
-     "ms": 36.18570000253385,
+     "ms": 26.17179999651853,
      "top_text": "and acceptances. RBC Homeline Plan products This is comprised of residential mortgages and secured personal loans whereby the borrower pledges real estate as collateral. Reinsurance contracts held Contracts under which we transfer significant insurance risk to a reinsurer that compensates us for cla"
     },
     {
@@ -1108,7 +1108,7 @@
       233,
       12
      ],
-     "ms": 36.0378999976092,
+     "ms": 25.713199996971525,
      "top_text": "the impact from the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Ann ual Consolidated Financial Statements. AUA by geographic mix and asset class Table 25 (Millions of Canadian dollars) 2024 2023 (1) Canada (2), (3) Money market $ 28,400 $ 32,300 Fixed i"
     },
     {
@@ -1123,7 +1123,7 @@
       7,
       230
      ],
-     "ms": 34.90539999620523,
+     "ms": 23.07920000748709,
      "top_text": "Dividends Our common share dividend policy reflects our earnings outlook, payout ratio objective and the need to maintain adequate levels of capital to support business plans. In 2024, our dividend payout ratio was 50%. Common share dividends paid during the year were $8 billion. Selected share data"
     },
     {
@@ -1138,7 +1138,7 @@
       17,
       68
      ],
-     "ms": 27.81179999874439,
+     "ms": 17.70820000092499,
      "top_text": "Launched a new digital wellness platform, enabling RBC employees to track and earn rewards for participating in wellness challenges, activities and education Approximately $21 billion in competitive compensation and benefits 2024 highlights across our balanced scorecard 2024 Employee Engagement Surv"
     },
     {
@@ -1153,7 +1153,7 @@
       107,
       46
      ],
-     "ms": 27.37160000106087,
+     "ms": 19.68089998990763,
      "top_text": "Other transactions, arrangements or agreements involving joint ventures and associates As at or for the year ended (Millions of Canadian dollars) October 31 2024 October 31 2023 Commitments and other contingencies $ 1,226 $ 1,089 Other fees received for services rendered 73 55 Other fees paid for se"
     },
     {
@@ -1168,7 +1168,7 @@
       3,
       230
      ],
-     "ms": 39.22400000010384,
+     "ms": 29.53850000631064,
      "top_text": "value proposition and earn the trust of those we serve. Not only was RBC ranked the most valuable brand in Canada in 2024, but it\u2019s also considered one of the most valuable brands in the world.(1) This recognition reflects our employees, who go above-and-beyond to support our clients and communities"
     },
     {
@@ -1183,7 +1183,7 @@
       74,
       68
      ],
-     "ms": 31.520100004854612,
+     "ms": 21.53129999351222,
      "top_text": "execution of ongoing risk oversight responsibilities. Top and emerging risks are discussed by senior management and the Board on a regular basis. We have developed supplementary internal guidance to support enterprise-wide identification and assessment of all material risks, including those that are"
     },
     {
@@ -1198,7 +1198,7 @@
       109,
       134
      ],
-     "ms": 34.33309999672929,
+     "ms": 22.184299989021383,
      "top_text": "Canada (OSFI) The primary regulator of federally chartered financial institutions and federally administered pension plans in Canada. OSFI\u2019s mission is to safeguard policyholders, depositors and pension plan members from undue loss. Operating leverage The difference between our revenue growth rate a"
     },
     {
@@ -1213,7 +1213,7 @@
       50,
       7
      ],
-     "ms": 36.69399999489542,
+     "ms": 24.352699998416938,
      "top_text": "RBC Homeline Plan product divided by the value of the related residential property. Master netting agreement An agreement between us and a counterparty designed to reduce the credit risk of multiple derivative transactions through the creation of a legal right of offset of exposure in the event of a"
     },
     {
@@ -1228,7 +1228,7 @@
       23,
       98
      ],
-     "ms": 38.100500001746695,
+     "ms": 24.844500003382564,
      "top_text": "Liquidity Coverage Ratio (LCR) The LCR is a Basel III metric that measures the sufficiency of high-quality liquid assets (HQLA) available to meet liquidity needs over a 30-day period in an acute stress scenario. The BCBS and OSFI regulatory minimum coverage level for LCR is 100%. OSFI requires Canad"
     },
     {
@@ -1243,7 +1243,7 @@
       100,
       100
      ],
-     "ms": 38.800199996330775,
+     "ms": 28.250799994566478,
      "top_text": "RBC Homeline Plan product divided by the value of the related residential property. Master netting agreement An agreement between us and a counterparty designed to reduce the credit risk of multiple derivative transactions through the creation of a legal right of offset of exposure in the event of a"
     },
     {
@@ -1258,7 +1258,7 @@
       117,
       242
      ],
-     "ms": 38.311500000418164,
+     "ms": 25.033400001120754,
      "top_text": "17.6% Leverage ratio 4.2% 4.3% Leverage ratio exposure $ 2,344,228 $ 2,179,590 TLAC available and ratios (1), (3) TLAC available $ 196,659 $ 184,916 TLAC ratio 29.3% 31.0% TLAC leverage ratio 8.4% 8.5% (1) As prior period restatements are not required by OSFI, there was no impact from the adoption o"
     },
     {
@@ -1273,7 +1273,7 @@
       140,
       242
      ],
-     "ms": 32.821200002217665,
+     "ms": 23.45529999001883,
      "top_text": "10,898 Other (4) 4,472 4,472 Total market risk $ 33,930 $ 33,930 $ 40,498 Operational risk $ 89,543 $ 89,543 $ 79,883 Total risk-weighted assets $ 3,374,142 $ 235,856 $ 249,971 $ 121,749 $ 64,706 $ 672,282 $ 596,223 (1) Total exposure represents exposure at default (EAD) which is the expected gross "
     },
     {
@@ -1288,7 +1288,7 @@
       138,
       9
      ],
-     "ms": 29.553099993790966,
+     "ms": 20.9162999963155,
      "top_text": "performance and non-GAAP measures section. 2024 vs. 2023 Non-interest expense increased $3,437 million or 11% from last year, of which $721 million reflects the inclusion of HSBC Canada non-interest expense. The remaining increase of $2,716 million or 9% was primarily due to higher variable compensa"
     },
     {
@@ -1303,7 +1303,7 @@
       233,
       31
      ],
-     "ms": 31.841500000155065,
+     "ms": 23.07900000596419,
      "top_text": "income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal year ended O"
     },
     {
@@ -1318,7 +1318,7 @@
       32,
       47
      ],
-     "ms": 31.931400000758003,
+     "ms": 22.251100002904423,
      "top_text": "and business banking product categories. Much of our success comes down to the meaningful value we create. This includes helping consumers save on their groceries and everyday purchases through partnerships with popular household brands and through the Avion Rewards loyalty program, enabling Canadia"
     },
     {
@@ -1333,7 +1333,7 @@
       41,
       37
      ],
-     "ms": 32.79199999815319,
+     "ms": 20.59939999890048,
      "top_text": "to the How we measure and report our business segments section. (4) Excludes FTE for all shared services across Personal Banking and Commercial Banking, for which the Non-interest expenses ar e allocated to both Personal Banking and Commercial Banking. Financial performance 2024 vs. 2023 Net income "
     },
     {
@@ -1348,7 +1348,7 @@
       30,
       62
      ],
-     "ms": 32.740400005423,
+     "ms": 25.366000001668,
      "top_text": "Other transactions, arrangements or agreements involving joint ventures and associates As at or for the year ended (Millions of Canadian dollars) October 31 2024 October 31 2023 Commitments and other contingencies $ 1,226 $ 1,089 Other fees received for services rendered 73 55 Other fees paid for se"
     },
     {
@@ -1363,7 +1363,7 @@
       219,
       172
      ],
-     "ms": 31.41709999908926,
+     "ms": 21.670200003427453,
      "top_text": "experience adjustments for premium receipts relating to current or past services. \u0081 Insurance service expense arising from insurance contracts includes incurred claims and other directly attributable expenses in the current period (excluding investment components), amortization and impairment losses"
     },
     {
@@ -1378,7 +1378,7 @@
       239,
       40
      ],
-     "ms": 30.74449999985518,
+     "ms": 20.54330000828486,
      "top_text": "investments. Income tax expense increased $1,026 million, primarily due to the impact of certain deferred tax adjustments in the prior period, which was treated as a specified item, and higher income before income taxes. The effective income tax rate of 19.0% increased 1,980 bps from last year, prim"
     },
     {
@@ -1393,7 +1393,7 @@
       50,
       24
      ],
-     "ms": 26.8075999993016,
+     "ms": 21.604399997158907,
      "top_text": "Insurance RBC Insurance\u00ae provides insurance advice and protection to approximately 4.9 million clients. We provide tailored, client-led advice and solutions, harnessing the power of technology and data and leveraging the strength and scale of the RBC enterprise as our competitive advantage. $1.2 bil"
     },
     {
@@ -1408,7 +1408,7 @@
       145,
       24
      ],
-     "ms": 36.96189999755006,
+     "ms": 25.471400003880262,
      "top_text": "In Dave, RBC benefits from a highly experienced CEO, who consistently finds ways to enhance the bank\u2019s value proposition and deliver outstanding performance. His efforts in 2024 strengthened RBC\u2019s leadership position in Canada and secured its ranking as one of the largest global financial institutio"
     },
     {
@@ -1423,7 +1423,7 @@
       10,
       3
      ],
-     "ms": 30.06489999825135,
+     "ms": 22.22500000789296,
      "top_text": "In Dave, RBC benefits from a highly experienced CEO, who consistently finds ways to enhance the bank\u2019s value proposition and deliver outstanding performance. His efforts in 2024 strengthened RBC\u2019s leadership position in Canada and secured its ranking as one of the largest global financial institutio"
     },
     {
@@ -1438,7 +1438,7 @@
       7,
       6
      ],
-     "ms": 32.10749999561813,
+     "ms": 22.565999999642372,
      "top_text": "to the Capital management section. A copy of our notice of intention to file a NCIB may be obtained, without charge, by contacting our Corporate Secretary at our Toronto mailing address. 2025 Quarterly earnings release dates First quarter February 27 Second quarter May 29 Third quarter August 27 Fou"
     },
     {
@@ -1453,7 +1453,7 @@
       3,
       247
      ],
-     "ms": 35.460700004477985,
+     "ms": 23.03399999800604,
      "top_text": "49% 48% Total shareholder return(2) Medium-Term Objectives(1) 3-Year 5-Year RBC 14% 14% Global peer average 11% 12% Earnings net income (C$ billion) Annualized Dividend Increase of: 7% Five year(4) 7% Ten year(4) $14.6 2023 2024 $16.2 Revenue by segment(3) (C$ billion) Shareholders RBC is driven by "
     },
     {
@@ -1468,7 +1468,7 @@
       19,
       18
      ],
-     "ms": 31.981799998902716,
+     "ms": 23.491900006774813,
      "top_text": "Framework and commitments We are a participant or signatory to various industry principles and initiatives that are designed to help mitigate E&S risk within our business activities or advance responsible business practices, including but not limited to the following: \u0081 RBC is a member of the Net-Ze"
     },
     {
@@ -1483,7 +1483,7 @@
       120,
       47
      ],
-     "ms": 40.86930000630673,
+     "ms": 25.674100004835054,
      "top_text": "(3) 13.4% 13.3% Dividend payout ratio 40% \u2013 50% 49% 48% (1) A medium-term (3-5 year) objective is considered to be achieved when the performance goal is met in either a 3- or 5-year period. These objectives assume a normal business environment and our ability to achieve them in a period may be adver"
     }
    ]
@@ -1493,23 +1493,23 @@
    "retriever": "dense",
    "n_chunks": 1146,
    "verified": {
-    "n": 10,
-    "hit": 0.2,
+    "n": 12,
+    "hit": 0.3333333333333333,
     "hit_ci": [
-     0.0,
-     0.5
+     0.08333333333333333,
+     0.5833333333333334
     ],
-    "mrr": 0.15,
+    "mrr": 0.1875,
     "mrr_ci": [
-     0.0,
-     0.4
+     0.041666666666666664,
+     0.375
     ],
-    "lenient": 0.2,
+    "lenient": 0.3333333333333333,
     "lenient_ci": [
-     0.0,
-     0.5
+     0.08333333333333333,
+     0.5833333333333334
     ],
-    "median_ms": 21.988350003084633
+    "median_ms": 15.977049995854031
    },
    "all": {
     "n": 30,
@@ -1528,7 +1528,7 @@
      0.3333333333333333,
      0.7
     ],
-    "median_ms": 22.35435000329744
+    "median_ms": 16.544849997444544
    },
    "per_question": [
     {
@@ -1543,7 +1543,7 @@
       20,
       195
      ],
-     "ms": 21.6398000047775,
+     "ms": 16.39759998943191,
      "top_text": "(1) Amounts reflect the impact of the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Annual Consolidated Financial Statements. (2) Represents year-end spot balances.\nManagement\u2019s Discussion and Analysis Royal Bank of Canada: Annual Report 2024 51"
     },
     {
@@ -1558,7 +1558,7 @@
       233,
       195
      ],
-     "ms": 20.06960000289837,
+     "ms": 16.195199990761466,
      "top_text": "Financial performance 2024 vs. 2023 Net income increased $729 million or 27% from last year, primarily due to higher fee-based client assets reflecting market appreciation and net sales, which also drove higher variable compensation. Higher transactional revenue and lower PCL also contributed to the"
     },
     {
@@ -1573,7 +1573,7 @@
       20,
       242
      ],
-     "ms": 23.533699997642543,
+     "ms": 14.186200001859106,
      "top_text": "Allowance for credit losses (ACL) The amount deemed adequate by management to absorb expected credit losses as at the balance sheet date. The allowance is established for all financial assets subject to impairment assessment, including certain loans, debt securities, customers\u2019 liability under accep"
     },
     {
@@ -1588,7 +1588,7 @@
       87,
       45
      ],
-     "ms": 24.975200001790654,
+     "ms": 19.979000004241243,
      "top_text": "(1) Amounts reflect the impact of the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Annual Consolidated Financial Statements. (2) Represents year-end spot balances.\nManagement\u2019s Discussion and Analysis Royal Bank of Canada: Annual Report 2024 51"
     },
     {
@@ -1603,7 +1603,7 @@
       195,
       198
      ],
-     "ms": 23.378000005322974,
+     "ms": 17.085300001781434,
      "top_text": "(1) Amounts reflect the impact of the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Annual Consolidated Financial Statements. (2) Represents year-end spot balances.\nManagement\u2019s Discussion and Analysis Royal Bank of Canada: Annual Report 2024 51"
     },
     {
@@ -1618,7 +1618,7 @@
       229,
       249
      ],
-     "ms": 22.712400001182687,
+     "ms": 14.996000012615696,
      "top_text": "2024 highlights across our balanced scorecard\nShareholders\nRBC is driven by its vision, values and commitment to delivering long-term results.\nFinancial performance metrics\nMedium-Term Objectives(1) 3-Year 5-Year\nDiluted EPS growth of 7%+ 1% 5%\nROE of 16%+ 15.0% 15.6%\nStrong capital ratio (CET1) 13."
     },
     {
@@ -1633,7 +1633,7 @@
       15,
       11
      ],
-     "ms": 20.4230999952415,
+     "ms": 15.758900000946596,
      "top_text": "Launched a new digital wellness platform, enabling RBC employees to track and earn rewards for participating in wellness challenges, activities and education\nApproximately $21 billion in competitive compensation and benefits\n14 | Royal Bank of Canada Annual Report 2024"
     },
     {
@@ -1648,7 +1648,7 @@
       240,
       47
      ],
-     "ms": 20.833399998082314,
+     "ms": 14.127500005997717,
      "top_text": "Other transactions, arrangements or agreements involving joint ventures and associates\nAs at or for the year ended\nOctober 31\nOctober 31\n(Millions of Canadian dollars)\n2024\n2023 Commitments and other contingencies $ 1,226 $ 1,089 Other fees received for services rendered 73 55 Other fees paid for se"
     },
     {
@@ -1663,7 +1663,7 @@
       47,
       11
      ],
-     "ms": 22.33690000139177,
+     "ms": 19.145700003718957,
      "top_text": "Given the significant growth in our former Personal and Commercial Banking business segment, we created two standalone segments to better respond to evolving client needs and further differentiate the experiences we bring to them.\nIn 2024, we generated record earnings of $16.2 billion and a Return o"
     },
     {
@@ -1678,7 +1678,7 @@
       69,
       55
      ],
-     "ms": 19.154100002197083,
+     "ms": 15.43830000446178,
      "top_text": "Top & emerging risks Description\nBusiness and economic\nconditions"
     },
     {
@@ -1693,7 +1693,7 @@
       134,
       33
      ],
-     "ms": 23.92919999692822,
+     "ms": 20.554200003971346,
      "top_text": "PCL is comprised of provisions taken on performing assets and provisions taken on impaired assets. PCL on performing assets fluctuated over the period as it is impacted by changes in credit quality, macroeconomic conditions and exposures. Provisions on performing assets over the period have generall"
     },
     {
@@ -1708,7 +1708,7 @@
       239,
       87
      ],
-     "ms": 25.021299996296875,
+     "ms": 19.00000000023283,
      "top_text": "economic outlook towards the latter half of the year, resulting in releases of provisions on performing loans and lower provisions on impaired loans.\n1 As at September 2024, gross of fees, excluding RBC Indigo Asset Management Inc. (formerly HSBC Asset Management Canada).\nManagement\u2019s Discussion and"
     },
     {
@@ -1723,7 +1723,7 @@
       51,
       99
      ],
-     "ms": 25.054900004761294,
+     "ms": 17.801699999836273,
      "top_text": "Liquidity Coverage Ratio (LCR) The LCR is a Basel III standard that aims to ensure that an institution has an adequate stock of unencumbered HQLA that consists of cash or assets that can be converted into cash at little or no loss of value in private markets, to meet its liquidity needs for a 30 cal"
     },
     {
@@ -1738,7 +1738,7 @@
       51,
       100
      ],
-     "ms": 22.371800005203113,
+     "ms": 15.716099995188415,
      "top_text": "Q4 2024 vs. Q3 2024 The average LCR for the quarter ended October 31, 2024 was 128%, which translates into a surplus of approximately $86 billion, compared to 126% and a surplus of approximately $81 billion in the prior quarter. Average LCR moderately increased compared to the prior quarter mainly d"
     },
     {
@@ -1753,7 +1753,7 @@
       8,
       7
      ],
-     "ms": 22.05310000135796,
+     "ms": 16.458199999760836,
      "top_text": "(1) Amounts reflect the impact of the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Annual Consolidated Financial Statements. (2) Represents year-end spot balances.\nManagement\u2019s Discussion and Analysis Royal Bank of Canada: Annual Report 2024 51"
     },
     {
@@ -1768,7 +1768,7 @@
       138,
       119
      ],
-     "ms": 23.711300003924407,
+     "ms": 16.933499995502643,
      "top_text": "Market risk measures for assets and liabilities of RBC Insurance\u00ae2 We offer a range of insurance products to clients and hold investments to meet future obligations to policyholders. The investments which support actuarial liabilities are predominantly fixed income assets measured at FVTPL. Conseque"
     },
     {
@@ -1783,7 +1783,7 @@
       11,
       250
      ],
-     "ms": 23.4956999993301,
+     "ms": 16.252100002020597,
      "top_text": "2024 highlights across our balanced scorecard\nShareholders\nRBC is driven by its vision, values and commitment to delivering long-term results.\nFinancial performance metrics\nMedium-Term Objectives(1) 3-Year 5-Year\nDiluted EPS growth of 7%+ 1% 5%\nROE of 16%+ 15.0% 15.6%\nStrong capital ratio (CET1) 13."
     },
     {
@@ -1798,7 +1798,7 @@
       20,
       31
      ],
-     "ms": 18.848899999284185,
+     "ms": 18.006700003752485,
      "top_text": "Pillar Two income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal y"
     },
     {
@@ -1813,7 +1813,7 @@
       47,
       7
      ],
-     "ms": 19.83549999567913,
+     "ms": 18.185799999628216,
      "top_text": "Total consideration of $15.5 billion in cash included $13.5 billion for 100% of the common shares of HSBC Canada, $2.1 billion for the preferred shares and subordinated debt held directly or indirectly by HSBC Holdings plc, $(0.5) billion for the settlement of pre-existing relationships with HSBC Ca"
     },
     {
@@ -1828,7 +1828,7 @@
       42,
       59
      ],
-     "ms": 20.10349999909522,
+     "ms": 16.73030000529252,
      "top_text": "For small businesses, we offer convenience through 1,189 branches and comprehensive digital solutions supported by experienced advisors. For mid-market businesses, we provide customized banking advice through our network of relationship managers, and product and industry specialists. For large comme"
     },
     {
@@ -1843,7 +1843,7 @@
       40,
       41
      ],
-     "ms": 18.306600002688356,
+     "ms": 18.220199999632314,
      "top_text": "Efficiency ratio Non-interest expense as a percentage of total revenue. Adjusted efficiency ratio is calculated in the same manner, using adjusted non-interest expense and adjusted total revenue.\nCommitments to extend credit Unutilized amount of credit facilities available to clients either in the f"
     },
     {
@@ -1858,7 +1858,7 @@
       164,
       218
      ],
-     "ms": 22.664900003292132,
+     "ms": 16.63149999512825,
      "top_text": "Net interest income (3) $ 27,953 $ 25,129 $ 22,717 $ 20,002 $ 20,835 $ 19,749 $ 17,952 $ 16,926 $ 16,531 $ 14,771 Non-interest income (3) 29,391 26,335 26,268 29,691 26,346 26,253 24,624 23,743 22,264 20,932 Total revenue 57,344 51,464 48,985 49,693 47,181 46,002 42,576 40,669 38,795 35,703 Provisio"
     },
     {
@@ -1873,7 +1873,7 @@
       48,
       60
      ],
-     "ms": 20.276699993701186,
+     "ms": 14.777300006244332,
      "top_text": "Q4 2024 vs. Q3 2024 Net income of $4,222 million was down $264 million or 6% compared to last quarter, primarily due to higher PCL. The impact of legal provisions in the current period and lower fixed income trading in Europe and Canada, both in Capital Markets, as well as ongoing technology investm"
     },
     {
@@ -1888,7 +1888,7 @@
       239,
       24
      ],
-     "ms": 27.266700002655853,
+     "ms": 14.08409999567084,
      "top_text": "Insurance\nRBC Insurance\u00ae provides insurance advice and protection to approximately 4.9 million clients. We provide tailored, client-led advice and solutions, harnessing the power of technology and data and leveraging the strength and scale of the RBC enterprise as our competitive advantage.\n$1.2 bil"
     },
     {
@@ -1903,7 +1903,7 @@
       51,
       145
      ],
-     "ms": 23.559499997645617,
+     "ms": 17.610999988391995,
      "top_text": "RBC managed investment funds We are sponsors and investment managers of mutual and pooled funds, which give us the ability to direct the investment decisions of the funds. We consolidate those mutual and pooled funds in which our interests, which include direct investment in seed capital plus manage"
     },
     {
@@ -1918,7 +1918,7 @@
       10,
       3
      ],
-     "ms": 20.755300000018906,
+     "ms": 16.14279999921564,
      "top_text": "Under RBC\u2019s CEO, and with his executive team, as well as the bank\u2019s talented colleagues around the world, the Board is confident in RBC and its future. We look forward to the next chapter of its growth story.\nIn Dave, RBC benefits from a highly experienced CEO, who consistently finds ways to enhance"
     },
     {
@@ -1933,7 +1933,7 @@
       51,
       47
      ],
-     "ms": 21.168400002352428,
+     "ms": 15.159899994614534,
      "top_text": "Mailing address: P.O. Box 1 Royal Bank Plaza Toronto, Ontario M5J 2J5 Canada website: rbc.com\nA copy of our notice of intention to file a NCIB may be obtained, without charge, by contacting our Corporate Secretary at our Toronto mailing address.\n2025 Quarterly earnings release dates First quarter Fe"
     },
     {
@@ -1948,7 +1948,7 @@
       55,
       8
      ],
-     "ms": 22.093200001108926,
+     "ms": 15.656599993235432,
      "top_text": "RBC Europe Limited London, England 3,170\nThe Royal Trust Company Montreal, Quebec, Canada 1,587\nRoyal Trust Corporation of Canada Toronto, Ontario, Canada 681\n(1) The Bank directly or indirectly controls each subsidiary. (2) Each subsidiary is incorporated or organized under the laws of the state, p"
     },
     {
@@ -1963,7 +1963,7 @@
       113,
       113
      ],
-     "ms": 23.31129999947734,
+     "ms": 18.567899998743087,
      "top_text": "I\u2019m grateful for the trust our clients place in us, and the confidence of our investors, which we work hard to earn every day.\nRBC\u2019s future comes with great expectations from all those we serve. Not only will we aim to anticipate their needs, we will also strive to exceed them. That\u2019s our defining d"
     },
     {
@@ -1978,7 +1978,7 @@
       85,
       99
      ],
-     "ms": 26.242899999488145,
+     "ms": 17.424099991330877,
      "top_text": "2024 vs. 2023 Total RWA was up $76 billion from last year, driven by the $44 billion impact of the HSBC Canada transaction, which was primarily reflected in credit and operational risk. Business growth primarily reflected in retail and commercial lending in Canada, and in operational risk as well as"
     }
    ]
@@ -1988,23 +1988,23 @@
    "retriever": "bm25",
    "n_chunks": 1146,
    "verified": {
-    "n": 10,
-    "hit": 0.2,
+    "n": 12,
+    "hit": 0.3333333333333333,
     "hit_ci": [
-     0.0,
-     0.5
+     0.08333333333333333,
+     0.5833333333333334
     ],
-    "mrr": 0.2,
+    "mrr": 0.25,
     "mrr_ci": [
-     0.0,
-     0.5
+     0.041666666666666664,
+     0.4583333333333333
     ],
-    "lenient": 0.6,
+    "lenient": 0.6666666666666666,
     "lenient_ci": [
-     0.3,
-     0.9
+     0.4166666666666667,
+     0.9166666666666666
     ],
-    "median_ms": 6.336099999316502
+    "median_ms": 4.200249997666106
    },
    "all": {
     "n": 30,
@@ -2023,7 +2023,7 @@
      0.36666666666666664,
      0.7333333333333333
     ],
-    "median_ms": 6.6577999969013035
+    "median_ms": 4.200249997666106
    },
    "per_question": [
     {
@@ -2038,7 +2038,7 @@
       10,
       233
      ],
-     "ms": 5.157400002644863,
+     "ms": 4.019600004539825,
      "top_text": "Due to the nature of activities and consolidation adjustments reported in this segment, we believe that a comparative period analysis is not relevant.\nTotal revenue and Income taxes (recoveries) in Corporate Support include the deduction of the teb adjustment related to gross-up of income from the U"
     },
     {
@@ -2053,7 +2053,7 @@
       10,
       34
      ],
-     "ms": 7.24429999536369,
+     "ms": 4.244399999151938,
      "top_text": "The Budget Implementation Act, 2024, No. 1 (the BIA), introduced as Bill C-69 and tabled by the Government of Canada, received Royal Assent and was enacted on June 20, 2024. The BIA included the Global Minimum Tax Act (the GMTA) which implemented into Canadian law certain measures relating to the Or"
     },
     {
@@ -2068,7 +2068,7 @@
       119,
       241
      ],
-     "ms": 6.1311000026762486,
+     "ms": 5.120500005432405,
      "top_text": "TLAC ratio The risk-based TLAC ratio is defined as TLAC divided by total risk-weighted assets. The TLAC ratio is calculated in accordance with OSFI\u2019s TLAC guideline.\nUnattributed capital Unattributed capital represents common equity in excess of common equity attributed to our business segments and "
     },
     {
@@ -2083,7 +2083,7 @@
       27,
       10
      ],
-     "ms": 7.76620000397088,
+     "ms": 3.9056999958120286,
      "top_text": "Return on common equity We use ROE, at both the consolidated and business segment levels, as a measure of return on total capital invested in our business. Management views the business segment ROE measure as a useful measure for supporting investment and resource allocation decisions because it adj"
     },
     {
@@ -2098,7 +2098,7 @@
       8,
       55
      ],
-     "ms": 7.052200002362952,
+     "ms": 4.076299999724142,
      "top_text": "In Canada, OSFI released its final Guideline B-15 \u2013 Climate Risk Management on March 7, 2023, which sets out expectations for the management and disclosure of climate-related risks for federally regulated financial institutions (FRFIs) and aims to support FRFIs in developing greater resilience to, a"
     },
     {
@@ -2113,7 +2113,7 @@
       7,
       227
      ],
-     "ms": 6.541099995956756,
+     "ms": 5.331899999873713,
      "top_text": "Dividends Our common share dividend policy reflects our earnings outlook, payout ratio objective and the need to maintain adequate levels of capital to support business plans. In 2024, our dividend payout ratio was 50%. Common share dividends paid during the year were $8 billion.\nSelected share data"
     },
     {
@@ -2128,7 +2128,7 @@
       14,
       73
      ],
-     "ms": 3.9197000005515292,
+     "ms": 2.6892999885603786,
      "top_text": "Table of contents\nCEO Letter 6\nReports and Consolidated 141 Financial Statements\nChair Letter 10\nTen-Year Statistical Review 248\n2024 Highlights 12\nShareholder Information 249\nManagement\u2019s Discussion 22 and Analysis\nEnhanced Disclosure Task 140 Force Recommendations Index\b\nConnect with us:\nyoutube.c"
     },
     {
@@ -2143,7 +2143,7 @@
       239,
       46
      ],
-     "ms": 3.7793000010424294,
+     "ms": 2.9778000025544316,
      "top_text": "In the U.S., our second home market, RBC can grow organically through our three established businesses and because of the efforts of our more than 16,000 dedicated colleagues across the region.\nAcross every business, we\u2019re singularly focused on going beyond what people expect from us and delivering "
     },
     {
@@ -2158,7 +2158,7 @@
       227,
       249
      ],
-     "ms": 9.814400000323076,
+     "ms": 6.662999992840923,
      "top_text": "Given the significant growth in our former Personal and Commercial Banking business segment, we created two standalone segments to better respond to evolving client needs and further differentiate the experiences we bring to them.\nIn 2024, we generated record earnings of $16.2 billion and a Return o"
     },
     {
@@ -2173,7 +2173,7 @@
       68,
       108
      ],
-     "ms": 4.713500005891547,
+     "ms": 4.812799990759231,
      "top_text": "An important component of our risk management approach is to seek to ensure that top and emerging risks, as they evolve, are identified, managed and incorporated into our existing risk management assessment, measurement, monitoring and escalation processes and addressed in our risk frameworks and po"
     },
     {
@@ -2188,7 +2188,7 @@
       10,
       9
      ],
-     "ms": 5.6435000005876645,
+     "ms": 4.137100011575967,
      "top_text": "Leverage ratio exposure The leverage ratio exposure is calculated in accordance with OSFI\u2019s LR guideline and is defined as the sum of total assets plus off-balance sheet items after certain adjustments.\nProvision for credit losses (PCL) The amount charged to income necessary to bring the allowance f"
     },
     {
@@ -2203,7 +2203,7 @@
       40,
       28
      ],
-     "ms": 6.960099999560043,
+     "ms": 3.4001000021817163,
      "top_text": "Net interest income The difference between what is earned on assets such as loans and securities and what is paid on liabilities such as deposits and subordinated debentures.\nRepurchase agreements These involve the sale of securities for cash and the simultaneous repurchase of the securities for val"
     },
     {
@@ -2218,7 +2218,7 @@
       23,
       83
      ],
-     "ms": 8.55549999687355,
+     "ms": 7.141599999158643,
      "top_text": "Liquidity Coverage Ratio (LCR) The LCR is a Basel III metric that measures the sufficiency of high-quality liquid assets (HQLA) available to meet liquidity needs over a 30-day period in an acute stress scenario. The BCBS and OSFI regulatory minimum coverage level for LCR is 100%.\nOSFI requires Canad"
     },
     {
@@ -2233,7 +2233,7 @@
       100,
       100
      ],
-     "ms": 10.240199997497257,
+     "ms": 5.119800000102259,
      "top_text": "Q4 2024 vs. Q3 2024 The average LCR for the quarter ended October 31, 2024 was 128%, which translates into a surplus of approximately $86 billion, compared to 126% and a surplus of approximately $81 billion in the prior quarter. Average LCR moderately increased compared to the prior quarter mainly d"
     },
     {
@@ -2248,7 +2248,7 @@
       242,
       117
      ],
-     "ms": 7.834999996703118,
+     "ms": 4.333500008215196,
      "top_text": "That\u2019s why, this year, RBC, RBC Foundation\u00ae and RBC Foundation USA announced a commitment of $2 billion in community investments(10) by 2035 to support community ideas that help seed, scale and sustain solutions in three key areas where we believe they can have a meaningful impact: supporting the tr"
     },
     {
@@ -2263,7 +2263,7 @@
       229,
       140
      ],
-     "ms": 8.815900000627153,
+     "ms": 6.325499998638406,
      "top_text": "Note 28 Capital management (continued)\nRegulatory capital ratios are calculated by dividing CET1, Tier 1, Total capital and TLAC available by risk-weighted assets. The leverage ratio is calculated by dividing Tier 1 capital by an exposure measure. The exposure measure consists of total assets (exclu"
     },
     {
@@ -2278,7 +2278,7 @@
       38,
       18
      ],
-     "ms": 5.008899999666028,
+     "ms": 3.2958999945549294,
      "top_text": "2024 vs. 2023 Non-interest expense increased $3,437 million or 11% from last year, of which $721 million reflects the inclusion of HSBC Canada non-interest expense. The remaining increase of $2,716 million or 9% was primarily due to higher variable compensation costs commensurate with increased reve"
     },
     {
@@ -2293,7 +2293,7 @@
       61,
       232
      ],
-     "ms": 6.47939999907976,
+     "ms": 3.3422999986214563,
      "top_text": "Pillar Two income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal y"
     },
     {
@@ -2308,7 +2308,7 @@
       7,
       9
      ],
-     "ms": 7.076400004734751,
+     "ms": 3.758399994694628,
      "top_text": "Vacation pay class action On December 29, 2022, the Ontario Superior Court of Justice certified a class in an action against RBC Dominion Securities Limited and RBC Dominion Securities Inc. (together, RBC DS). The action commenced in July 2020, asserting claims relating to statutory vacation pay and"
     },
     {
@@ -2323,7 +2323,7 @@
       62,
       24
      ],
-     "ms": 6.4721000017016195,
+     "ms": 5.590699991444126,
      "top_text": "Note 11 Goodwill and other intangible assets (continued)\nEffective the fourth quarter of 2024, the Personal & Commercial Banking segment became two standalone business segments: Personal Banking and Commercial Banking. As a result, the previous Canadian Banking CGU became two CGUs: Personal Banking "
     },
     {
@@ -2338,7 +2338,7 @@
       23,
       239
      ],
-     "ms": 6.774499997845851,
+     "ms": 3.9289999986067414,
      "top_text": "Note 11 Goodwill and other intangible assets (continued)\nEffective the fourth quarter of 2024, the Personal & Commercial Banking segment became two standalone business segments: Personal Banking and Commercial Banking. As a result, the previous Canadian Banking CGU became two CGUs: Personal Banking "
     },
     {
@@ -2353,7 +2353,7 @@
       7,
       216
      ],
-     "ms": 5.565200001001358,
+     "ms": 3.85439999809023,
      "top_text": "Much of our success comes down to the meaningful value we create. This includes helping consumers save on their groceries and everyday purchases through partnerships with popular household brands and through the Avion Rewards loyalty program, enabling Canadians to shop, save, earn and redeem points "
     },
     {
@@ -2368,7 +2368,7 @@
       239,
       7
      ],
-     "ms": 4.897999999229796,
+     "ms": 4.884599999058992,
      "top_text": "Much of our success comes down to the meaningful value we create. This includes helping consumers save on their groceries and everyday purchases through partnerships with popular household brands and through the Avion Rewards loyalty program, enabling Canadians to shop, save, earn and redeem points "
     },
     {
@@ -2383,7 +2383,7 @@
       12,
       9
      ],
-     "ms": 5.044400000770111,
+     "ms": 3.5200999991502613,
      "top_text": "Service Excellence awards among Canada\u2019s biggest banks and ranking #1 in Canada Retail Banking Satisfaction by J.D. Power.\nvalue proposition and earn the trust of those we serve. Not only was RBC ranked the most valuable brand in Canada in 2024, but it\u2019s also considered one of the most valuable bran"
     },
     {
@@ -2398,7 +2398,7 @@
       145,
       14
      ],
-     "ms": 8.004600000276696,
+     "ms": 4.8851999890757725,
      "top_text": "Jacynthe C\u00f4t\u00e9 Chair of the Board\nIn my first full fiscal year as Chair, I had the privilege of meeting RBC employees across various regions, gaining deeper insights into RBC\u2019s core values and distinct strengths. No matter who I met, or where I was, I found a focus on placing the bank\u2019s clients first"
     },
     {
@@ -2413,7 +2413,7 @@
       238,
       238
      ],
-     "ms": 7.015399998635985,
+     "ms": 3.201999992597848,
      "top_text": "Jacynthe C\u00f4t\u00e9 Chair of the Board\nIn my first full fiscal year as Chair, I had the privilege of meeting RBC employees across various regions, gaining deeper insights into RBC\u2019s core values and distinct strengths. No matter who I met, or where I was, I found a focus on placing the bank\u2019s clients first"
     },
     {
@@ -2428,7 +2428,7 @@
       3,
       169
      ],
-     "ms": 5.402500006312039,
+     "ms": 4.48550000146497,
      "top_text": "Mailing address: P.O. Box 1 Royal Bank Plaza Toronto, Ontario M5J 2J5 Canada website: rbc.com\nA copy of our notice of intention to file a NCIB may be obtained, without charge, by contacting our Corporate Secretary at our Toronto mailing address.\n2025 Quarterly earnings release dates First quarter Fe"
     },
     {
@@ -2443,7 +2443,7 @@
       26,
       20
      ],
-     "ms": 6.06339999649208,
+     "ms": 6.739000004017726,
      "top_text": "We also offer unit awards for certain key employees within Capital Markets. The bonus is invested as RBC share units and a specified percentage vests on a specified number of anniversary dates each year. Each vested amount is paid in cash and is based on the original number of share units granted pl"
     },
     {
@@ -2458,7 +2458,7 @@
       9,
       9
      ],
-     "ms": 8.33520000014687,
+     "ms": 4.156099996180274,
      "top_text": "RBC announced plans to accelerate the retrofit of the Canadian branch network where we are responsible for HVAC by investing $35 million over 3 years (2025-2027) in the first phase through the installation of energy efficient, low-carbon heating and cooling systems such as heat pumps, which will rep"
     },
     {
@@ -2473,7 +2473,7 @@
       44,
       26
      ],
-     "ms": 7.656599998881575,
+     "ms": 6.102499988628551,
      "top_text": "Percentage change in average U.S. dollar equivalent of C$1.00 (1)% Percentage change in average British pound equivalent of C$1.00 (4)% Percentage change in average Euro equivalent of C$1.00 (2)%\n(1) On March 28, 2024, we completed the HSBC Canada transaction. HSBC Canada results have been consolida"
     }
    ]
@@ -2483,23 +2483,23 @@
    "retriever": "hybrid",
    "n_chunks": 1146,
    "verified": {
-    "n": 10,
-    "hit": 0.4,
+    "n": 12,
+    "hit": 0.5,
     "hit_ci": [
-     0.1,
-     0.7
+     0.25,
+     0.75
     ],
-    "mrr": 0.18666666666666668,
+    "mrr": 0.26666666666666666,
     "mrr_ci": [
-     0.03333333333333333,
-     0.4
+     0.08888888888888889,
+     0.48888888888888876
     ],
-    "lenient": 0.5,
+    "lenient": 0.5833333333333334,
     "lenient_ci": [
-     0.2,
-     0.8
+     0.3333333333333333,
+     0.8333333333333334
     ],
-    "median_ms": 29.092100005073007
+    "median_ms": 21.346000001358334
    },
    "all": {
     "n": 30,
@@ -2518,7 +2518,7 @@
      0.5,
      0.8333333333333334
     ],
-    "median_ms": 29.164749994379235
+    "median_ms": 22.22050000273157
    },
    "per_question": [
     {
@@ -2533,7 +2533,7 @@
       172,
       233
      ],
-     "ms": 28.391000007104594,
+     "ms": 20.17429999250453,
      "top_text": "Pillar Two income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal y"
     },
     {
@@ -2548,7 +2548,7 @@
       195,
       49
      ],
-     "ms": 26.62620000046445,
+     "ms": 21.400700003141537,
      "top_text": "Pillar Two income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal y"
     },
     {
@@ -2563,7 +2563,7 @@
       242,
       137
      ],
-     "ms": 35.21580000233371,
+     "ms": 23.179700001492165,
      "top_text": "TLAC ratio The risk-based TLAC ratio is defined as TLAC divided by total risk-weighted assets. The TLAC ratio is calculated in accordance with OSFI\u2019s TLAC guideline.\nUnattributed capital Unattributed capital represents common equity in excess of common equity attributed to our business segments and "
     },
     {
@@ -2578,7 +2578,7 @@
       34,
       7
      ],
-     "ms": 31.984399996872526,
+     "ms": 20.252000002074055,
      "top_text": "Return on common equity (ROE) Net income available to common shareholders, expressed as a percentage of average common equity. ROE is based on actual balances of average common equity before rounding. Adjusted ROE is calculated in the same manner, using adjusted net income available to common shareh"
     },
     {
@@ -2593,7 +2593,7 @@
       55,
       8
      ],
-     "ms": 31.60649999335874,
+     "ms": 22.180200001457706,
      "top_text": "(1) Amounts reflect the impact of the sale of RBC Investor Services operations. For further details, refer to Note 6 of our 2024 Annual Consolidated Financial Statements. (2) Represents year-end spot balances.\nManagement\u2019s Discussion and Analysis Royal Bank of Canada: Annual Report 2024 51"
     },
     {
@@ -2608,7 +2608,7 @@
       229,
       230
      ],
-     "ms": 29.79320000304142,
+     "ms": 20.643700001528487,
      "top_text": "Shareholder Information\nCorporate headquarters Street address: Royal Bank of Canada 200 Bay Street Toronto, Ontario M5J 2J5 Canada Tel: 1-888-212-5533\nWe determine the amount and timing of the purchases under the NCIB, subject to prior consultation with the Office of the Superintendent of Financial "
     },
     {
@@ -2623,7 +2623,7 @@
       15,
       230
      ],
-     "ms": 23.31630000117002,
+     "ms": 18.660300003830343,
      "top_text": "Launched a new digital wellness platform, enabling RBC employees to track and earn rewards for participating in wellness challenges, activities and education\nApproximately $21 billion in competitive compensation and benefits\n14 | Royal Bank of Canada Annual Report 2024"
     },
     {
@@ -2638,7 +2638,7 @@
       240,
       44
      ],
-     "ms": 27.587500000663567,
+     "ms": 22.04929999425076,
      "top_text": "Other transactions, arrangements or agreements involving joint ventures and associates\nAs at or for the year ended\nOctober 31\nOctober 31\n(Millions of Canadian dollars)\n2024\n2023 Commitments and other contingencies $ 1,226 $ 1,089 Other fees received for services rendered 73 55 Other fees paid for se"
     },
     {
@@ -2653,7 +2653,7 @@
       7,
       20
      ],
-     "ms": 34.735399996861815,
+     "ms": 26.705199998104945,
      "top_text": "Given the significant growth in our former Personal and Commercial Banking business segment, we created two standalone segments to better respond to evolving client needs and further differentiate the experiences we bring to them.\nIn 2024, we generated record earnings of $16.2 billion and a Return o"
     },
     {
@@ -2668,7 +2668,7 @@
       69,
       74
      ],
-     "ms": 25.338400002510753,
+     "ms": 18.81629999843426,
      "top_text": "Top & emerging risks Description\nBusiness and economic\nconditions"
     },
     {
@@ -2683,7 +2683,7 @@
       146,
       134
      ],
-     "ms": 32.28959999978542,
+     "ms": 22.396400003344752,
      "top_text": "PCL is comprised of provisions taken on performing assets and provisions taken on impaired assets. PCL on performing assets fluctuated over the period as it is impacted by changes in credit quality, macroeconomic conditions and exposures. Provisions on performing assets over the period have generall"
     },
     {
@@ -2698,7 +2698,7 @@
       50,
       40
      ],
-     "ms": 31.870400001935195,
+     "ms": 22.31230000325013,
      "top_text": "I\u2019m grateful for the trust our clients place in us, and the confidence of our investors, which we work hard to earn every day.\nRBC\u2019s future comes with great expectations from all those we serve. Not only will we aim to anticipate their needs, we will also strive to exceed them. That\u2019s our defining d"
     },
     {
@@ -2713,7 +2713,7 @@
       98,
       117
      ],
-     "ms": 41.83929999999236,
+     "ms": 26.472100013052113,
      "top_text": "Liquidity Coverage Ratio (LCR) The LCR is a Basel III metric that measures the sufficiency of high-quality liquid assets (HQLA) available to meet liquidity needs over a 30-day period in an acute stress scenario. The BCBS and OSFI regulatory minimum coverage level for LCR is 100%.\nOSFI requires Canad"
     },
     {
@@ -2728,7 +2728,7 @@
       100,
       55
      ],
-     "ms": 31.744799998705275,
+     "ms": 24.856899995938875,
      "top_text": "Q4 2024 vs. Q3 2024 The average LCR for the quarter ended October 31, 2024 was 128%, which translates into a surplus of approximately $86 billion, compared to 126% and a surplus of approximately $81 billion in the prior quarter. Average LCR moderately increased compared to the prior quarter mainly d"
     },
     {
@@ -2743,7 +2743,7 @@
       115,
       30
      ],
-     "ms": 29.04189999389928,
+     "ms": 25.83749999757856,
      "top_text": "Our CET1 ratio was 13.2%, down 130 bps from last year, primarily reflecting the impact of the HSBC Canada transaction and RWA growth (excluding FX), partially offset by net internal capital generation and share issuances under the DRIP.\nOur Tier 1 capital ratio of 14.6% was down 110 bps, mainly refl"
     },
     {
@@ -2758,7 +2758,7 @@
       119,
       115
      ],
-     "ms": 30.922399993869476,
+     "ms": 25.24509999784641,
      "top_text": "11 Flow statement of the movements in\n\u2013 19\nregulatory capital\nCapital adequacy and risk-weighted assets (RWA)\n12 Capital strategic planning 114-120 \u2013 13 RWA by business segments \u2013 20 14 Analysis of capital requirement, and related\n75-79 *\nmeasurement model information\n15 RWA credit risk and related "
     },
     {
@@ -2773,7 +2773,7 @@
       7,
       9
      ],
-     "ms": 27.1779000031529,
+     "ms": 22.282899997662753,
      "top_text": "2024 vs. 2023 Non-interest expense increased $3,437 million or 11% from last year, of which $721 million reflects the inclusion of HSBC Canada non-interest expense. The remaining increase of $2,716 million or 9% was primarily due to higher variable compensation costs commensurate with increased reve"
     },
     {
@@ -2788,7 +2788,7 @@
       61,
       233
      ],
-     "ms": 29.287599994859193,
+     "ms": 22.547700005816296,
      "top_text": "Pillar Two income taxes may arise in or in relation to jurisdictions where the operations of RBC have an effective tax rate below 15%. This is anticipated to occur mainly in certain Caribbean and European jurisdictions. Had Pillar Two legislation in all relevant jurisdictions applied to the fiscal y"
     },
     {
@@ -2803,7 +2803,7 @@
       194,
       62
      ],
-     "ms": 28.88410000014119,
+     "ms": 22.878499992657453,
      "top_text": "Service Excellence awards among Canada\u2019s biggest banks and ranking #1 in Canada Retail Banking Satisfaction by J.D. Power.\nvalue proposition and earn the trust of those we serve. Not only was RBC ranked the most valuable brand in Canada in 2024, but it\u2019s also considered one of the most valuable bran"
     },
     {
@@ -2818,7 +2818,7 @@
       24,
       239
      ],
-     "ms": 29.00489999592537,
+     "ms": 21.957699995255098,
      "top_text": "For small businesses, we offer convenience through 1,189 branches and comprehensive digital solutions supported by experienced advisors. For mid-market businesses, we provide customized banking advice through our network of relationship managers, and product and industry specialists. For large comme"
     },
     {
@@ -2833,7 +2833,7 @@
       24,
       40
      ],
-     "ms": 28.545799999847077,
+     "ms": 20.191700008581392,
      "top_text": "Efficiency ratio Non-interest expense as a percentage of total revenue. Adjusted efficiency ratio is calculated in the same manner, using adjusted non-interest expense and adjusted total revenue.\nCommitments to extend credit Unutilized amount of credit facilities available to clients either in the f"
     },
     {
@@ -2848,7 +2848,7 @@
       164,
       172
      ],
-     "ms": 28.197100000397768,
+     "ms": 22.370400009094737,
      "top_text": "Insurance service result $ 777 $ 703\nNet investment income (3) $ 3,259 $ 565 Insurance finance income (expense) Interest accreted (126) (135) Effect of changes in discount rates and other financial assumptions (1,754) 259 Effect of changes in fulfilment cash flows at current rates when the correspon"
     },
     {
@@ -2863,7 +2863,7 @@
       20,
       32
      ],
-     "ms": 25.15480000147363,
+     "ms": 18.83770000131335,
      "top_text": "Q4 2024 vs. Q3 2024 Net income of $4,222 million was down $264 million or 6% compared to last quarter, primarily due to higher PCL. The impact of legal provisions in the current period and lower fixed income trading in Europe and Canada, both in Capital Markets, as well as ongoing technology investm"
     },
     {
@@ -2878,7 +2878,7 @@
       53,
       8
      ],
-     "ms": 26.285600004484877,
+     "ms": 20.3610999888042,
      "top_text": "Insurance\nRBC Insurance\u00ae provides insurance advice and protection to approximately 4.9 million clients. We provide tailored, client-led advice and solutions, harnessing the power of technology and data and leveraging the strength and scale of the RBC enterprise as our competitive advantage.\n$1.2 bil"
     },
     {
@@ -2893,7 +2893,7 @@
       7,
       18
      ],
-     "ms": 31.357300002127886,
+     "ms": 25.717700002132915,
      "top_text": "The engagement partner on the audit resulting in this independent auditor\u2019s report is Lona Mathis.\n/s/ PricewaterhouseCoopers LLP\nChartered Professional Accountants, Licensed Public Accountants\nToronto, Canada December 3, 2024\nConsolidated Financial Statements Royal Bank of Canada: Annual Report 202"
     },
     {
@@ -2908,7 +2908,7 @@
       71,
       3
      ],
-     "ms": 28.09799999522511,
+     "ms": 20.078300003660843,
      "top_text": "Under RBC\u2019s CEO, and with his executive team, as well as the bank\u2019s talented colleagues around the world, the Board is confident in RBC and its future. We look forward to the next chapter of its growth story.\nIn Dave, RBC benefits from a highly experienced CEO, who consistently finds ways to enhance"
     },
     {
@@ -2923,7 +2923,7 @@
       229,
       20
      ],
-     "ms": 29.657800005225,
+     "ms": 20.686999996542,
      "top_text": "Mailing address: P.O. Box 1 Royal Bank Plaza Toronto, Ontario M5J 2J5 Canada website: rbc.com\nA copy of our notice of intention to file a NCIB may be obtained, without charge, by contacting our Corporate Secretary at our Toronto mailing address.\n2025 Quarterly earnings release dates First quarter Fe"
     },
     {
@@ -2938,7 +2938,7 @@
       20,
       3
      ],
-     "ms": 33.30689999711467,
+     "ms": 21.29129999957513,
      "top_text": "We compare our TSR to that of a global peer group approved by our Board of Directors (the Board). The global peer group consists of the following 9 financial institutions: \u2022 Canadian financial institutions: Bank of Montreal, Canadian Imperial Bank of Commerce, Manulife Financial Corporation, Nationa"
     },
     {
@@ -2953,7 +2953,7 @@
       19,
       9
      ],
-     "ms": 28.878099998109974,
+     "ms": 22.260800004005432,
      "top_text": "I\u2019m grateful for the trust our clients place in us, and the confidence of our investors, which we work hard to earn every day.\nRBC\u2019s future comes with great expectations from all those we serve. Not only will we aim to anticipate their needs, we will also strive to exceed them. That\u2019s our defining d"
     },
     {
@@ -2968,7 +2968,7 @@
       62,
       120
      ],
-     "ms": 35.53290000127163,
+     "ms": 27.699099999153987,
      "top_text": "Medium-term objectives (1) 3-year (2) 5-year (2)\nDiluted EPS growth of 7% + 1% 5% ROE of 16% + 15.0% 15.6% Strong capital ratio (CET1) (3) 13.4% 13.3% Dividend payout ratio 40% \u2013 50% 49% 48%\n(1) A medium-term (3-5 year) objective is considered to be achieved when the performance goal is met in eithe"
     }
    ]
@@ -2978,23 +2978,23 @@
    "retriever": "dense",
    "n_chunks": 250,
    "verified": {
-    "n": 10,
-    "hit": 0.4,
+    "n": 12,
+    "hit": 0.5,
     "hit_ci": [
-     0.1,
-     0.7
+     0.25,
+     0.75
     ],
-    "mrr": 0.27,
+    "mrr": 0.29444444444444445,
     "mrr_ci": [
-     0.05,
-     0.52
+     0.1111111111111111,
+     0.5194444444444445
     ],
-    "lenient": 0.6,
+    "lenient": 0.6666666666666666,
     "lenient_ci": [
-     0.3,
-     0.9
+     0.4166666666666667,
+     0.9166666666666666
     ],
-    "median_ms": 23.72079999986454
+    "median_ms": 16.14675000018906
    },
    "all": {
     "n": 30,
@@ -3013,7 +3013,7 @@
      0.5,
      0.8333333333333334
     ],
-    "median_ms": 23.20155000052182
+    "median_ms": 15.972300003340933
    },
    "per_question": [
     {
@@ -3028,7 +3028,7 @@
       7,
       12
      ],
-     "ms": 23.802399999112822,
+     "ms": 16.758500001742505,
      "top_text": "Financial performance \n2024 vs. 2023 \nNet income increased $729 million or 27% from last year, primarily due to higher fee-based client assets reflecting market \nappreciation and net sales, which also drove higher variable compensation. Higher transactional revenue and lower PCL also \ncontributed to"
     },
     {
@@ -3043,7 +3043,7 @@
       59,
       31
      ],
-     "ms": 24.223399996117223,
+     "ms": 15.148399994359352,
      "top_text": "Financial performance \n2024 vs. 2023 \nNet income increased $729 million or 27% from last year, primarily due to higher fee-based client assets reflecting market \nappreciation and net sales, which also drove higher variable compensation. Higher transactional revenue and lower PCL also \ncontributed to"
     },
     {
@@ -3058,7 +3058,7 @@
       242,
       139
      ],
-     "ms": 23.013099998934194,
+     "ms": 15.220599991152994,
      "top_text": "Regulatory capital and TLAC available  Table 66   \n  As at  \n(Millions of Canadian dollars)  \nOctober 31  \n2024  \nOctober 31  \n2023  \nCET1 capital: instruments and reserves and regulatory adjustments (1)      \nDirectly issued qualifying common share capital (and equivalent for non-joint  \nstock comp"
     },
     {
@@ -3073,7 +3073,7 @@
       195,
       228
      ],
-     "ms": 24.075100001937244,
+     "ms": 17.446300000301562,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3088,7 +3088,7 @@
       7,
       12
      ],
-     "ms": 24.77750000252854,
+     "ms": 15.992200002074242,
      "top_text": "Since the acquisition date, the HSBC Canada transaction contributed revenue of $1,716 million and net income of $453 million to \nRBC\u2019s consolidated results. The net income of $453 million includes initial PCL on purchased performing financial assets of \n$200 million ($145 million after-tax). \nAssumi"
     },
     {
@@ -3103,7 +3103,7 @@
       12,
       21
      ],
-     "ms": 21.962699996947777,
+     "ms": 15.846700000111014,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3118,7 +3118,7 @@
       14,
       3
      ],
-     "ms": 19.770899998547975,
+     "ms": 16.301299998303875,
      "top_text": "rbc.com/ar2024\n81104 (12/2024)"
     },
     {
@@ -3133,7 +3133,7 @@
       56,
       24
      ],
-     "ms": 23.639200000616256,
+     "ms": 13.931699999375269,
      "top_text": "Other transactions, arrangements or agreements involving joint ventures and associates \n  As at or for the year ended  \n(Millions of Canadian dollars)  \nOctober 31  \n2024  \nOctober 31  \n2023  \nCommitments and other contingencies  $ 1,226  $ 1,089  \nOther fees received for services rendered  73  55  "
     },
     {
@@ -3148,7 +3148,7 @@
       3,
       49
      ],
-     "ms": 24.428299999271985,
+     "ms": 20.12020000256598,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3163,7 +3163,7 @@
       11,
       74
      ],
-     "ms": 19.833799997286405,
+     "ms": 16.537999996216968,
      "top_text": "Reputation risk  \nReputation risk is the risk of an adverse impact on stakeholders\u2019 perception of RBC due to i) perceived or actual misalignment \nbetween stakeholder perceptions of RBC and the actions or inactions of the bank, its employees or individuals or groups \naffiliated with RBC (e.g. stakeho"
     },
     {
@@ -3178,7 +3178,7 @@
       12,
       195
      ],
-     "ms": 25.84460000070976,
+     "ms": 17.133200002717786,
      "top_text": "Provision for credit losses by portfolio and geography  Table 76   \nFor the year ended October 31 (Millions of Canadian dollars, except for percentage amounts)  2024    2023  \nResidential mortgages  $8 6     $6 3   \nPersonal  680    467  \nCredit cards  670    460  \nSmall business  150    61  \nRetail"
     },
     {
@@ -3193,7 +3193,7 @@
       11,
       7
      ],
-     "ms": 24.370099999941885,
+     "ms": 19.095700001344085,
      "top_text": "Clients\nAt RBC, our client-centric \nculture is relentlessly focused \non those we proudly serve. \nEnabled by investments in our \ntechnology and talent, we have \na clear goal of delivering long-\nterm value through exceptional \nadvice, deep insights and \ndifferentiated products.\nOur rankings and indust"
     },
     {
@@ -3208,7 +3208,7 @@
       12,
       87
      ],
-     "ms": 26.901400000497233,
+     "ms": 19.698300005984493,
      "top_text": "Liquidity Coverage Ratio (LCR) \nThe LCR is a Basel III metric that measures the sufficiency of high-quality liquid assets (HQLA) available to meet liquidity needs \nover a 30-day period in an acute stress scenario. The BCBS and OSFI regulatory minimum coverage level for LCR is 100%. \nOSFI requires Ca"
     },
     {
@@ -3223,7 +3223,7 @@
       11,
       9
      ],
-     "ms": 24.03989999584155,
+     "ms": 18.840400007320568,
      "top_text": "Available stable funding is comprised primarily of a diversified pool of personal and commercial deposits, capital, and long-term \nwholesale liabilities. Required stable funding is driven mainly by the bank\u2019s mortgage and loan portfolio, secured loans to \nfinancial institutions and to a lesser exten"
     },
     {
@@ -3238,7 +3238,7 @@
       117,
       12
      ],
-     "ms": 23.390000002109446,
+     "ms": 17.3547000013059,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3253,7 +3253,7 @@
       117,
       242
      ],
-     "ms": 31.798200005141553,
+     "ms": 20.32409999810625,
      "top_text": "The following chart displays the distribution of daily trading revenue in 2024 and 2023 with no net trading losses in 2024 as noted \nabove and one day of net trading losses in 2023. The largest reported trading revenue was $44 million with an average daily \nrevenue of $17 million. \nFrequency in Numb"
     },
     {
@@ -3268,7 +3268,7 @@
       12,
       19
      ],
-     "ms": 21.86249999795109,
+     "ms": 14.045700008864515,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3283,7 +3283,7 @@
       195,
       232
      ],
-     "ms": 20.234400006302167,
+     "ms": 14.4880000007106,
      "top_text": "2024 vs. 2023 \nIncome tax expense increased $51 million or 1% from last year, primarily due to the impact of certain deferred tax adjustments in \nthe prior year, which was treated as a specified item, higher income before income taxes and the net impact of tax adjustments. \nThese factors were partia"
     },
     {
@@ -3298,7 +3298,7 @@
       247,
       239
      ],
-     "ms": 18.977599997015204,
+     "ms": 14.320499991299585,
      "top_text": "Since the acquisition date, the HSBC Canada transaction contributed revenue of $1,716 million and net income of $453 million to \nRBC\u2019s consolidated results. The net income of $453 million includes initial PCL on purchased performing financial assets of \n$200 million ($145 million after-tax). \nAssumi"
     },
     {
@@ -3313,7 +3313,7 @@
       42,
       130
      ],
-     "ms": 49.784299997554626,
+     "ms": 43.98099999525584,
      "top_text": "Overview and outlook  \nSelected financial and other highlights   Table 1   \n(Millions of Canadian dollars, except per share, number of and percentage amounts)  2024 (1)  2023 (2)  \n2024 vs. 2023  \nIncrease (decrease)  \nTotal revenue  $ 57,344  $ 51,464  $ 5,880  11.4%  \nProvision for credit losses ("
     },
     {
@@ -3328,7 +3328,7 @@
       239,
       212
      ],
-     "ms": 20.516100004897453,
+     "ms": 15.952400004607625,
      "top_text": "Personal Banking  Table 19   \n(Millions of Canadian dollars, except percentage amounts and as otherwise noted)  2024 (1)  2023 (2)  \nNet interest income  $ 12,438  $ 10,945  \nNon-interest income  4,904  4,526  \nTotal revenue  17,342  15,471  \nPCL on performing assets  392  301  \nPCL on impaired asse"
     },
     {
@@ -3343,7 +3343,7 @@
       217,
       149
      ],
-     "ms": 22.16910000424832,
+     "ms": 15.086800005519763,
      "top_text": "For further details on our general economic review and outlook, refer to the Economic, market and regulatory review and outlook \nsection. \nInsurance  Table 32   \n(Millions of Canadian dollars, except percentage amounts and as otherwise noted)  2024  2023 (1), (2)  \nNon-interest income      \nInsuranc"
     },
     {
@@ -3358,7 +3358,7 @@
       23,
       150
      ],
-     "ms": 20.888099999865517,
+     "ms": 15.931100002489984,
      "top_text": "Global Markets  \nGlobal Markets comprises our sales and trading businesses including fixed income, foreign exchange, commodities and equities, \nas well as our repo and secured financing products. As mentioned above, effective the third quarter of 2024, we moved the \nmajority of our debt origination "
     },
     {
@@ -3373,7 +3373,7 @@
       239,
       53
      ],
-     "ms": 19.379799996386282,
+     "ms": 14.019800000824034,
      "top_text": "Insurance  \nRBC Insurance\u00ae provides insurance advice and protection to approximately 4.9 million clients. We provide tailored, client-led \nadvice and solutions, harnessing the power of technology and data and leveraging the strength and scale of the RBC enterprise \nas our competitive advantage. \n$1."
     },
     {
@@ -3388,7 +3388,7 @@
       7,
       195
      ],
-     "ms": 22.282000005361624,
+     "ms": 15.514099999563769,
      "top_text": "Table of contents\nCEO Letter  6\nChair Letter  10\n2024 Highlights  12\nManagement\u2019s Discussion  22 \nand Analysis\nEnhanced Disclosure Task  140 \nForce Recommendations  \nIndex \nReports and Consolidated 141 \nFinancial Statements\nTen-Year Statistical Review  248\nShareholder Information  249\nFor more infor"
     },
     {
@@ -3403,7 +3403,7 @@
       6,
       250
      ],
-     "ms": 22.358900001563597,
+     "ms": 14.865600009215996,
      "top_text": "In Dave, RBC benefits from a highly experienced \nCEO, who consistently finds ways to enhance the \nbank\u2019s value proposition and deliver outstanding \nperformance. His efforts in 2024 strengthened RBC\u2019s \nleadership position in Canada and secured its ranking \nas one of the largest global financial insti"
     },
     {
@@ -3418,7 +3418,7 @@
       250,
       6
      ],
-     "ms": 19.696499999554362,
+     "ms": 15.132800006540492,
      "top_text": "Table of contents\nCEO Letter  6\nChair Letter  10\n2024 Highlights  12\nManagement\u2019s Discussion  22 \nand Analysis\nEnhanced Disclosure Task  140 \nForce Recommendations  \nIndex \nReports and Consolidated 141 \nFinancial Statements\nTen-Year Statistical Review  248\nShareholder Information  249\nFor more infor"
     },
     {
@@ -3433,7 +3433,7 @@
       55,
       3
      ],
-     "ms": 24.486000002070796,
+     "ms": 18.853500005207025,
      "top_text": "Note 32 Principal subsidiaries  \n(Millions of Canadian dollars)    As at October 31, 2024  \nPrincipal subsidiaries (1)  Principal office address (2)  \nCarrying value of  \nvoting shares owned  \nby the Bank (3)  \nRoyal Bank Holding Inc.  Toronto, Ontario, Canada  $ 93,533  \nRBC Direct Investing Inc.  "
     },
     {
@@ -3448,7 +3448,7 @@
       9,
       55
      ],
-     "ms": 21.71229999657953,
+     "ms": 15.281599989975803,
      "top_text": "RBC announced plans to accelerate the retrofit  \nof the Canadian branch network where we are \nresponsible for HVAC by investing $35 million over \n3 years (2025-2027) in the first phase through \nthe installation of energy efficient, low-carbon \nheating and cooling systems such as heat pumps, \nwhich w"
     },
     {
@@ -3463,7 +3463,7 @@
       250,
       7
      ],
-     "ms": 28.66119999816874,
+     "ms": 17.391299988958053,
      "top_text": "Clients\nAt RBC, our client-centric \nculture is relentlessly focused \non those we proudly serve. \nEnabled by investments in our \ntechnology and talent, we have \na clear goal of delivering long-\nterm value through exceptional \nadvice, deep insights and \ndifferentiated products.\nOur rankings and indust"
     }
    ]
@@ -3473,23 +3473,23 @@
    "retriever": "bm25",
    "n_chunks": 250,
    "verified": {
-    "n": 10,
-    "hit": 0.3,
+    "n": 12,
+    "hit": 0.4166666666666667,
     "hit_ci": [
-     0.1,
-     0.6
+     0.16666666666666666,
+     0.6666666666666666
     ],
-    "mrr": 0.22,
+    "mrr": 0.30833333333333335,
     "mrr_ci": [
-     0.02,
-     0.5
+     0.08333333333333333,
+     0.5583333333333333
     ],
-    "lenient": 0.7,
+    "lenient": 0.75,
     "lenient_ci": [
-     0.4,
-     0.9
+     0.5,
+     1.0
     ],
-    "median_ms": 1.3476999956765212
+    "median_ms": 1.1162499940837733
    },
    "all": {
     "n": 30,
@@ -3508,7 +3508,7 @@
      0.6,
      0.9
     ],
-    "median_ms": 1.6617000037513208
+    "median_ms": 1.1119999981019646
    },
    "per_question": [
     {
@@ -3523,7 +3523,7 @@
       12,
       109
      ],
-     "ms": 1.5174000000115484,
+     "ms": 1.7165000026579946,
      "top_text": "their finances and deliver highly personalized and \nunique experiences.\nIn 2024, for the third year in a row, the Evident AI \nIndex ranked RBC in the top-three out of 50 global \nfinancial institutions for AI maturity, in terms of our \ntalent, innovation, leadership and transparency. We \nare explorin"
     },
     {
@@ -3538,7 +3538,7 @@
       27,
       34
      ],
-     "ms": 1.2009000056423247,
+     "ms": 1.6060000052675605,
      "top_text": "their finances and deliver highly personalized and \nunique experiences.\nIn 2024, for the third year in a row, the Evident AI \nIndex ranked RBC in the top-three out of 50 global \nfinancial institutions for AI maturity, in terms of our \ntalent, innovation, leadership and transparency. We \nare explorin"
     },
     {
@@ -3553,7 +3553,7 @@
       116,
       117
      ],
-     "ms": 1.3373999972827733,
+     "ms": 1.2663000088650733,
      "top_text": "Regulatory capital and TLAC available  Table 66   \n  As at  \n(Millions of Canadian dollars)  \nOctober 31  \n2024  \nOctober 31  \n2023  \nCET1 capital: instruments and reserves and regulatory adjustments (1)      \nDirectly issued qualifying common share capital (and equivalent for non-joint  \nstock comp"
     },
     {
@@ -3568,7 +3568,7 @@
       9,
       7
      ],
-     "ms": 2.529299999878276,
+     "ms": 1.0569000005489215,
      "top_text": "Return on common equity \nWe use ROE, at both the consolidated and business segment levels, as a measure of return on total capital invested in our \nbusiness. Management views the business segment ROE measure as a useful measure for supporting investment and resource \nallocation decisions because it "
     },
     {
@@ -3583,7 +3583,7 @@
       12,
       45
      ],
-     "ms": 1.7356000025756657,
+     "ms": 1.1755999876186252,
      "top_text": "All federally regulated banks with a Basel III leverage ratio total exposure exceeding \u20ac200 billion at their financial year-end \nare required, at a minimum, to publicly disclose in the first quarter following their year-end, the thirteen indicators used in the \nannual G-SIB assessment methodology, w"
     },
     {
@@ -3598,7 +3598,7 @@
       122,
       27
      ],
-     "ms": 1.3579999940702692,
+     "ms": 0.9891999943647534,
      "top_text": "Outstanding share capital \nThe following table details our common and preferred shares and other equity instruments outstanding. \n  \nAs at and for the year ended  \nOctober 31, 2024    October 31, 2023  \n(Millions of Canadian dollars, except the number  \nof shares and as otherwise noted)  \nNumber of "
     },
     {
@@ -3613,7 +3613,7 @@
       43,
       129
      ],
-     "ms": 0.8741999990888871,
+     "ms": 0.7008999964455143,
      "top_text": "Among Canada\u2019s Top 100 Employers, Best Workplaces \nand Top Companies in 2024(1)(2)(3)\nOne of Canada\u2019s Best Diversity Employers, Best \nWorkplaces for Women and Best Places to Work for \nDisability Inclusion(1)(2)(4)\nRecognized as one of Canada\u2019s Top Employers for \nYoung People(1)\nWorking Families, the"
     },
     {
@@ -3628,7 +3628,7 @@
       239,
       33
      ],
-     "ms": 0.8959999977378175,
+     "ms": 0.7956999907037243,
      "top_text": "RBC will continue to leverage its scale to extend its \nleadership position through our Wealth Management \nplatform, which has the largest full-service wealth \nadvisory business in Canada(3) serving high net worth \nand ultra high net worth clients, and the largest \nCanadian retail mutual fund company"
     },
     {
@@ -3643,7 +3643,7 @@
       249,
       129
      ],
-     "ms": 1.802599996153731,
+     "ms": 2.171999993151985,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3658,7 +3658,7 @@
       69,
       8
      ],
-     "ms": 1.0235000008833595,
+     "ms": 1.0295999964000657,
      "top_text": "We provide senior financing to unaffiliated structured entities that are established by third parties to acquire loans. \nSubordinated financing is provided by either the collateral manager or third-party investors. Subordinated financing serves as \nthe first loss tranche which absorb losses prior to"
     },
     {
@@ -3673,7 +3673,7 @@
       109,
       22
      ],
-     "ms": 1.3524000023608096,
+     "ms": 1.0929999989457428,
      "top_text": "Hedge funds \nA type of investment fund, marketed to \naccredited high net worth investors, that is \nsubject to limited regulation and restrictions \non its investments compared to retail mutual \nfunds, and that often utilize aggressive \nstrategies such as selling short, leverage, \nprogram trading, swa"
     },
     {
@@ -3688,7 +3688,7 @@
       138,
       28
      ],
-     "ms": 1.0478999975020997,
+     "ms": 0.830300006782636,
      "top_text": "For further details on our general economic review and outlook, refer to the Economic, market and regulatory review and outlook \nsection. \nWealth Management  Table 23   \n(Millions of Canadian dollars, except number of, percentage amounts and as otherwise noted)  2024 (1)  2023 (2)  \nNet interest inc"
     },
     {
@@ -3703,7 +3703,7 @@
       138,
       117
      ],
-     "ms": 2.7678999977069907,
+     "ms": 2.2200999956112355,
      "top_text": "Liquidity Coverage Ratio (LCR) \nThe LCR is a Basel III metric that measures the sufficiency of high-quality liquid assets (HQLA) available to meet liquidity needs \nover a 30-day period in an acute stress scenario. The BCBS and OSFI regulatory minimum coverage level for LCR is 100%. \nOSFI requires Ca"
     },
     {
@@ -3718,7 +3718,7 @@
       23,
       101
      ],
-     "ms": 2.572500001406297,
+     "ms": 1.6036000015446916,
      "top_text": "Net Stable Funding Ratio common disclosure template (1)  Table 61   \n  As at October 31, 2024  \n  Unweighted value by residual maturity (2)  \nWeighted value  (Millions of Canadian dollars, except percentage amounts)  No maturity  < 6 months  \n6 months to  \n< 1 year  \u2265 1 year  \nAvailable Stable Fundi"
     },
     {
@@ -3733,7 +3733,7 @@
       40,
       138
      ],
-     "ms": 2.125200000591576,
+     "ms": 1.3851999974576756,
      "top_text": "their finances and deliver highly personalized and \nunique experiences.\nIn 2024, for the third year in a row, the Evident AI \nIndex ranked RBC in the top-three out of 50 global \nfinancial institutions for AI maturity, in terms of our \ntalent, innovation, leadership and transparency. We \nare explorin"
     },
     {
@@ -3748,7 +3748,7 @@
       242,
       140
      ],
-     "ms": 1.9635999997262843,
+     "ms": 1.28009999752976,
      "top_text": "Total capital risk-weighted assets  Table 67   \n  2024    2023  \n      \nAverage  \nof risk-\nweights (2)  \nRisk-weighted assets All-in Basis      \nAs at October 31 (Millions of Canadian dollars,  \nexcept percentage amounts)  Exposure (1)  \nStandardized  \napproach  \nAdvanced  \napproach  \n(A-IRB)  \nFoun"
     },
     {
@@ -3763,7 +3763,7 @@
       35,
       44
      ],
-     "ms": 1.1830999937956221,
+     "ms": 0.7386999932350591,
      "top_text": "Non-interest expense  \n  Table 11   \n(Millions of Canadian dollars, except percentage amounts)  2024  2023 (1)  \nSalaries  $ 8,878  $ 8,478  \nVariable compensation  8,838  7,608  \nBenefits and retention compensation  2,408  2,139  \nShare-based compensation  959  628  \nHuman resources  21,083  18,853"
     },
     {
@@ -3778,7 +3778,7 @@
       30,
       61
      ],
-     "ms": 1.4105999944149517,
+     "ms": 0.9141999908024445,
      "top_text": "The tax loss and tax credit carryforwards amount of deferred tax assets primarily relates to losses and tax credits in our \nCanadian, U.S., and Caribbean operations. Deferred tax assets of $331 million were recognized at October 31, 2024 (October 31, \n2023 \u2013 $261 million) in respect of tax losses an"
     },
     {
@@ -3793,7 +3793,7 @@
       44,
       32
      ],
-     "ms": 1.6030000042519532,
+     "ms": 1.1309999972581863,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3808,7 +3808,7 @@
       61,
       23
      ],
-     "ms": 1.906299999973271,
+     "ms": 1.217600001837127,
      "top_text": "Commercial Banking  Table 22   \n(Millions of Canadian dollars, except percentage amounts and as otherwise noted)  2024 (1)  2023 (2)  \nNet interest income  $ 6,061  $ 4,771  \nNon-interest income  1,321  1,261  \nTotal revenue  7,382  6,032  \nPCL on performing assets  261  70  \nPCL on impaired assets "
     },
     {
@@ -3823,7 +3823,7 @@
       23,
       26
      ],
-     "ms": 1.6494000010425225,
+     "ms": 0.9712999890325591,
      "top_text": "Personal Banking  Table 19   \n(Millions of Canadian dollars, except percentage amounts and as otherwise noted)  2024 (1)  2023 (2)  \nNet interest income  $ 12,438  $ 10,945  \nNon-interest income  4,904  4,526  \nTotal revenue  17,342  15,471  \nPCL on performing assets  392  301  \nPCL on impaired asse"
     },
     {
@@ -3838,7 +3838,7 @@
       34,
       239
      ],
-     "ms": 2.2342000011121854,
+     "ms": 1.198899990413338,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3853,7 +3853,7 @@
       32,
       14
      ],
-     "ms": 1.7798000044422224,
+     "ms": 0.9753999911481515,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -3868,7 +3868,7 @@
       73,
       8
      ],
-     "ms": 1.087500000721775,
+     "ms": 0.7356999994954094,
      "top_text": "Strategic priorities \nOUR STRATEGY  PROGRESS IN 2024  PRIORITIES IN 2025  \nFurther strengthen our market-\nleading value proposition for  \nSmall Business and Mid-Market  \nCommercial clients  \nExtended our Canadian leadership position in the small  \nbusiness and mid-market commercial banking  \nsegment"
     },
     {
@@ -3883,7 +3883,7 @@
       146,
       143
      ],
-     "ms": 2.0605999961844645,
+     "ms": 1.8548000080045313,
      "top_text": "(1)     Includes donations and community investments made by RBC, RBC Foundation or RBC Foundation  USA, employee volunteer grants and gifts in kind, as well as \ncontributions to non-profits and non-registered charities. Figure includes community sponsorships and investments made to the RBC Communit"
     },
     {
@@ -3898,7 +3898,7 @@
       142,
       74
      ],
-     "ms": 1.5274999968823977,
+     "ms": 0.9303999977419153,
      "top_text": "In my first full fiscal year as Chair, I had the privilege \nof meeting RBC employees across various regions, \ngaining deeper insights into RBC\u2019s core values and \ndistinct strengths. No matter who I met, or where I \nwas, I found a focus on placing the bank\u2019s clients first, \npursuing bold ambitions an"
     },
     {
@@ -3913,7 +3913,7 @@
       25,
       26
      ],
-     "ms": 1.674000006460119,
+     "ms": 0.8864999981597066,
      "top_text": "Shareholder Information  \nCorporate headquarters  \nStreet address:  \nRoyal Bank of Canada  \n200 Bay Street  \nToronto, Ontario M5J 2J5  \nCanada  \nTel: 1-888-212-5533  \nMailing address:  \nP.O. Box 1  \nRoyal Bank Plaza  \nToronto, Ontario M5J 2J5  \nCanada  \nwebsite: rbc.com  \nTransfer Agent and Registra"
     },
     {
@@ -3928,7 +3928,7 @@
       7,
       38
      ],
-     "ms": 2.398899996478576,
+     "ms": 1.1852999887196347,
      "top_text": "We compare our TSR to that of a global peer group approved by our Board of Directors (the Board). The global peer group \nconsists of the following 9 financial institutions: \n\u0081 Canadian financial institutions: Bank of Montreal, Canadian Imperial Bank of Commerce, Manulife Financial Corporation, \nNati"
     },
     {
@@ -3943,7 +3943,7 @@
       18,
       16
      ],
-     "ms": 2.194799999415409,
+     "ms": 1.0420999897178262,
      "top_text": "RBC announced plans to accelerate the retrofit  \nof the Canadian branch network where we are \nresponsible for HVAC by investing $35 million over \n3 years (2025-2027) in the first phase through \nthe installation of energy efficient, low-carbon \nheating and cooling systems such as heat pumps, \nwhich w"
     },
     {
@@ -3958,7 +3958,7 @@
       58,
       117
      ],
-     "ms": 2.577200000814628,
+     "ms": 1.1897999938810244,
      "top_text": "Note 28 Capital management (continued)  \nRegulatory capital ratios are calculated by dividing CET1, Tier 1, Total capital and TLAC available by risk-weighted assets. The \nleverage ratio is calculated by dividing Tier 1 capital by an exposure measure. The exposure measure consists of total assets \n(e"
     }
    ]
@@ -3968,23 +3968,23 @@
    "retriever": "hybrid",
    "n_chunks": 250,
    "verified": {
-    "n": 10,
-    "hit": 0.5,
+    "n": 12,
+    "hit": 0.5833333333333334,
     "hit_ci": [
-     0.2,
-     0.8
+     0.3333333333333333,
+     0.8333333333333334
     ],
-    "mrr": 0.27,
+    "mrr": 0.35,
     "mrr_ci": [
-     0.06487500000000002,
-     0.5254999999999995
+     0.14166666666666666,
+     0.5959374999999999
     ],
-    "lenient": 0.8,
+    "lenient": 0.8333333333333334,
     "lenient_ci": [
-     0.5,
+     0.5833333333333334,
      1.0
     ],
-    "median_ms": 23.69534999888856
+    "median_ms": 17.994549998547882
    },
    "all": {
     "n": 30,
@@ -4003,7 +4003,7 @@
      0.7,
      0.9666666666666667
     ],
-    "median_ms": 23.784599998180056
+    "median_ms": 18.44064999750117
    },
    "per_question": [
     {
@@ -4018,7 +4018,7 @@
       9,
       61
      ],
-     "ms": 23.837699998694006,
+     "ms": 18.82919999479782,
      "top_text": "Clients\nAt RBC, our client-centric \nculture is relentlessly focused \non those we proudly serve. \nEnabled by investments in our \ntechnology and talent, we have \na clear goal of delivering long-\nterm value through exceptional \nadvice, deep insights and \ndifferentiated products.\nOur rankings and indust"
     },
     {
@@ -4033,7 +4033,7 @@
       23,
       7
      ],
-     "ms": 24.524699998437427,
+     "ms": 17.918799989274703,
      "top_text": "Clients\nAt RBC, our client-centric \nculture is relentlessly focused \non those we proudly serve. \nEnabled by investments in our \ntechnology and talent, we have \na clear goal of delivering long-\nterm value through exceptional \nadvice, deep insights and \ndifferentiated products.\nOur rankings and indust"
     },
     {
@@ -4048,7 +4048,7 @@
       21,
       242
      ],
-     "ms": 23.552999999083113,
+     "ms": 21.053300006315112,
      "top_text": "Regulatory capital and TLAC available  Table 66   \n  As at  \n(Millions of Canadian dollars)  \nOctober 31  \n2024  \nOctober 31  \n2023  \nCET1 capital: instruments and reserves and regulatory adjustments (1)      \nDirectly issued qualifying common share capital (and equivalent for non-joint  \nstock comp"
     },
     {
@@ -4063,7 +4063,7 @@
       10,
       22
      ],
-     "ms": 29.642699999385513,
+     "ms": 17.57989999896381,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -4078,7 +4078,7 @@
       8,
       165
      ],
-     "ms": 28.531999996630475,
+     "ms": 22.345000004861504,
      "top_text": "Clients\nAt RBC, our client-centric \nculture is relentlessly focused \non those we proudly serve. \nEnabled by investments in our \ntechnology and talent, we have \na clear goal of delivering long-\nterm value through exceptional \nadvice, deep insights and \ndifferentiated products.\nOur rankings and indust"
     },
     {
@@ -4093,7 +4093,7 @@
       227,
       21
      ],
-     "ms": 22.185900001204573,
+     "ms": 16.562600008910522,
      "top_text": "Dividends \nOur common share dividend policy reflects our earnings outlook, payout ratio objective and the need to maintain adequate \nlevels of capital to support business plans. In 2024, our dividend payout ratio was 50%. Common share dividends paid during the \nyear were $8 billion. \nSelected share "
     },
     {
@@ -4108,7 +4108,7 @@
       6,
       10
      ],
-     "ms": 18.95879999938188,
+     "ms": 15.776500003994443,
      "top_text": "Among Canada\u2019s Top 100 Employers, Best Workplaces \nand Top Companies in 2024(1)(2)(3)\nOne of Canada\u2019s Best Diversity Employers, Best \nWorkplaces for Women and Best Places to Work for \nDisability Inclusion(1)(2)(4)\nRecognized as one of Canada\u2019s Top Employers for \nYoung People(1)\nWorking Families, the"
     },
     {
@@ -4123,7 +4123,7 @@
       46,
       240
      ],
-     "ms": 21.75320000242209,
+     "ms": 18.05210000020452,
      "top_text": "Other transactions, arrangements or agreements involving joint ventures and associates \n  As at or for the year ended  \n(Millions of Canadian dollars)  \nOctober 31  \n2024  \nOctober 31  \n2023  \nCommitments and other contingencies  $ 1,226  $ 1,089  \nOther fees received for services rendered  73  55  "
     },
     {
@@ -4138,7 +4138,7 @@
       20,
       9
      ],
-     "ms": 25.91079999547219,
+     "ms": 22.374199994374067,
      "top_text": "value proposition and earn the trust of those we serve. \nNot only was RBC ranked the most valuable brand in \nCanada in 2024, but it\u2019s also considered one of the \nmost valuable brands in the world.(1) This recognition \nreflects our employees, who go above-and-beyond to \nsupport our clients and commun"
     },
     {
@@ -4153,7 +4153,7 @@
       7,
       9
      ],
-     "ms": 22.01939999940805,
+     "ms": 16.915600004722364,
      "top_text": "RBC will continue to leverage its scale to extend its \nleadership position through our Wealth Management \nplatform, which has the largest full-service wealth \nadvisory business in Canada(3) serving high net worth \nand ultra high net worth clients, and the largest \nCanadian retail mutual fund company"
     },
     {
@@ -4168,7 +4168,7 @@
       23,
       7
      ],
-     "ms": 28.989400001592003,
+     "ms": 22.181099993758835,
      "top_text": "Additional trading information \n  Table 9   \n(Millions of Canadian dollars)  2024  2023  \nNet interest income (1)  $ 1,742  $ 1,510  \nNon-interest income  2,327  2,392  \nTotal trading revenue  $ 4,069  $ 3,902  \nTotal trading revenue by product      \nInterest rate and credit  $ 2,371  $ 2,528  \nEqui"
     },
     {
@@ -4183,7 +4183,7 @@
       49,
       88
      ],
-     "ms": 27.346000002580695,
+     "ms": 17.459300011978485,
      "top_text": "Financial performance \nRevenue increased $937 million or 12% from last year. In U.S. dollars, revenue increased $642 million or 11%, mainly due to higher \nfee-based client assets reflecting market appreciation and net sales. Higher transactional revenue, mainly reflecting client \nactivity, also cont"
     },
     {
@@ -4198,7 +4198,7 @@
       65,
       242
      ],
-     "ms": 27.134099997056182,
+     "ms": 22.237700002733618,
      "top_text": "Liquidity Coverage Ratio (LCR) \nThe LCR is a Basel III metric that measures the sufficiency of high-quality liquid assets (HQLA) available to meet liquidity needs \nover a 30-day period in an acute stress scenario. The BCBS and OSFI regulatory minimum coverage level for LCR is 100%. \nOSFI requires Ca"
     },
     {
@@ -4213,7 +4213,7 @@
       12,
       115
      ],
-     "ms": 23.11310000368394,
+     "ms": 19.784400006756186,
      "top_text": "Net Stable Funding Ratio common disclosure template (1)  Table 61   \n  As at October 31, 2024  \n  Unweighted value by residual maturity (2)  \nWeighted value  (Millions of Canadian dollars, except percentage amounts)  No maturity  < 6 months  \n6 months to  \n< 1 year  \u2265 1 year  \nAvailable Stable Fundi"
     },
     {
@@ -4228,7 +4228,7 @@
       115,
       49
      ],
-     "ms": 24.638800001412164,
+     "ms": 19.742799995583482,
      "top_text": "The following tables provide details on our regulatory capital, TLAC available, RWA, and on ratios for capital, leverage and TLAC. \nOur capital position remains strong and our capital, leverage and TLAC ratios remain well above OSFI regulatory targets: \nRegulatory capital, TLAC available, RWA and ca"
     },
     {
@@ -4243,7 +4243,7 @@
       119,
       88
      ],
-     "ms": 24.593899994215462,
+     "ms": 19.199200003640726,
      "top_text": "The following tables provide details on our regulatory capital, TLAC available, RWA, and on ratios for capital, leverage and TLAC. \nOur capital position remains strong and our capital, leverage and TLAC ratios remain well above OSFI regulatory targets: \nRegulatory capital, TLAC available, RWA and ca"
     },
     {
@@ -4258,7 +4258,7 @@
       7,
       18
      ],
-     "ms": 21.286099996359553,
+     "ms": 17.14370000991039,
      "top_text": "their finances and deliver highly personalized and \nunique experiences.\nIn 2024, for the third year in a row, the Evident AI \nIndex ranked RBC in the top-three out of 50 global \nfinancial institutions for AI maturity, in terms of our \ntalent, innovation, leadership and transparency. We \nare explorin"
     },
     {
@@ -4273,7 +4273,7 @@
       61,
       35
      ],
-     "ms": 24.9718999984907,
+     "ms": 17.952199996216223,
      "top_text": "2024 vs. 2023 \nIncome tax expense increased $51 million or 1% from last year, primarily due to the impact of certain deferred tax adjustments in \nthe prior year, which was treated as a specified item, higher income before income taxes and the net impact of tax adjustments. \nThese factors were partia"
     },
     {
@@ -4288,7 +4288,7 @@
       237,
       43
      ],
-     "ms": 21.534500003326684,
+     "ms": 18.84169998811558,
      "top_text": "Since the acquisition date, the HSBC Canada transaction contributed revenue of $1,716 million and net income of $453 million to \nRBC\u2019s consolidated results. The net income of $453 million includes initial PCL on purchased performing financial assets of \n$200 million ($145 million after-tax). \nAssumi"
     },
     {
@@ -4303,7 +4303,7 @@
       239,
       41
      ],
-     "ms": 21.53099999850383,
+     "ms": 17.129200001363643,
      "top_text": "Commercial Banking  Table 22   \n(Millions of Canadian dollars, except percentage amounts and as otherwise noted)  2024 (1)  2023 (2)  \nNet interest income  $ 6,061  $ 4,771  \nNon-interest income  1,321  1,261  \nTotal revenue  7,382  6,032  \nPCL on performing assets  261  70  \nPCL on impaired assets "
     },
     {
@@ -4318,7 +4318,7 @@
       30,
       62
      ],
-     "ms": 23.238499998115003,
+     "ms": 19.210499987821095,
      "top_text": "Personal Banking  Table 19   \n(Millions of Canadian dollars, except percentage amounts and as otherwise noted)  2024 (1)  2023 (2)  \nNet interest income  $ 12,438  $ 10,945  \nNon-interest income  4,904  4,526  \nTotal revenue  17,342  15,471  \nPCL on performing assets  392  301  \nPCL on impaired asse"
     },
     {
@@ -4333,7 +4333,7 @@
       7,
       23
      ],
-     "ms": 23.731499997666106,
+     "ms": 19.492899999022484,
      "top_text": "Note 15 Insurance and reinsurance (continued)  \nInsurance service and insurance investment results \nThe following table provides the composition of Insurance service result and Insurance investment result for insurance contracts \nissued and reinsurance contracts held. \n  For the year ended  \n(Millio"
     },
     {
@@ -4348,7 +4348,7 @@
       32,
       59
      ],
-     "ms": 22.43319999979576,
+     "ms": 20.370300000649877,
      "top_text": "Capital Markets  Table 33   \n(Millions of Canadian dollars, except percentage amounts and as otherwise noted)  2024 (1)  2023  \nNet interest income (2)  $ 3,183  $ 3,379  \nNon-interest income (2)  8,829  7,672  \nTotal revenue (2)  12,012  11,051  \nPCL on performing assets  84  125  \nPCL on impaired "
     },
     {
@@ -4363,7 +4363,7 @@
       12,
       52
      ],
-     "ms": 20.52220000041416,
+     "ms": 15.45320000150241,
      "top_text": "RBC will continue to leverage its scale to extend its \nleadership position through our Wealth Management \nplatform, which has the largest full-service wealth \nadvisory business in Canada(3) serving high net worth \nand ultra high net worth clients, and the largest \nCanadian retail mutual fund company"
     },
     {
@@ -4378,7 +4378,7 @@
       17,
       7
      ],
-     "ms": 26.76390000124229,
+     "ms": 16.946199990343302,
      "top_text": "In Dave, RBC benefits from a highly experienced \nCEO, who consistently finds ways to enhance the \nbank\u2019s value proposition and deliver outstanding \nperformance. His efforts in 2024 strengthened RBC\u2019s \nleadership position in Canada and secured its ranking \nas one of the largest global financial insti"
     },
     {
@@ -4393,7 +4393,7 @@
       3,
       74
      ],
-     "ms": 24.655699999129865,
+     "ms": 17.112799992901273,
      "top_text": "In Dave, RBC benefits from a highly experienced \nCEO, who consistently finds ways to enhance the \nbank\u2019s value proposition and deliver outstanding \nperformance. His efforts in 2024 strengthened RBC\u2019s \nleadership position in Canada and secured its ranking \nas one of the largest global financial insti"
     },
     {
@@ -4408,7 +4408,7 @@
       7,
       228
      ],
-     "ms": 22.14240000466816,
+     "ms": 16.659200002322905,
      "top_text": "In my first full fiscal year as Chair, I had the privilege \nof meeting RBC employees across various regions, \ngaining deeper insights into RBC\u2019s core values and \ndistinct strengths. No matter who I met, or where I \nwas, I found a focus on placing the bank\u2019s clients first, \npursuing bold ambitions an"
     },
     {
@@ -4423,7 +4423,7 @@
       38,
       249
      ],
-     "ms": 23.00219999597175,
+     "ms": 17.936999996891245,
      "top_text": "We compare our TSR to that of a global peer group approved by our Board of Directors (the Board). The global peer group \nconsists of the following 9 financial institutions: \n\u0081 Canadian financial institutions: Bank of Montreal, Canadian Imperial Bank of Commerce, Manulife Financial Corporation, \nNati"
     },
     {
@@ -4438,7 +4438,7 @@
       9,
       8
      ],
-     "ms": 24.180600004910957,
+     "ms": 18.89560000563506,
      "top_text": "RBC announced plans to accelerate the retrofit  \nof the Canadian branch network where we are \nresponsible for HVAC by investing $35 million over \n3 years (2025-2027) in the first phase through \nthe installation of energy efficient, low-carbon \nheating and cooling systems such as heat pumps, \nwhich w"
     },
     {
@@ -4453,7 +4453,7 @@
       85,
       88
      ],
-     "ms": 30.544299996108748,
+     "ms": 20.60640000854619,
      "top_text": "Note 28 Capital management (continued)  \nRegulatory capital ratios are calculated by dividing CET1, Tier 1, Total capital and TLAC available by risk-weighted assets. The \nleverage ratio is calculated by dividing Tier 1 capital by an exposure measure. The exposure measure consists of total assets \n(e"
     }
    ]
