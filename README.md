@@ -5,9 +5,9 @@ page it came from.
 
 I built the first version in a weekend. It answered questions and cited pages, and it
 looked like it worked. Then I realised I had no way to know how often it pulled the
-right page. So the measurement became the project: a hand-checked answer key, three ways
-of splitting the report, three ways of searching it, confidence intervals, and a list of
-every question it still gets wrong and why.
+right page. So the measurement became the project. I wrote an answer key, compared
+several ways of splitting and searching the report, and wrote down every question it
+still gets wrong and why.
 
 One caveat up front: the embedding and search steps run locally, but the answer-writing
 step calls Google's Gemini API, so the retrieved pages leave the machine at that point.
@@ -15,8 +15,9 @@ More on this below.
 
 ## Results
 
-**Headline, on the 10 questions I checked by hand.** "hit@5" is the share of questions
-where the right page is in the top 5 results.
+### The 10 questions I checked by hand
+
+"hit@5" is the share of questions where the right page is in the top 5 results.
 
 | Split the report into | Search | hit@5 | 95% interval |
 |---|---|---|---|
@@ -27,14 +28,16 @@ where the right page is in the top 5 results.
 With 10 questions, one question moves hit@5 by 0.10, and every interval above overlaps
 with the others. On these 10 alone I can't claim any configuration beats another.
 
-**On all 30 questions.** This includes 20 questions I wrote whose pages have been
-checked by a script but **not yet by hand** (see "The answer key" below).
+### All 30 questions
+
+This includes 20 questions whose pages a script has checked but I haven't yet read
+(see "The answer key" below).
 
 | Split the report into | Dense | Keyword (BM25) | Hybrid |
 |---|---|---|---|
 | Fixed 180-word chunks (1,355 pieces) | 0.50 | 0.53 | 0.67 |
 | Paragraphs (1,146 pieces) | 0.50 | 0.43 | 0.63 |
-| Whole pages (250 pieces) | 0.57 | 0.60 | **0.70** (0.53 to 0.87) |
+| Whole pages (250 pieces) | 0.57 | 0.60 | 0.70 (0.53 to 0.87) |
 
 Hybrid search came out on top for every way of splitting the report. Its intervals still
 overlap with dense, so I checked question by question. Over whole pages, hybrid found 5
@@ -44,7 +47,9 @@ MRR and intervals for every row, are in
 
 ![hit@5 by chunking and retriever](reports/figures/hit_at_5.png)
 
-**Two ways of scoring a hit.** The strict score counts a hit only when a retrieved page is
+### Two ways of scoring a hit
+
+The strict score counts a hit only when a retrieved page is
 one I wrote down in the answer key. But the same figure often appears on several pages:
 net income of 16,240 is on 13 of them. So I also report a lenient score, where a hit is
 any retrieved chunk that contains the answer text. For the best configuration it's 0.83
@@ -53,22 +58,28 @@ saw any results. The lenient one shows how much the strict score understates ret
 
 ## What I found out along the way
 
-**The paragraph splitter never split anything.** The first version split text on blank
+### The paragraph splitter never split anything
+
+The first version split text on blank
 lines. pypdf, the PDF reader, puts no blank lines in this report (0 of 250 pages). So the
 "paragraph" strategy returned one piece per page, 249 pieces for 250 pages, and my
 original results table compared whole pages with themselves. It now splits on the layout
-blocks PyMuPDF detects, which gives 1,146 pieces. Real paragraphs score *lower* than the
+blocks PyMuPDF detects, which gives 1,146 pieces. Real paragraphs score lower than the
 fake ones did (0.20 vs 0.40 on the 10 hand-checked questions, dense search), which fits
 the next finding.
 
-**The embedding model reads only the top of a page.** all-MiniLM-L6-v2 reads at most 256
+### The embedding model reads only the top of a page
+
+all-MiniLM-L6-v2 reads at most 256
 word pieces and ignores the rest. A median page here is 981 word pieces, and 96% of pages
 are longer than 256. So a whole-page vector mostly describes the page's first quarter.
 Five of the nine questions the best configuration misses have their answer past that
 point. Keyword search reads the whole page, which is a large part of why hybrid helps.
 The numbers are in [notebooks/01_explore.ipynb](notebooks/01_explore.ipynb).
 
-**Why whole pages still win.** A number in a financial report only means something next
+### Why whole pages still win
+
+A number in a financial report only means something next
 to its label. Fixed 180-word windows often separate a figure from the row or heading that
 names it. A page keeps them together, and the page is also the unit being cited.
 
@@ -94,10 +105,17 @@ one-line cause. In short:
 checked by reading the report. They are marked `"verified": true`. I drafted the other
 20 to cover exact terms (PCL, NIM, LCR, NSFR, RWA), segment tables, plain facts, and three
 questions whose answer spans two pages. Each has a proposed page, marked
-`"verified": false`. [eval/check_gold.py](eval/check_gold.py) confirms that each proposed
-page contains the answer text, and all 30 pass
-([eval/gold_check.md](eval/gold_check.md)). That catches a wrong page number, but it
-isn't the same as reading the page, so they stay unverified until I do.
+`"verified": false`.
+
+[eval/check_gold.py](eval/check_gold.py) runs two checks on the proposed pages. The
+first looks for the answer text on the page, and all 30 questions pass. The second is
+stricter: for questions 11 to 30 it looks for the label and the figure (say "Total PCL"
+and "3,232") in the same passage of the PDF, no more than 200 characters apart. 18 of 20
+pass. For Q28 (a list of nine banks) and Q29 (one long sentence) the label and figure are
+in the same passage but further apart than that, so those two need a read. Results are
+in [eval/gold_check.md](eval/gold_check.md). A script can catch a wrong page number, but
+it can't tell whether a question is well posed, so all 20 stay unverified until I read
+them.
 
 ## How it works
 
@@ -140,8 +158,8 @@ Cited pages: [7, 9, 12, 49, 55] | LLM used: False
 ```
 
 This is the run without an API key, which shows the retrieved pages only. p. 7 has the
-answer ("record earnings of $16.2 billion"). p. 23, the highlights table, isn't in the
-top 5. That's the same kind of miss as Q1 in the error analysis.
+answer ("record earnings of $16.2 billion"). p. 23, which has the summary table, isn't in
+the top 5. That's the same kind of miss as Q1 in the error analysis.
 
 ## Reproduce
 
