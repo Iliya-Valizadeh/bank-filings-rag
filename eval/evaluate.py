@@ -103,6 +103,20 @@ def _table(res, key, k):
     return lines
 
 
+def paired(res, a="hybrid", b="dense"):
+    """Per strategy, over all questions: how many only `a` found, only `b` found, both."""
+    out = []
+    for s in dict.fromkeys(r["strategy"] for r in res["results"]):
+        ra, rb = (next(r for r in res["results"] if r["strategy"] == s and r["retriever"] == x)
+                  for x in (a, b))
+        hb = {q["id"]: q["hit"] for q in rb["per_question"]}
+        only_a = sum(1 for q in ra["per_question"] if q["hit"] and not hb[q["id"]])
+        only_b = sum(1 for q in ra["per_question"] if not q["hit"] and hb[q["id"]])
+        both = sum(1 for q in ra["per_question"] if q["hit"] and hb[q["id"]])
+        out.append({"strategy": s, f"only_{a}": only_a, f"only_{b}": only_b, "both": both})
+    return out
+
+
 def best_config(res, key="all"):
     """Highest hit@k, then MRR. Chosen on all 30 questions, since 10 cannot separate them."""
     return max(res["results"], key=lambda r: (r[key]["hit"], r[key]["mrr"]))
@@ -127,6 +141,12 @@ def write_report(res):
         *_table(res, "all", k), "",
         f"Best configuration on all {res['n_all']} questions (by hit@{k}, then MRR): "
         f"**{best['strategy']} + {best['retriever']}**.", "",
+        f"## Hybrid vs dense, question by question (all {res['n_all']})", "",
+        "Both retrievers answer the same questions, so the fairest comparison counts the "
+        "questions where they disagree.", "",
+        "| Chunking | Only hybrid found | Only dense found | Both found |", "|---|---|---|---|",
+        *[f"| {r['strategy']} | {r['only_hybrid']} | {r['only_dense']} | {r['both']} |"
+          for r in paired(res)], "",
     ]
     (REPORTS / "chunking_comparison.md").write_text("\n".join(lines), encoding="utf-8")
     (REPORTS / "eval_results.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
