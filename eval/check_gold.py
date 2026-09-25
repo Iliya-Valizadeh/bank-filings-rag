@@ -24,7 +24,7 @@ import json
 import re
 from pathlib import Path
 
-from src import ingest
+from bank_filings_rag import ingest
 from eval.metrics import contains_answer, normalize
 
 GOLD = Path(__file__).parent / "gold_qa.jsonl"

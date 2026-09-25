@@ -4,7 +4,7 @@ import zlib
 import numpy as np
 import pytest
 
-from src.retrieve import tokenize
+from bank_filings_rag.retrieve import tokenize
 
 
 class FakeEncoder:
