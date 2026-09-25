@@ -14,8 +14,9 @@ Questions 1 to 10 I wrote and checked by reading the report. They are marked
 system's output, so no chunking strategy could be tuned to match them.
 
 Questions 11 to 30 I drafted to cover exact terms, segment tables, plain facts and
-answers that span two pages. They are marked `"verified": false, "verified_by": "script"`
-until I read each page myself. Each also names a label and a figure (`check_label`,
+answers that span two pages. I have read Q28 and Q29, which are marked
+`"verified": true, "verified_by": "hand"`. The other 18 are marked
+`"verified": false, "verified_by": "script"` until I read each page myself. Each also names a label and a figure (`check_label`,
 `check_figure`) for the stricter check below.
 
 `python -m eval.check_gold --pdf data/raw/rbc_2024.pdf` writes
@@ -24,7 +25,8 @@ for one of the answer strings anywhere on the page. The second, for questions 11
 looks for the label and the figure in the same layout block (a paragraph, heading or
 table body, as PyMuPDF sees it), no more than 200 characters apart. That rules out a page
 that happens to contain the number somewhere unrelated. 18 of the 20 pass the second
-check, and Q28 and Q29 are marked for a read. Neither check can catch a badly worded
+check. Q28 and Q29 don't, because the label and figure sit far apart in a long passage,
+so I read both pages by hand. Neither check can catch a badly worded
 question or a wrong answer.
 
 Pages are 1-based PDF page numbers, the same ones `src/ingest.py` produces.
@@ -43,7 +45,7 @@ so the strict score undercounts. Questions without answer strings (8 and 10) use
 strict score.
 
 The intervals are 95% bootstrap intervals, from resampling the questions with replacement
-1,000 times. On 10 questions they are wide, and the README says so.
+1,000 times. On 12 questions they are wide, and the README says so.
 
 Median latency is the time for one search, including encoding the question. It varies by a
 few milliseconds between runs.
