@@ -1,0 +1,13 @@
+# Written by Copier. Do not edit by hand; `copier update` reads it.
+_commit: v1.0
+_src_path: gh:Iliya-Valizadeh/ds-project-standard
+author_name: Iliya Valizadeh
+copyright_year: 2026
+github_user: Iliya-Valizadeh
+has_dataset: true
+has_model: false
+one_line: Ask a question about RBC's 2024 Annual Report and get an answer back with
+    the page it came from.
+package_name: bank_filings_rag
+project_name: bank-filings-rag
+python_version: '3.11'
