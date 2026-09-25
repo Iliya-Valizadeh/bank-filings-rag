@@ -162,7 +162,8 @@ def plot(res, path):
     strategies = list(dict.fromkeys(r["strategy"] for r in res["results"]))
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), sharey=True)
     for ax, key, title in [(axes[0], "verified", f"{res['n_verified']} hand-checked questions"),
-                           (axes[1], "all", f"All {res['n_all']} questions (20 checked by script only)")]:
+                           (axes[1], "all", f"All {res['n_all']} questions "
+                            f"({res['n_all'] - res['n_verified']} checked by script only)")]:
         x = np.arange(len(strategies))
         for j, retriever in enumerate(RETRIEVERS):
             vals, lo, hi = [], [], []
@@ -174,7 +175,9 @@ def plot(res, path):
         ax.set_xticks(x, strategies); ax.set_title(title, fontsize=10)
         ax.set_ylim(0, 1); ax.grid(axis="y", alpha=0.3)
     axes[0].set_ylabel(f"hit@{res['k']} (95% bootstrap CI)")
-    axes[1].legend(title="retriever", loc="upper right")
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, title="retriever", loc="upper center", ncol=3,
+               bbox_to_anchor=(0.5, 0.0))
     fig.suptitle("Right page in the top 5, by chunking strategy and retriever")
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, bbox_inches="tight", dpi=130)
