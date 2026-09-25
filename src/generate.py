@@ -18,7 +18,15 @@ def build_prompt(question: str, chunks: list[dict]) -> str:
     return f"{SYSTEM}\n\nEXCERPTS:\n{ctx}\n\nQUESTION: {question}\n\nANSWER (with page citations):"
 
 
+REFUSAL = "The retrieved pages do not contain enough to answer this question."
+
+
 def answer(question: str, chunks: list[dict]) -> dict:
+    # Nothing retrieved (or only empty text): refuse without calling the model at all,
+    # so it has no chance to answer from memory.
+    chunks = [c for c in chunks if c.get("text", "").strip()]
+    if not chunks:
+        return {"answer": REFUSAL, "cited_pages": [], "chunks": [], "llm": False}
     prompt = build_prompt(question, chunks)
     cited_pages = sorted({c["page"] for c in chunks})
     if not GEMINI_API_KEY:
