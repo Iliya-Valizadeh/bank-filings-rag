@@ -11,7 +11,7 @@ This repo was built before my house standard existed. The standard now lives in 
 keys.
 
 The repo today has a flat `src/` folder that is imported as `src`, and an `eval/`
-folder with the scoring code and the answer key (`eval/gold_qa.jsonl`). Pins live in
+folder with the scoring code and the [answer key](../glossary.md#answer-key) (`eval/gold_qa.jsonl`). Pins live in
 `requirements.txt` (full run, with a CPU-only torch installed by hand from PyTorch's own
 package index) and `requirements-ci.txt` (tests only, no torch). The Makefile has only
 `eval` and `test`. CI runs ruff and pytest.
@@ -19,7 +19,7 @@ package index) and `requirements-ci.txt` (tests only, no torch). The Makefile ha
 Three things set this repo apart:
 
 - The numbers live in `reports/eval_results.json`. There is no `reports/metrics.json`.
-- The search uses a pretrained embedding model (`sentence-transformers/all-MiniLM-L6-v2`).
+- The search uses a pretrained [embedding](../glossary.md#embedding) model (`sentence-transformers/all-MiniLM-L6-v2`).
   Its weights download on first use. I did not train it.
 - `src/generate.py` calls Gemini, which needs a paid key. It must stay out of the demo,
   the evaluation and CI.
@@ -129,7 +129,7 @@ environment that made the committed numbers. So the adoption step saves its
 ### 4. What `make demo` runs
 
 Two things block a demo on the real data. The PDF is RBC's report, and the repo does not
-share it. The dense and hybrid search both need the embedding model, which means a
+share it. The dense and [hybrid search](../glossary.md#hybrid-search) both need the embedding model, which means a
 download. Committing the weights would put a large binary in git. A fake encoder in the
 demo would print "hybrid" results that mean nothing.
 
@@ -137,9 +137,9 @@ Decision: `make demo` runs `python -m bank_filings_rag.demo` on a small made-up 
 A committed script (`scripts/make_demo_pdf.py`) builds the PDF with PyMuPDF, which the
 repo already uses. Its pages are short, invented texts in the style of an annual report.
 The PDF is committed too, so the demo needs nothing from outside the repo. The demo then
-runs the real code path: `load_pages`, whole-page splitting, and keyword search (BM25).
+runs the real code path: `load_pages`, whole-page splitting, and keyword search ([BM25](../glossary.md#bm25)).
 It prints the top pages for a few fixed questions. It also scores them against a tiny
-made-up answer key with the repo's own hit@k and MRR code.
+made-up answer key with the repo's own hit@k and [MRR](../glossary.md#mrr) code.
 
 Rules for the demo:
 
@@ -212,14 +212,14 @@ the full values from `eval_results.json`, so the `interval` block must match wha
 `metrics.json` itself is the same on every run.
 
 The headline is whole pages with hybrid search, on the questions I checked by hand.
-The baseline is the first version: fixed-size chunks with dense search, on the same
+The [baseline](../glossary.md#baseline) is the first version: fixed-size chunks with [dense search](../glossary.md#dense-search), on the same
 questions. This is the comparison the README already leads with. I am not picking a new
 headline now that I have seen all the rows.
 
 The README also quotes counts worked out from the per-question rows. One example: hybrid
 found some questions that dense missed, and the reverse. `eval/summarize.py` computes
 those too, so `CLAIMS.md` can point every number at `metrics.json`. The script does not
-add a bootstrap interval for the gap between two setups. `eval_results.json` has none,
+add a [bootstrap](../glossary.md#bootstrap) interval for the gap between two setups. `eval_results.json` has none,
 and adding one would be a new result. It becomes a `roadmap` issue.
 
 ### 8. `has_model` and `has_dataset`

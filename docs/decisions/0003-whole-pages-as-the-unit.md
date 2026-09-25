@@ -33,7 +33,7 @@ in [reports/chunking_comparison.md](../../reports/chunking_comparison.md).
 - Paragraphs from layout blocks. Closer to how the report is written, but a table row
   can still land apart from its header.
 - Whole pages. Label and figure stay together, and the page is also the unit cited in
-  every answer. But a page is often longer than the embedding model can read.
+  every answer. But a page is often longer than the [embedding](../glossary.md#embedding) model can read.
 - Short pieces for the vectors, while still returning and citing whole pages. Never
   tried. The README names it as the first fix to try.
 
