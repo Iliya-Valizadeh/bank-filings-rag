@@ -15,26 +15,31 @@ Run:  python -m eval.evaluate --pdf data/raw/rbc_2024.pdf
 Writes reports/chunking_comparison.md, reports/eval_results.json and
 reports/figures/hit_at_5.png. Everything in those files comes from this script.
 """
+
 from __future__ import annotations
+
 import argparse
 import json
 import statistics
 import time
 from pathlib import Path
 
-from bank_filings_rag.config import EMBED_MODEL, TOP_K, REPORTS
-from bank_filings_rag import ingest, chunking
+from bank_filings_rag import chunking, ingest
+from bank_filings_rag.config import EMBED_MODEL, REPORTS, TOP_K
 from bank_filings_rag.embed_index import VectorIndex
-from bank_filings_rag.retrieve import BM25Index, HybridIndex, RETRIEVERS
-from eval.metrics import hit_and_rank, lenient_hit, bootstrap_ci
+from bank_filings_rag.retrieve import RETRIEVERS, BM25Index, HybridIndex
+from eval.metrics import bootstrap_ci, hit_and_rank, lenient_hit
 
 GOLD = Path(__file__).parent / "gold_qa.jsonl"
 N_BOOT = 1000
 
 
 def load_gold(path=GOLD):
-    rows = [json.loads(line) for line in Path(path).read_text(encoding="utf-8").splitlines()
-            if line.strip()]
+    rows = [
+        json.loads(line)
+        for line in Path(path).read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
     return [r for r in rows if r.get("source_pages")]
 
 
@@ -45,23 +50,33 @@ def run_questions(index, gold, k):
         hits = index.search(q["question"], k=k)
         ms = (time.perf_counter() - t0) * 1000
         h, rr = hit_and_rank(hits, q["source_pages"])
-        per_q.append({
-            "id": q["id"], "hit": h, "rr": rr,
-            "lenient": lenient_hit(hits, q["source_pages"], q.get("answer_any")),
-            "pages": [x["page"] for x in hits], "ms": ms,
-            "top_text": hits[0]["text"][:300] if hits else "",
-        })
+        per_q.append(
+            {
+                "id": q["id"],
+                "hit": h,
+                "rr": rr,
+                "lenient": lenient_hit(hits, q["source_pages"], q.get("answer_any")),
+                "pages": [x["page"] for x in hits],
+                "ms": ms,
+                "top_text": hits[0]["text"][:300] if hits else "",
+            }
+        )
     return per_q
 
 
 def summarise(per_q, ids):
     rows = [r for r in per_q if r["id"] in ids]
-    hits, rrs, len_ = [r["hit"] for r in rows], [r["rr"] for r in rows], [r["lenient"] for r in rows]
+    hits = [r["hit"] for r in rows]
+    rrs = [r["rr"] for r in rows]
+    len_ = [r["lenient"] for r in rows]
     return {
         "n": len(rows),
-        "hit": statistics.mean(hits), "hit_ci": bootstrap_ci(hits, N_BOOT),
-        "mrr": statistics.mean(rrs), "mrr_ci": bootstrap_ci(rrs, N_BOOT),
-        "lenient": statistics.mean(len_), "lenient_ci": bootstrap_ci(len_, N_BOOT),
+        "hit": statistics.mean(hits),
+        "hit_ci": bootstrap_ci(hits, N_BOOT),
+        "mrr": statistics.mean(rrs),
+        "mrr_ci": bootstrap_ci(rrs, N_BOOT),
+        "lenient": statistics.mean(len_),
+        "lenient_ci": bootstrap_ci(len_, N_BOOT),
         "median_ms": statistics.median(r["ms"] for r in rows),
     }
 
@@ -79,27 +94,37 @@ def evaluate(pdf_path, k=TOP_K):
         indexes = {"dense": dense, "bm25": bm25, "hybrid": HybridIndex.from_built(dense, bm25)}
         for retriever in RETRIEVERS:
             per_q = run_questions(indexes[retriever], gold, k)
-            results.append({
-                "strategy": strategy, "retriever": retriever, "n_chunks": len(chunks),
-                "verified": summarise(per_q, verified), "all": summarise(per_q, everyone),
-                "per_question": per_q,
-            })
-            print(f"[{strategy:11s} {retriever:6s}] hit@{k} verified "
-                  f"{results[-1]['verified']['hit']:.2f}, all {results[-1]['all']['hit']:.2f}")
+            results.append(
+                {
+                    "strategy": strategy,
+                    "retriever": retriever,
+                    "n_chunks": len(chunks),
+                    "verified": summarise(per_q, verified),
+                    "all": summarise(per_q, everyone),
+                    "per_question": per_q,
+                }
+            )
+            print(
+                f"[{strategy:11s} {retriever:6s}] hit@{k} verified "
+                f"{results[-1]['verified']['hit']:.2f}, all {results[-1]['all']['hit']:.2f}"
+            )
     return {"k": k, "n_verified": len(verified), "n_all": len(everyone), "results": results}
 
 
 def _table(res, key, k):
-    lines = [f"| Chunking | Pieces | Retriever | hit@{k} | 95% CI | MRR | 95% CI | "
-             f"lenient hit@{k} | median ms |",
-             "|---|---|---|---|---|---|---|---|---|"]
+    lines = [
+        f"| Chunking | Pieces | Retriever | hit@{k} | 95% CI | MRR | 95% CI | "
+        f"lenient hit@{k} | median ms |",
+        "|---|---|---|---|---|---|---|---|---|",
+    ]
     for r in res["results"]:
         s = r[key]
         lines.append(
             f"| {r['strategy']} | {r['n_chunks']} | {r['retriever']} | {s['hit']:.2f} | "
             f"{s['hit_ci'][0]:.2f} to {s['hit_ci'][1]:.2f} | {s['mrr']:.2f} | "
             f"{s['mrr_ci'][0]:.2f} to {s['mrr_ci'][1]:.2f} | {s['lenient']:.2f} | "
-            f"{s['median_ms']:.1f} |")
+            f"{s['median_ms']:.1f} |"
+        )
     return lines
 
 
@@ -107,8 +132,10 @@ def paired(res, a="hybrid", b="dense"):
     """Per strategy, over all questions: how many only `a` found, only `b` found, both."""
     out = []
     for s in dict.fromkeys(r["strategy"] for r in res["results"]):
-        ra, rb = (next(r for r in res["results"] if r["strategy"] == s and r["retriever"] == x)
-                  for x in (a, b))
+        ra, rb = (
+            next(r for r in res["results"] if r["strategy"] == s and r["retriever"] == x)
+            for x in (a, b)
+        )
         hb = {q["id"]: q["hit"] for q in rb["per_question"]}
         only_a = sum(1 for q in ra["per_question"] if q["hit"] and not hb[q["id"]])
         only_b = sum(1 for q in ra["per_question"] if not q["hit"] and hb[q["id"]])
@@ -127,26 +154,41 @@ def write_report(res):
     REPORTS.mkdir(exist_ok=True)
     best = best_config(res)
     lines = [
-        "# Chunking and retrieval comparison", "",
+        "# Chunking and retrieval comparison",
+        "",
         "Generated by `python -m eval.evaluate`. Do not edit by hand: the next run overwrites it.",
-        "Discussion lives in the README and in reports/error_analysis.md.", "",
+        "Discussion lives in the README and in reports/error_analysis.md.",
+        "",
         f"RBC 2024 Annual Report, 250 pages. k = {k}. Embeddings: `{EMBED_MODEL}`. "
         f"Intervals: 95% bootstrap over questions, {N_BOOT} resamples. Latency includes "
-        "encoding the question.", "",
-        f"## Headline: the {res['n_verified']} questions I checked by hand", "",
-        *_table(res, "verified", k), "",
-        f"## All {res['n_all']} questions (includes questions not yet checked by hand)", "",
+        "encoding the question.",
+        "",
+        f"## Headline: the {res['n_verified']} questions I checked by hand",
+        "",
+        *_table(res, "verified", k),
+        "",
+        f"## All {res['n_all']} questions (includes questions not yet checked by hand)",
+        "",
         f"{res['n_all'] - res['n_verified']} of these questions have pages proposed by me and "
-        "checked only by script (`python -m eval.check_gold`), not yet read by hand.", "",
-        *_table(res, "all", k), "",
+        "checked only by script (`python -m eval.check_gold`), not yet read by hand.",
+        "",
+        *_table(res, "all", k),
+        "",
         f"Best configuration on all {res['n_all']} questions (by hit@{k}, then MRR): "
-        f"**{best['strategy']} + {best['retriever']}**.", "",
-        f"## Hybrid vs dense, question by question (all {res['n_all']})", "",
+        f"**{best['strategy']} + {best['retriever']}**.",
+        "",
+        f"## Hybrid vs dense, question by question (all {res['n_all']})",
+        "",
         "Both retrievers answer the same questions, so the fairest comparison counts the "
-        "questions where they disagree.", "",
-        "| Chunking | Only hybrid found | Only dense found | Both found |", "|---|---|---|---|",
-        *[f"| {r['strategy']} | {r['only_hybrid']} | {r['only_dense']} | {r['both']} |"
-          for r in paired(res)], "",
+        "questions where they disagree.",
+        "",
+        "| Chunking | Only hybrid found | Only dense found | Both found |",
+        "|---|---|---|---|",
+        *[
+            f"| {r['strategy']} | {r['only_hybrid']} | {r['only_dense']} | {r['both']} |"
+            for r in paired(res)
+        ],
+        "",
     ]
     (REPORTS / "chunking_comparison.md").write_text("\n".join(lines), encoding="utf-8")
     (REPORTS / "eval_results.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
@@ -156,28 +198,43 @@ def write_report(res):
 
 def plot(res, path):
     import matplotlib
+
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
+
     strategies = list(dict.fromkeys(r["strategy"] for r in res["results"]))
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), sharey=True)
-    for ax, key, title in [(axes[0], "verified", f"{res['n_verified']} hand-checked questions"),
-                           (axes[1], "all", f"All {res['n_all']} questions "
-                            f"({res['n_all'] - res['n_verified']} checked by script only)")]:
+    for ax, key, title in [
+        (axes[0], "verified", f"{res['n_verified']} hand-checked questions"),
+        (
+            axes[1],
+            "all",
+            f"All {res['n_all']} questions "
+            f"({res['n_all'] - res['n_verified']} checked by script only)",
+        ),
+    ]:
         x = np.arange(len(strategies))
         for j, retriever in enumerate(RETRIEVERS):
             vals, lo, hi = [], [], []
             for s in strategies:
-                r = next(r for r in res["results"] if r["strategy"] == s and r["retriever"] == retriever)
-                v = r[key]["hit"]; vals.append(v)
-                lo.append(v - r[key]["hit_ci"][0]); hi.append(r[key]["hit_ci"][1] - v)
+                r = next(
+                    r for r in res["results"] if r["strategy"] == s and r["retriever"] == retriever
+                )
+                v = r[key]["hit"]
+                vals.append(v)
+                lo.append(v - r[key]["hit_ci"][0])
+                hi.append(r[key]["hit_ci"][1] - v)
             ax.bar(x + (j - 1) * 0.27, vals, 0.27, yerr=[lo, hi], capsize=3, label=retriever)
-        ax.set_xticks(x, strategies); ax.set_title(title, fontsize=10)
-        ax.set_ylim(0, 1); ax.grid(axis="y", alpha=0.3)
+        ax.set_xticks(x, strategies)
+        ax.set_title(title, fontsize=10)
+        ax.set_ylim(0, 1)
+        ax.grid(axis="y", alpha=0.3)
     axes[0].set_ylabel(f"hit@{res['k']} (95% bootstrap CI)")
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, title="retriever", loc="upper center", ncol=3,
-               bbox_to_anchor=(0.5, 0.0))
+    fig.legend(
+        handles, labels, title="retriever", loc="upper center", ncol=3, bbox_to_anchor=(0.5, 0.0)
+    )
     fig.suptitle("Right page in the top 5, by chunking strategy and retriever")
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, bbox_inches="tight", dpi=130)
