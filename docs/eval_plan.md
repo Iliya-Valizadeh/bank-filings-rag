@@ -36,9 +36,12 @@ percentile [bootstrap](glossary.md#bootstrap): resample the questions with repla
 
 ## Baseline
 
-The [baseline](glossary.md#baseline) is the first version of the system: fixed
-180-word chunks with meaning-based (dense) search. The headline compares it with whole
-pages and [hybrid search](glossary.md#hybrid-search), on the same questions.
+The [baseline](glossary.md#baseline) is fixed 180-word chunks with meaning-based
+(dense) search, the weakest setup in the first commit's comparison. The first version
+itself answered questions from whole pages with [dense search](glossary.md#dense-search). The headline compares the
+baseline with whole pages and [hybrid search](glossary.md#hybrid-search), on the same
+questions. The README first led with this comparison in `a73f82d` (2026-09-24), after
+the results were known.
 
 ## What counts as success
 
@@ -105,15 +108,15 @@ and the best setup was picked on the same questions it is scored on.
 
 ## The claim that the strict score came first
 
-The README says: "The strict score is the headline because I defined it before I saw
-any results." The history does not support this. The strict score first appears in
-`5ec3c84`, the same commit as the first results table. The README sentence itself was
-added in `a73f82d` on 2026-09-24, two months later.
+An earlier README said: "The strict score is the headline because I defined it before
+I saw any results." The history does not support this. The strict score first appears
+in `5ec3c84`, the same commit as the first results table. The README sentence itself
+was added in `a73f82d` on 2026-09-24, two months later.
 
 What the history does show is weaker. The strict score was the only score when the
 first results came out. The lenient score came later, after those results were known.
 The strict score also gives the lower number, so making it the headline does not
-flatter the results. The README rewrite should say this instead.
+flatter the results. The README rewrite in `442727b` replaced the sentence with this.
 
 ## Changes to this plan
 

@@ -84,7 +84,7 @@ not re-run, so its saved outputs stay as they are.
 search, which is a different job from the package. Because it stays a folder at the
 root, pytest keeps `pythonpath = ["."]` so the tests can import `eval.metrics`.
 
-Why: an import rename cannot change a number, and the final metrics diff proves it.
+Why: an import rename cannot change a number, and the final metrics diff will check it.
 The flat layout would cost a small amount forever. The move costs one reviewed commit
 once.
 
@@ -212,7 +212,7 @@ the full values from `eval_results.json`, so the `interval` block must match wha
 `metrics.json` itself is the same on every run.
 
 The headline is whole pages with hybrid search, on the questions I checked by hand.
-The [baseline](../glossary.md#baseline) is the first version: fixed-size chunks with [dense search](../glossary.md#dense-search), on the same
+The [baseline](../glossary.md#baseline) is fixed-size chunks with [dense search](../glossary.md#dense-search), the weakest setup in the first commit's comparison (the first version itself answered from whole pages), on the same
 questions. This is the comparison the README already leads with. I am not picking a new
 headline now that I have seen all the rows.
 
@@ -255,7 +255,7 @@ together, round it down to a whole percent, and set that as `--cov-fail-under`. 
 never lowered. `eval` counts because `eval/metrics.py` is the code that turns search
 results into the headline numbers. A bug there changes a claim. Each new module added in
 this phase, such as `demo.py` and `eval/summarize.py`, must reach 80% on its own in the <!-- not-a-claim -->
-coverage report. A `roadmap` issue tracks raising the total to 80%. <!-- not-a-claim -->
+coverage report. A `roadmap` issue will track raising the total to 80%. <!-- not-a-claim -->
 
 ### 10. The eval plan, written after the results
 

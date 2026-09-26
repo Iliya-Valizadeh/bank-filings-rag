@@ -19,6 +19,8 @@ one line by hand, add the comment `<!-- not-a-claim -->` to it.
 | Headline [hit@5](docs/glossary.md#hit5), whole pages + hybrid, 12 questions, with its 95% interval | 0.58 (0.33 to 0.83) | `reports/metrics.json#headline.model` | `make eval` |
 | [Baseline](docs/glossary.md#baseline) hit@5, fixed chunks + dense, 12 questions, with its 95% interval | 0.25 (0.00 to 0.50) | `reports/metrics.json#headline.baseline` | `make eval` |
 | hit@5, whole pages + dense, 12 questions, with its 95% interval | 0.50 (0.25 to 0.75) | `reports/metrics.json#results.6.verified.hit_at_k` | `make eval` |
+| hit@5, whole pages + hybrid, all 30 questions | 0.70 | `reports/metrics.json#results.8.all.hit_at_k` | `make eval` |
+| hit@5, fixed chunks + hybrid, all 30 questions | 0.67 | `reports/metrics.json#results.2.all.hit_at_k` | `make eval` |
 | Confidence level for every interval | 95% | `reports/metrics.json#interval.level` | `make eval` |
 | [Bootstrap](docs/glossary.md#bootstrap) resamples for every interval | 1,000 | `reports/metrics.json#interval.resamples` | `make eval` |
 | Fixed-chunk size, in words | 180 | `src/bank_filings_rag/chunking.py` | source code, `fixed_words` defaults |

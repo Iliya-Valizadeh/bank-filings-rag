@@ -76,7 +76,7 @@ nothing.
 | 2 | Offline and online metrics correlate | none | There is no live use, so there is no online metric |
 | 3 | All hyperparameters have been tuned | none | Three ways of splitting were compared. The window size, the overlap, k and the fusion settings were not tuned ([ADR 0005](decisions/0005-hybrid-search-with-rank-fusion.md)) |
 | 4 | The impact of model staleness is known | none | Only one year's report is used. Nothing tests a newer report against an older setup |
-| 5 | A simpler model is not better | half | `make eval` scores the first version (fixed chunks, dense search) and each kind of search alone next to the chosen setup, with [bootstrap](glossary.md#bootstrap) intervals. Run by hand. On the 12 hand-checked questions the intervals overlap, so this points in a direction but does not settle it |
+| 5 | A simpler model is not better | half | `make eval` scores the [baseline](glossary.md#baseline) (fixed chunks, dense search) and each kind of search alone next to the chosen setup, with [bootstrap](glossary.md#bootstrap) intervals. Run by hand. On the 12 hand-checked questions the intervals overlap, so this points in a direction but does not settle it |
 | 6 | Model quality is sufficient on important data slices | none | Each question has a `kind` (for example `table` or `multi_page`), but no score is reported per kind |
 | 7 | The model is tested for considerations of inclusion | none | The data describes a company, not people. Nothing checks this |
 
