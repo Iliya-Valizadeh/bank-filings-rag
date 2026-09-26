@@ -7,14 +7,16 @@
           each chunk scores sum(1 / (60 + rank)) over the lists it appears in. RRF only
           uses ranks, so the two very different score scales never need matching up.
 """
+
 from __future__ import annotations
+
 import re
 
 from .config import TOP_K
 
 _TOKEN = re.compile(r"[a-z0-9]+(?:[.,][0-9]+)*")
-RRF_K = 60           # the constant from Cormack et al. (2009); larger = flatter weighting
-FUSION_DEPTH = 50    # how far down each list RRF looks
+RRF_K = 60  # the constant from Cormack et al. (2009); larger = flatter weighting
+FUSION_DEPTH = 50  # how far down each list RRF looks
 
 
 def tokenize(text: str) -> list[str]:
@@ -25,6 +27,7 @@ def tokenize(text: str) -> list[str]:
 class BM25Index:
     def build(self, chunks: list[dict]):
         from rank_bm25 import BM25Okapi
+
         self.chunks = chunks
         self._bm25 = BM25Okapi([tokenize(c["text"]) for c in chunks])
         return self
@@ -55,8 +58,10 @@ class HybridIndex:
     def search(self, query: str, k=5) -> list[dict]:
         fused: dict[str, float] = {}
         by_id = {}
-        for hits in (self.dense.search(query, FUSION_DEPTH),
-                     self.lexical.search(query, FUSION_DEPTH)):
+        for hits in (
+            self.dense.search(query, FUSION_DEPTH),
+            self.lexical.search(query, FUSION_DEPTH),
+        ):
             for rank, h in enumerate(hits, start=1):
                 fused[h["chunk_id"]] = fused.get(h["chunk_id"], 0.0) + 1.0 / (RRF_K + rank)
                 by_id[h["chunk_id"]] = h
@@ -66,6 +71,7 @@ class HybridIndex:
 
 def build_index(kind: str, chunks: list[dict], embed_model: str | None = None, encoder=None):
     from .embed_index import VectorIndex
+
     if kind == "dense":
         return VectorIndex(embed_model, encoder).build(chunks)
     if kind == "bm25":

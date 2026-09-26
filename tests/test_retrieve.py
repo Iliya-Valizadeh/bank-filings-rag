@@ -1,12 +1,19 @@
 import pytest
 
-from src import chunking
-from src.retrieve import RETRIEVERS, build_index, tokenize
+from bank_filings_rag import chunking
+from bank_filings_rag.retrieve import RETRIEVERS, build_index, tokenize
 
 
 def test_tokenize_keeps_figures_and_acronyms_whole():
     assert tokenize("CET1 ratio of 13.2%, net income $16,240") == [
-        "cet1", "ratio", "of", "13.2", "net", "income", "16,240"]
+        "cet1",
+        "ratio",
+        "of",
+        "13.2",
+        "net",
+        "income",
+        "16,240",
+    ]
 
 
 @pytest.mark.parametrize("kind", RETRIEVERS)

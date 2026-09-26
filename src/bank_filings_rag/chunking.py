@@ -5,6 +5,7 @@ so every retrieved chunk can be cited to a page in the filing.
 
 Chunk = {"chunk_id", "text", "page", "strategy"}.
 """
+
 from __future__ import annotations
 
 
@@ -22,7 +23,7 @@ def fixed_words(pages, size=180, overlap=40):
         words = rec["text"].split()
         step = max(1, size - overlap)
         for start in range(0, len(words), step):
-            chunk = " ".join(words[start:start + size])
+            chunk = " ".join(words[start : start + size])
             if chunk.strip():
                 out.append((chunk, rec["page"]))
     return _wrap(out, f"fixed_w{size}_o{overlap}")
