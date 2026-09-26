@@ -32,8 +32,8 @@ strings. Questions 8 and 10 have no answer strings, so they use the strict rule.
 
 Report both, with the strict score as the headline.
 
-The README gives the reason as "because I defined it before I saw any results." The
-history does not support that. The strict score first appears in the same commit as the
+The README at the time (`a73f82d`) gave the reason as "because I defined it before I
+saw any results." The history does not support that. The strict score first appears in the same commit as the
 first results. The reasons the history does support are these. The strict score was
 the only score when the first results came out. The lenient score was added after
 those results were known. The strict score gives the lower number, so the headline
@@ -41,8 +41,9 @@ does not flatter the results.
 
 ## Consequences
 
-- The README sentence about defining the strict score first must be rewritten in the
-  README task. The [eval plan](../eval_plan.md) records the same finding.
+- The README sentence about defining the strict score first had to go. The README
+  rewrite in `442727b` replaced it. The [eval plan](../eval_plan.md) records the same
+  finding.
 - The gap between the two scores shows how much the strict score undercounts. It is
   not a measure of search quality on its own.
 - The lenient score is only as good as the answer strings in
