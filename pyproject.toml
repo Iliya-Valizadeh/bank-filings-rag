@@ -1,6 +1,6 @@
 [project]
 name = "bank-filings-rag"
-version = "0.1.0"
+version = "1.0.0"
 description = "Ask a question about RBC's 2024 Annual Report and get an answer back with the page it came from."
 readme = "README.md"
 license = "MIT"
