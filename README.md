@@ -5,12 +5,12 @@ it came from.
 
 ## In plain words
 
-I built the first version of this in a weekend. It answered questions and named a
-page for each one, and it looked like it worked. Then I realized I had no way to know
-how often it named the right page. So measuring that became the project. I wrote an
-[answer key](docs/glossary.md#answer-key) by hand, tried several ways of splitting and
-searching the report, and wrote down every question the best setup still gets wrong,
-and why.
+This tool answers questions about a bank report and names the page each answer came
+from. The point was always to measure how often it names the right page. The first
+version, in July 2026, had an [answer key](docs/glossary.md#answer-key) of 10
+questions and tried three ways of splitting the report. Ten questions were too few to
+tell those apart. So in September I grew the key to 30 questions, added two more kinds
+of search, and wrote down every question the best setup still gets wrong, and why.
 
 One thing up front: the search runs on my own machine, but writing the final answer
 calls Google's Gemini API, so the pages it finds leave the machine at that point.
@@ -44,9 +44,11 @@ On the 12 questions I checked myself by reading the report, splitting the report
 whole pages and searching with [hybrid search](docs/glossary.md#hybrid-search) puts
 the right page in the top 5 results ([hit@5](docs/glossary.md#hit5)) for 0.58 of them,
 against a 95% [confidence interval](docs/glossary.md#confidence-interval) of 0.33 to
-0.83. The first version of this project, fixed 180-word
+0.83. The [baseline](docs/glossary.md#baseline) is fixed 180-word
 [chunks](docs/glossary.md#chunk) with [dense search](docs/glossary.md#dense-search)
-alone, is the [baseline](docs/glossary.md#baseline): it scores 0.25 (0.00 to 0.50).
+alone, the weakest setup in the first version's comparison: it scores 0.25 (0.00 to
+0.50). The first version itself answered from whole pages with dense search. That
+setup scores 0.50 (0.25 to 0.75), one question behind the best.
 
 | Split the report into | Search | hit@5 | 95% interval |
 |---|---|---|---|
@@ -60,10 +62,13 @@ claim any one setup beats another on these 12 alone.
 
 ![hit@5 by chunking and retriever](reports/figures/hit_at_5.png)
 
-The chart shows hit@5 for every combination of chunking and search on all 30
-questions (12 hand-checked, 18 checked by a script only). Whole pages with hybrid
-search comes out on top in every case, but its interval overlaps with plain dense
-search over whole pages.
+The chart shows hit@5 for every way of splitting and searching, on the 12
+hand-checked questions (left) and on all 30 (right, 18 of them checked by a script
+only). Whole pages with hybrid search is the tallest bar in both panels. But its
+interval overlaps every other bar's, and on all 30, hybrid search over fixed 180-word
+chunks is one question behind it (0.67 against 0.70). On all 30, moving from the
+baseline to hybrid search helps more than moving to whole pages does. On the 12, the
+two changes help about equally.
 
 ## How I worked
 
@@ -99,9 +104,11 @@ because it can also count a page that answers a different question by coincidenc
 ### The answer key
 
 [eval/gold_qa.jsonl](eval/gold_qa.jsonl) has 30 questions. I wrote and read the first
-10 myself. I drafted 20 more to cover exact terms (PCL, NIM, LCR, NSFR, RWA), segment
-tables, plain facts, and questions whose answer spans two pages. Of those 20, I have
-since read Q28 and Q29 myself, for 12 hand-checked questions in total.
+10 myself. 20 more were added in September to cover exact terms (PCL, NIM, LCR, NSFR,
+RWA), segment tables, plain facts, and questions whose answer spans two pages. An AI
+assistant is a co-author of the commit that added them (see [AI_USAGE.md](AI_USAGE.md)).
+Of those 20, I have since read Q28 and Q29 myself, for 12 hand-checked questions in
+total.
 
 [eval/check_gold.py](eval/check_gold.py) runs two script checks on the other 18
 proposed pages. The first looks for the answer text anywhere on the page. 28 of the
@@ -179,9 +186,10 @@ largest single cause of the misses I found in
 The full, ranked list, with what I have and have not done about each one, is in
 [docs/whats_weak.md](docs/whats_weak.md). It also covers: no held-out questions, the
 strict score's undercount, the unpinned model revision, un-tuned fusion settings, lost
-table headers, and a test coverage floor of 47% on the code that turns search results
-into these numbers (see [docs/ml_test_score.md](docs/ml_test_score.md) for the full
-self-assessment).
+table headers, no interval for the gap between two setups, and a test coverage floor
+of 47% for the whole repo, with no test on `eval/evaluate.py`, the code that turns
+search results into these numbers (see [docs/ml_test_score.md](docs/ml_test_score.md)
+for the full self-assessment).
 
 ## Docs
 
