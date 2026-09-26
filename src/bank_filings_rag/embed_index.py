@@ -7,7 +7,11 @@ Note: all-MiniLM-L6-v2 reads at most 256 word pieces per text and ignores the re
 A whole page here is ~4,700 characters (roughly 1,000 word pieces), so page-level
 vectors only see the top of each page. See README, "What I know is weak".
 """
+
 from __future__ import annotations
+
+from typing import Any
+
 import numpy as np
 
 
@@ -17,18 +21,25 @@ class VectorIndex:
         `encode(texts, normalize_embeddings=True, **kw)` method (the tests use a fake)."""
         if encoder is None:
             from sentence_transformers import SentenceTransformer
+
             encoder = SentenceTransformer(embed_model)
         self.model = encoder
         self.chunks: list[dict] = []
-        self._index = None
+        self._index: Any = None
 
     def build(self, chunks: list[dict]):
         import faiss
+
         self.chunks = chunks
-        vecs = np.asarray(self.model.encode(
-            [c["text"] for c in chunks], normalize_embeddings=True,
-            show_progress_bar=False, batch_size=64,
-        ), dtype="float32")
+        vecs = np.asarray(
+            self.model.encode(
+                [c["text"] for c in chunks],
+                normalize_embeddings=True,
+                show_progress_bar=False,
+                batch_size=64,
+            ),
+            dtype="float32",
+        )
         self._index = faiss.IndexFlatIP(vecs.shape[1])  # cosine via normalized dot
         self._index.add(vecs)
         return self
@@ -38,7 +49,8 @@ class VectorIndex:
         q = np.asarray(self.model.encode([query], normalize_embeddings=True), dtype="float32")
         scores, idx = self._index.search(q, k)
         hits = []
-        for score, i in zip(scores[0], idx[0]):
-            c = dict(self.chunks[i]); c["score"] = float(score)
+        for score, i in zip(scores[0], idx[0], strict=True):
+            c = dict(self.chunks[i])
+            c["score"] = float(score)
             hits.append(c)
         return hits

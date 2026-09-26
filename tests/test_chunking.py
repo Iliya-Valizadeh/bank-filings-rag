@@ -1,6 +1,6 @@
 import pytest
 
-from src import chunking
+from bank_filings_rag import chunking
 
 
 @pytest.mark.parametrize("name", list(chunking.STRATEGIES))

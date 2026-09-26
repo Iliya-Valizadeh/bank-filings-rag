@@ -4,15 +4,48 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  test:
+  checks:
+    runs-on: ubuntu-latest
+    # No key and no model download: the `embed` extra (torch, sentence-transformers)
+    # is never installed here. HF_HUB_OFFLINE=1 makes an accidental attempt to reach
+    # the Hugging Face Hub fail loudly instead of silently downloading anything.
+    # docs/decisions/0001-adopting-the-house-standard.md, section 4.
+    env:
+      HF_HUB_OFFLINE: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.11"
+          enable-cache: true
+
+      - name: Install pinned packages
+        run: uv sync --locked
+
+      - name: Lint and types (ruff, mypy)
+        run: make lint
+
+      - name: Tests (pytest, coverage of src)
+        run: make test
+
+      - name: Docs checks (claims, readability, AI-writing signs, local links, README)
+        run: make check-docs
+
+      - name: Demo runs with no downloads or keys
+        run: make demo
+
+  web-links:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+
+      - name: Web link check (lychee)
+        uses: lycheeverse/lychee-action@v2
         with:
-          python-version: "3.11"
-          cache: pip
-      - run: pip install -r requirements-ci.txt
-      - run: ruff check .
-      - run: pytest -q
+          args: --config tools/lychee.toml './**/*.md'
+          fail: true

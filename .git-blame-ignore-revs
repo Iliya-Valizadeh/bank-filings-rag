@@ -1,0 +1,3 @@
+# Commits that only reformat code (ruff format) or fix lint/type findings with no
+# behavior change. `git blame --ignore-revs-file .git-blame-ignore-revs` skips these.
+8de1ce3109a36f78d06061fbb44c1b0d9304ad91
