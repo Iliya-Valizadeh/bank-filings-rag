@@ -1,11 +1,13 @@
 """Config: paths, models, retrieval knobs."""
-from pathlib import Path
+
 import os
+from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DATA_RAW = ROOT / "data" / "raw"
 INDEX_DIR = ROOT / "index"
 REPORTS = ROOT / "reports"

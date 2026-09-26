@@ -7,12 +7,15 @@ it prints the retrieved evidence + pages instead of an LLM answer.
 Run:
   python -m src.ask --pdf data/raw/rbc_2024.pdf "What was RBC's net income in 2024?"
 """
+
 from __future__ import annotations
+
 import argparse
+
+from . import chunking, ingest
 from .config import EMBED_MODEL, TOP_K
-from . import ingest, chunking
-from .retrieve import build_index
 from .pipeline import ask as ask_pipeline
+from .retrieve import build_index
 
 
 def main():
@@ -23,7 +26,7 @@ def main():
     a = ap.parse_args()
 
     pages = ingest.load_pages(a.pdf, with_blocks=False)
-    chunks = chunking.whole_page(pages)          # best configuration in the eval
+    chunks = chunking.whole_page(pages)  # best configuration in the eval
     index = build_index("hybrid", chunks, EMBED_MODEL)
     res = ask_pipeline(index, a.question, k=a.k)
 
