@@ -5,11 +5,12 @@ tutorial and how-to guides say what to type.
 
 ## Why measure retrieval instead of the written answer
 
-The first version of this project answered questions and named a page for each one,
-and it looked like it worked. Reading the answers alone could not say how often the
-named page was actually right. So the project became about measuring that: an
-[answer key](glossary.md#answer-key) with a known page for each question, and a
-score that counts how often the search puts that page in the top results. Writing an
+The project answers questions and names a page for each one. Reading the answers
+alone cannot say how often the named page is right. So the project measures that: an
+[answer key](glossary.md#answer-key) with a known page for each question, and a score
+that counts how often the search puts that page in the top results. The first commit
+already had this score and a 10-question key. Later work grew the key and compared more
+setups. Writing an
 answer is a separate, later step that this project does not score; see
 [docs/whats_weak.md](whats_weak.md).
 
