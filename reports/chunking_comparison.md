@@ -9,15 +9,15 @@ RBC 2024 Annual Report, 250 pages. k = 5. Embeddings: `sentence-transformers/all
 
 | Chunking | Pieces | Retriever | hit@5 | 95% CI | MRR | 95% CI | lenient hit@5 | median ms |
 |---|---|---|---|---|---|---|---|---|
-| fixed_words | 1355 | dense | 0.25 | 0.00 to 0.50 | 0.18 | 0.00 to 0.43 | 0.50 | 17.7 |
-| fixed_words | 1355 | bm25 | 0.42 | 0.17 to 0.67 | 0.25 | 0.06 to 0.46 | 0.67 | 5.3 |
-| fixed_words | 1355 | hybrid | 0.50 | 0.25 to 0.75 | 0.33 | 0.10 to 0.58 | 0.58 | 23.2 |
-| paragraph | 1146 | dense | 0.33 | 0.08 to 0.58 | 0.19 | 0.04 to 0.38 | 0.33 | 16.0 |
-| paragraph | 1146 | bm25 | 0.33 | 0.08 to 0.58 | 0.25 | 0.04 to 0.46 | 0.67 | 4.2 |
-| paragraph | 1146 | hybrid | 0.50 | 0.25 to 0.75 | 0.27 | 0.09 to 0.49 | 0.58 | 21.3 |
-| whole_page | 250 | dense | 0.50 | 0.25 to 0.75 | 0.29 | 0.11 to 0.52 | 0.67 | 16.1 |
-| whole_page | 250 | bm25 | 0.42 | 0.17 to 0.67 | 0.31 | 0.08 to 0.56 | 0.75 | 1.1 |
-| whole_page | 250 | hybrid | 0.58 | 0.33 to 0.83 | 0.35 | 0.14 to 0.60 | 0.83 | 18.0 |
+| fixed_words | 1355 | dense | 0.25 | 0.00 to 0.50 | 0.18 | 0.00 to 0.43 | 0.50 | 27.8 |
+| fixed_words | 1355 | bm25 | 0.42 | 0.17 to 0.67 | 0.25 | 0.06 to 0.46 | 0.67 | 11.1 |
+| fixed_words | 1355 | hybrid | 0.50 | 0.25 to 0.75 | 0.33 | 0.10 to 0.58 | 0.58 | 41.4 |
+| paragraph | 1146 | dense | 0.33 | 0.08 to 0.58 | 0.19 | 0.04 to 0.38 | 0.33 | 25.1 |
+| paragraph | 1146 | bm25 | 0.33 | 0.08 to 0.58 | 0.25 | 0.04 to 0.46 | 0.67 | 8.1 |
+| paragraph | 1146 | hybrid | 0.50 | 0.25 to 0.75 | 0.27 | 0.09 to 0.49 | 0.58 | 33.5 |
+| whole_page | 250 | dense | 0.50 | 0.25 to 0.75 | 0.29 | 0.11 to 0.52 | 0.67 | 25.5 |
+| whole_page | 250 | bm25 | 0.42 | 0.17 to 0.67 | 0.31 | 0.08 to 0.56 | 0.75 | 1.9 |
+| whole_page | 250 | hybrid | 0.58 | 0.33 to 0.83 | 0.35 | 0.14 to 0.60 | 0.83 | 28.5 |
 
 ## All 30 questions (includes questions not yet checked by hand)
 
@@ -25,15 +25,15 @@ RBC 2024 Annual Report, 250 pages. k = 5. Embeddings: `sentence-transformers/all
 
 | Chunking | Pieces | Retriever | hit@5 | 95% CI | MRR | 95% CI | lenient hit@5 | median ms |
 |---|---|---|---|---|---|---|---|---|
-| fixed_words | 1355 | dense | 0.50 | 0.33 to 0.70 | 0.34 | 0.20 to 0.50 | 0.63 | 18.1 |
-| fixed_words | 1355 | bm25 | 0.53 | 0.37 to 0.70 | 0.34 | 0.20 to 0.49 | 0.63 | 5.5 |
-| fixed_words | 1355 | hybrid | 0.67 | 0.50 to 0.83 | 0.45 | 0.29 to 0.59 | 0.70 | 23.1 |
-| paragraph | 1146 | dense | 0.50 | 0.33 to 0.70 | 0.28 | 0.16 to 0.42 | 0.50 | 16.5 |
-| paragraph | 1146 | bm25 | 0.43 | 0.27 to 0.60 | 0.29 | 0.16 to 0.44 | 0.57 | 4.2 |
-| paragraph | 1146 | hybrid | 0.63 | 0.47 to 0.80 | 0.41 | 0.26 to 0.56 | 0.67 | 22.2 |
-| whole_page | 250 | dense | 0.57 | 0.40 to 0.73 | 0.38 | 0.24 to 0.53 | 0.67 | 16.0 |
-| whole_page | 250 | bm25 | 0.60 | 0.43 to 0.77 | 0.43 | 0.29 to 0.61 | 0.77 | 1.1 |
-| whole_page | 250 | hybrid | 0.70 | 0.53 to 0.87 | 0.52 | 0.37 to 0.68 | 0.83 | 18.4 |
+| fixed_words | 1355 | dense | 0.50 | 0.33 to 0.70 | 0.34 | 0.20 to 0.50 | 0.63 | 28.3 |
+| fixed_words | 1355 | bm25 | 0.53 | 0.37 to 0.70 | 0.34 | 0.20 to 0.49 | 0.63 | 11.2 |
+| fixed_words | 1355 | hybrid | 0.67 | 0.50 to 0.83 | 0.45 | 0.29 to 0.59 | 0.70 | 40.6 |
+| paragraph | 1146 | dense | 0.50 | 0.33 to 0.70 | 0.28 | 0.16 to 0.42 | 0.50 | 26.3 |
+| paragraph | 1146 | bm25 | 0.43 | 0.27 to 0.60 | 0.29 | 0.16 to 0.44 | 0.57 | 7.9 |
+| paragraph | 1146 | hybrid | 0.63 | 0.47 to 0.80 | 0.41 | 0.26 to 0.56 | 0.67 | 33.7 |
+| whole_page | 250 | dense | 0.57 | 0.40 to 0.73 | 0.38 | 0.24 to 0.53 | 0.67 | 26.1 |
+| whole_page | 250 | bm25 | 0.60 | 0.43 to 0.77 | 0.43 | 0.29 to 0.61 | 0.77 | 2.0 |
+| whole_page | 250 | hybrid | 0.70 | 0.53 to 0.87 | 0.52 | 0.37 to 0.68 | 0.83 | 28.5 |
 
 Best configuration on all 30 questions (by hit@5, then MRR): **whole_page + hybrid**.
 
