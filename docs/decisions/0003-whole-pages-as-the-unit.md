@@ -3,7 +3,7 @@
 Date: 2026-09-25. Status: accepted.
 
 I wrote this record on 2026-09-25, from the git history. The decision was first made in
-commit `5ec3c84` on 2026-07-17 and confirmed in `4b14b5d` on 2026-09-24.
+commit `5ec3c84` on 2026-07-17 and confirmed in `e2b3cf3` on 2026-09-24.
 
 ## Context
 
@@ -18,11 +18,11 @@ line tool took whole pages as "the winning strategy".
 
 That tie was not a real result. The paragraph splitter looked for blank lines, and
 pypdf puts none in this report. So each page came out as one paragraph, and the
-experiment compared whole pages with themselves. Commit `5160c6e` fixed this by using
+experiment compared whole pages with themselves. Commit `05fb477` fixed this by using
 the layout blocks that PyMuPDF finds. The splitter now stops with an error if the
 blocks are missing, instead of falling back to whole pages without a word.
 
-Commit `8e12f28` then ran each way of splitting with each kind of search (dense,
+Commit `6297b5b` then ran each way of splitting with each kind of search (dense,
 keyword and hybrid) on all 30 questions. Whole pages scored highest with every kind of
 search. On the 12 hand-checked questions they scored highest or tied. The full table is
 in [reports/chunking_comparison.md](../../reports/chunking_comparison.md).

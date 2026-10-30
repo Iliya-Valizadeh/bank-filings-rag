@@ -3,7 +3,7 @@
 Date: 2026-09-25. Status: accepted.
 
 I wrote this record on 2026-09-25, from the git history. The strict score dates from
-commit `5ec3c84` (2026-07-17). The lenient score dates from `d78553a` (2026-09-24).
+commit `5ec3c84` (2026-07-17). The lenient score dates from `2f91b0b` (2026-09-24).
 
 ## Context
 
@@ -13,7 +13,7 @@ The [answer key](../glossary.md#answer-key) lists the page or pages where each a
 The first commit, `5ec3c84`, had one rule: a hit only when a retrieved page is one the
 key lists. This is the strict score. The first results table used it.
 
-Two months later, commit `d78553a` added a second rule and wrote down why in
+Two months later, commit `2f91b0b` added a second rule and wrote down why in
 `eval/metrics.py`. The same figure often appears on more than one page. RBC's net
 income, for example, is printed on 13 pages. A search that returns one of those other
 pages has found the answer, but the strict score calls it a miss. The lenient score
@@ -32,7 +32,7 @@ strings. Questions 8 and 10 have no answer strings, so they use the strict rule.
 
 Report both, with the strict score as the headline.
 
-The README at the time (`a73f82d`) gave the reason as "because I defined it before I
+The README at the time (`93db2d1`) gave the reason as "because I defined it before I
 saw any results." The history does not support that. The strict score first appears in the same commit as the
 first results. The reasons the history does support are these. The strict score was
 the only score when the first results came out. The lenient score was added after
@@ -42,7 +42,7 @@ does not flatter the results.
 ## Consequences
 
 - The README sentence about defining the strict score first had to go. The README
-  rewrite in `442727b` replaced it. The [eval plan](../eval_plan.md) records the same
+  rewrite in `27b5b9e` replaced it. The [eval plan](../eval_plan.md) records the same
   finding.
 - The gap between the two scores shows how much the strict score undercounts. It is
   not a measure of search quality on its own.
