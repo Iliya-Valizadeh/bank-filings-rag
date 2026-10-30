@@ -46,6 +46,6 @@ apply to internal documents.
   search, and it is a large part of why keyword and [hybrid search](../glossary.md#hybrid-search) help. The README
   and `notebooks/01_explore.ipynb` give the numbers.
 - The privacy rule covers indexing and search only. Answer writing still sends the
-  top pages to Gemini, a hosted model. Commit `e555419` added that to the README.
+  top pages to Gemini, a hosted model. Commit `a2f2259` added that to the README.
   Replacing the generator would change `src/bank_filings_rag/generate.py` and none of
   the search code.

@@ -41,9 +41,9 @@ Most questions have one answer page. Seven have two.
 
 The first 10 questions came with the first commit, `5ec3c84` (2026-07-17). They were
 written and checked by reading the report. The key did not record that until
-`8b69b7b` added the `verified` flag.
+`e04812e` added the `verified` flag.
 
-Questions 11 to 30 came in `8b69b7b` (2026-09-24), after the first results were known.
+Questions 11 to 30 came in `e04812e` (2026-09-24), after the first results were known.
 Each had a proposed page. The new questions were picked to cover exact terms (PCL, NIM, LCR, NSFR, RWA),
 segment tables, plain facts, and answers that span two pages.
 
@@ -53,12 +53,12 @@ segment tables, plain facts, and answers that span two pages.
 answer string anywhere on the page. 28 pass. Questions 8 and 10 have no answer strings,
 so this check cannot run on them. The second looks for the label and
 the figure in the same passage, close together. 18 of the 20 new questions pass it. The
-other two, Q28 and Q29, were read by hand in `e1f89c9`. The results are in
+other two, Q28 and Q29, were read by hand in `cd5859c`. The results are in
 [eval/gold_check.md](eval/gold_check.md).
 
-The answer strings for the first 10 questions were added in `8b69b7b`, with the
+The answer strings for the first 10 questions were added in `e04812e`, with the
 lenient score. After that, the answer text changed for three questions: Q7 and Q8 in
-`c24f6ac`, and Q29 in `e1f89c9`. No page number or answer string has changed since each
+`32633f0`, and Q29 in `cd5859c`. No page number or answer string has changed since each
 was first written. A comparison of every version of the file in git confirms this.
 
 ## Uses
