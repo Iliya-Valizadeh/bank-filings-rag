@@ -17,7 +17,7 @@ reading". So every question got a `verified` flag and a `verified_by` field ("ha
 "script"). The 20 new ones started as unverified.
 
 Commit `a2d0688` added a stricter script check: the label and the figure must sit in
-the same passage, close together. Two questions, Q28 and Q29, did not pass it. Iliya
+the same passage, close together. Two questions, Q28 and Q29, did not pass it. I
 read both pages, and commit `e1f89c9` marked them as checked by hand. That made 12.
 
 ## Options
