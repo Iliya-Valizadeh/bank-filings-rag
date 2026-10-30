@@ -28,7 +28,7 @@ system.
 
 Following template ADR 0004, a test earns one point only after CI (continuous
 integration, the checks GitHub runs on every push) has run it on GitHub. The test step
-passed in CI run `36197187202`, on commit `f0f065e`. That run failed later, at the docs
+passed in CI run `36197187202`, on commit `ee229a2`. That run failed later, at the docs
 checks, which do not affect these tests.
 
 Two more rules I applied. A test that is automated but covers only part of what the
@@ -84,7 +84,7 @@ nothing.
 
 | # | Test | Score | Evidence or gap |
 |---|---|---|---|
-| 1 | Training is reproducible | half | Nothing is trained, and building the index has no random step. During the retrofit a rerun of `make eval` matched the earlier results exactly, apart from timings (commit `f0f065e`). That was done by hand. No CI job reruns it, since it needs the PDF, and the [embedding](glossary.md#embedding) model's revision is not pinned |
+| 1 | Training is reproducible | half | Nothing is trained, and building the index has no random step. During the retrofit a rerun of `make eval` matched the earlier results exactly, apart from timings (commit `ee229a2`). That was done by hand. No CI job reruns it, since it needs the PDF, and the [embedding](glossary.md#embedding) model's revision is not pinned |
 | 2 | Model specs are unit tested | one point | CI runs tests on all three kinds of search with a fake encoder (k results, pages kept, an exact-term question finds its page) and on the scoring code with toy data (hit@k, [MRR](glossary.md#mrr), [lenient hit](glossary.md#lenient-hit), bootstrap) |
 | 3 | The ML pipeline is integration tested | half | A CI test runs the demo end to end on a small made-up PDF: read, split into pages, keyword search, then hit@k and MRR. It does not cover dense or [hybrid search](glossary.md#hybrid-search), and no test runs `eval/evaluate.py` |
 | 4 | Model quality is validated before serving | none | There is no serving step. Nothing blocks a change that lowers [hit@5](glossary.md#hit5) |
