@@ -44,8 +44,7 @@ written and checked by reading the report. The key did not record that until
 `8b69b7b` added the `verified` flag.
 
 Questions 11 to 30 came in `8b69b7b` (2026-09-24), after the first results were known.
-Each had a proposed page. Claude, an AI assistant, is listed as co-author of that
-commit. The new questions were picked to cover exact terms (PCL, NIM, LCR, NSFR, RWA),
+Each had a proposed page. The new questions were picked to cover exact terms (PCL, NIM, LCR, NSFR, RWA),
 segment tables, plain facts, and answers that span two pages.
 
 ## Checks
