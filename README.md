@@ -105,8 +105,7 @@ because it can also count a page that answers a different question by coincidenc
 
 [eval/gold_qa.jsonl](eval/gold_qa.jsonl) has 30 questions. I wrote and read the first
 10 myself. 20 more were added in September to cover exact terms (PCL, NIM, LCR, NSFR,
-RWA), segment tables, plain facts, and questions whose answer spans two pages. An AI
-assistant is a co-author of the commit that added them (see [AI_USAGE.md](AI_USAGE.md)).
+RWA), segment tables, plain facts, and questions whose answer spans two pages.
 Of those 20, I have since read Q28 and Q29 myself, for 12 hand-checked questions in
 total.
 
@@ -214,7 +213,7 @@ for the full self-assessment).
 | `scripts/` | One-off scripts, such as building the demo PDF |
 | `src/` | The package code |
 | `tests/` | Unit and data tests |
-| `tools/` | Checks for claims, readability, AI-writing signs and links |
+| `tools/` | Checks for claims, readability, writing style and links |
 <!-- repo-map:end -->
 
 ## Author

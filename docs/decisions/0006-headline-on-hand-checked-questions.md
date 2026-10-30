@@ -3,12 +3,12 @@
 Date: 2026-09-25. Status: accepted.
 
 I wrote this record on 2026-09-25, from the git history. The decision was made in
-commits `8b69b7b` and `8e12f28` on 2026-09-24.
+commits `e04812e` and `6297b5b` on 2026-09-24.
 
 ## Context
 
 The first 10 questions were written and checked by reading the report. Ten questions
-give very wide intervals. So commit `8b69b7b` added 20 more questions, each with a
+give very wide intervals. So commit `e04812e` added 20 more questions, each with a
 proposed page.
 
 A script, `eval/check_gold.py`, confirms that each proposed page contains the answer
@@ -16,9 +16,9 @@ text. The commit message says why that is not enough: it is "a script check, not
 reading". So every question got a `verified` flag and a `verified_by` field ("hand" or
 "script"). The 20 new ones started as unverified.
 
-Commit `a2d0688` added a stricter script check: the label and the figure must sit in
-the same passage, close together. Two questions, Q28 and Q29, did not pass it. Iliya
-read both pages, and commit `e1f89c9` marked them as checked by hand. That made 12.
+Commit `de3d6d7` added a stricter script check: the label and the figure must sit in
+the same passage, close together. Two questions, Q28 and Q29, did not pass it. I
+read both pages, and commit `cd5859c` marked them as checked by hand. That made 12.
 
 ## Options
 

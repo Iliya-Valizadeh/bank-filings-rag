@@ -40,7 +40,7 @@ The [baseline](glossary.md#baseline) is fixed 180-word chunks with meaning-based
 (dense) search, the weakest setup in the first commit's comparison. The first version
 itself answered questions from whole pages with [dense search](glossary.md#dense-search). The headline compares the
 baseline with whole pages and [hybrid search](glossary.md#hybrid-search), on the same
-questions. The README first led with this comparison in `a73f82d` (2026-09-24), after
+questions. The README first led with this comparison in `93db2d1` (2026-09-24), after
 the results were known.
 
 ## What counts as success
@@ -58,19 +58,19 @@ view, would not mean anything.
 | [MRR](glossary.md#mrr) (mean reciprocal rank) and median search time | `5ec3c84` | 2026-07-17 | same commit |
 | Three ways to split the report: fixed 180-word windows with 40 words of overlap, paragraphs, whole pages | `5ec3c84` | 2026-07-17 | same commit |
 | The first 10 questions | `5ec3c84` | 2026-07-17 | same commit |
-| Paragraphs split on PyMuPDF layout blocks, not blank lines | `5160c6e` | 2026-09-24 | after |
-| Keyword search ([BM25](glossary.md#bm25)) and hybrid search ([reciprocal rank fusion](glossary.md#reciprocal-rank-fusion)) | `1f4db7f` | 2026-09-24 | after |
-| [Lenient hit](glossary.md#lenient-hit): a hit also when a retrieved [chunk](glossary.md#chunk) contains an answer string | `d78553a` | 2026-09-24 | after |
-| Bootstrap intervals: 1,000 resamples of the questions, seed 0 | `d78553a` | 2026-09-24 | after |
-| 20 more questions (30 in all), with a `verified` flag on each | `8b69b7b` | 2026-09-24 | after the first results; same minute as the first 30-question results |
-| Headline on hand-checked questions only; a second table for all 30 | `8e12f28` | 2026-09-24 | after |
-| Every split paired with every search (dense, BM25, hybrid) | `8e12f28` | 2026-09-24 | after |
-| The best setup is the highest hit@5 on all 30 questions, ties broken by MRR | `8e12f28` | 2026-09-24 | after |
-| The command-line tool uses whole pages with hybrid search | `4b14b5d` | 2026-09-24 | after |
-| A stricter answer-key check: label and figure in the same passage | `a2d0688` | 2026-09-25 | after |
-| Q28 and Q29 read by hand, making 12 hand-checked questions | `e1f89c9` | 2026-09-25 | after |
+| Paragraphs split on PyMuPDF layout blocks, not blank lines | `05fb477` | 2026-09-24 | after |
+| Keyword search ([BM25](glossary.md#bm25)) and hybrid search ([reciprocal rank fusion](glossary.md#reciprocal-rank-fusion)) | `63ef361` | 2026-09-24 | after |
+| [Lenient hit](glossary.md#lenient-hit): a hit also when a retrieved [chunk](glossary.md#chunk) contains an answer string | `2f91b0b` | 2026-09-24 | after |
+| Bootstrap intervals: 1,000 resamples of the questions, seed 0 | `2f91b0b` | 2026-09-24 | after |
+| 20 more questions (30 in all), with a `verified` flag on each | `e04812e` | 2026-09-24 | after the first results; same minute as the first 30-question results |
+| Headline on hand-checked questions only; a second table for all 30 | `6297b5b` | 2026-09-24 | after |
+| Every split paired with every search (dense, BM25, hybrid) | `6297b5b` | 2026-09-24 | after |
+| The best setup is the highest hit@5 on all 30 questions, ties broken by MRR | `6297b5b` | 2026-09-24 | after |
+| The command-line tool uses whole pages with hybrid search | `e2b3cf3` | 2026-09-24 | after |
+| A stricter answer-key check: label and figure in the same passage | `de3d6d7` | 2026-09-25 | after |
+| Q28 and Q29 read by hand, making 12 hand-checked questions | `cd5859c` | 2026-09-25 | after |
 
-Commits `d78553a`, `8b69b7b` and `8e12f28` share one timestamp. Git cannot show
+Commits `2f91b0b`, `e04812e` and `6297b5b` share one timestamp. Git cannot show
 whether I ran the 30-question evaluation before I committed the 20 new questions.
 
 ## Choices made after results were seen
@@ -84,7 +84,7 @@ toward pages the search finds easily. The headline leaves out the 18 that are st
 checked only by script.
 
 The move from 10 to 12 hand-checked questions. I read Q28 and Q29 because the stricter
-answer-key check in `a2d0688` could not confirm them. That reason comes from the
+answer-key check in `de3d6d7` could not confirm them. That reason comes from the
 answer key, not from the search results. The whole-page hybrid setup finds both. So
 its count went from 5 of the first 10 to 7 of 12 when they joined the headline set.
 The baseline also finds both.
@@ -111,12 +111,12 @@ and the best setup was picked on the same questions it is scored on.
 An earlier README said: "The strict score is the headline because I defined it before
 I saw any results." The history does not support this. The strict score first appears
 in `5ec3c84`, the same commit as the first results table. The README sentence itself
-was added in `a73f82d` on 2026-09-24, two months later.
+was added in `93db2d1` on 2026-09-24, two months later.
 
 What the history does show is weaker. The strict score was the only score when the
 first results came out. The lenient score came later, after those results were known.
 The strict score also gives the lower number, so making it the headline does not
-flatter the results. The README rewrite in `442727b` replaced the sentence with this.
+flatter the results. The README rewrite in `27b5b9e` replaced the sentence with this.
 
 ## Changes to this plan
 
