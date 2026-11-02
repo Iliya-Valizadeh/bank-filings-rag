@@ -3,7 +3,7 @@
 Date: 2026-09-25. Status: accepted.
 
 I wrote this record on 2026-09-25, from the git history. The decision was made in
-commit `63ef361` on 2026-09-24 and put into the command line tool in `e2b3cf3` the same
+commit `bd179e8` on 2026-09-24 and put into the command line tool in `3647b2c` the same
 day.
 
 ## Context
@@ -12,7 +12,7 @@ The first version used only meaning-based (dense) search. The first results repo
 commit `5ec3c84`, listed [hybrid search](../glossary.md#hybrid-search) as a next step. Its reason: financial questions
 use exact terms such as "CET1" and "ROE", and keyword matching helps with those.
 
-Commit `63ef361` added keyword search ([BM25](../glossary.md#bm25)) and a hybrid of the two. The two searches
+Commit `bd179e8` added keyword search ([BM25](../glossary.md#bm25)) and a hybrid of the two. The two searches
 give scores on very different scales. A dense score is a cosine similarity. A BM25 score
 grows with how often rare words appear. They cannot be added directly.
 
@@ -32,7 +32,7 @@ usual ones.
 ## Decision
 
 Reciprocal rank fusion, with the constant 60 taken from Cormack et al. (2009) and each
-list read to depth 50. Neither setting was tuned. `e2b3cf3` made whole pages with
+list read to depth 50. Neither setting was tuned. `3647b2c` made whole pages with
 hybrid search the setup the command line tool uses, because it had the best [hit@5](../glossary.md#hit5) on
 all 30 questions.
 
