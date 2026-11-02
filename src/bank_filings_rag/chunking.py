@@ -1,4 +1,4 @@
-"""Chunking strategies — the object of the comparison experiment.
+"""Chunking strategies, the object of the comparison experiment.
 
 Each strategy takes per-page records and returns chunks that CARRY THEIR PAGE,
 so every retrieved chunk can be cited to a page in the filing.

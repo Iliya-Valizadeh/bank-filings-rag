@@ -11,7 +11,7 @@ from .config import GEMINI_API_KEY, GEMINI_MODEL
 SYSTEM = (
     "You answer questions about a bank's annual report using ONLY the provided excerpts. "
     "Cite the page number(s) in parentheses after each claim, e.g. (p. 42). "
-    "If the excerpts do not contain the answer, say so — do not guess."
+    "If the excerpts do not contain the answer, say so and do not guess."
 )
 
 
@@ -33,7 +33,7 @@ def answer(question: str, chunks: list[dict]) -> dict:
     cited_pages = sorted({c["page"] for c in chunks})
     if not GEMINI_API_KEY:
         return {
-            "answer": "[no API key — showing retrieved evidence only]",
+            "answer": "[no API key, showing retrieved evidence only]",
             "cited_pages": cited_pages,
             "chunks": chunks,
             "llm": False,

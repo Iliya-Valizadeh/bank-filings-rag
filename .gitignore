@@ -1,4 +1,4 @@
-# Data — filings are large / redistribution-sensitive, not committed
+# Data: filings are large / redistribution-sensitive, not committed
 data/raw/*.pdf
 data/*.pdf
 *.faiss
